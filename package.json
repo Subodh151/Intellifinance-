@@ -1,0 +1,11 @@
+{
+  "name": "intellifinance",
+  "version": "1.0.0",
+  "scripts": {
+    "start": "python -m http.server 3000",
+    "dev": "python -m http.server 3000"
+  },
+  "devDependencies": {
+    "ws": "^8.22.0"
+  }
+}

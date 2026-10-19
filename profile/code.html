@@ -1,0 +1,1341 @@
+<!DOCTYPE html><html class="h-full bg-surface" lang="en"><head>
+<script src="../shared/data.js"></script>
+<script>
+  if (window.IntelliFinance && !window.IntelliFinance.requireAuth('../login.html')) {
+    // will redirect
+  }
+</script>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Executive User Profile &amp; Financial Baseline | IntelliFinance</title>
+<link href="https://fonts.googleapis.com" rel="preconnect">
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Plus+Jakarta+Sans:wght@500;600;700;800&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            "secondary-container": "#645efb",
+            "tertiary-fixed-dim": "#4edea3",
+            "on-background": "#0b1c30",
+            "tertiary-fixed": "#6ffbbe",
+            "primary-container": "#131b2e",
+            "on-secondary-fixed": "#0f0069",
+            "primary-fixed-dim": "#bec6e0",
+            "inverse-surface": "#213145",
+            "on-error": "#ffffff",
+            "on-surface-variant": "#45464d",
+            "surface": "#f8f9ff",
+            "primary": "#000000",
+            "outline": "#76777d",
+            "surface-container-highest": "#d3e4fe",
+            "secondary": "#4b41e1",
+            "on-primary-fixed": "#131b2e",
+            "tertiary": "#000000",
+            "on-primary": "#ffffff",
+            "inverse-primary": "#bec6e0",
+            "on-tertiary-fixed-variant": "#005236",
+            "surface-container": "#e5eeff",
+            "inverse-on-surface": "#eaf1ff",
+            "on-secondary": "#ffffff",
+            "on-tertiary": "#ffffff",
+            "on-surface": "#0b1c30",
+            "on-secondary-container": "#fffbff",
+            "surface-container-high": "#dce9ff",
+            "surface-tint": "#565e74",
+            "error-container": "#ffdad6",
+            "on-tertiary-container": "#009668",
+            "surface-bright": "#f8f9ff",
+            "on-secondary-fixed-variant": "#3323cc",
+            "secondary-fixed": "#e2dfff",
+            "primary-fixed": "#dae2fd",
+            "tertiary-container": "#002113",
+            "outline-variant": "#c6c6cd",
+            "on-primary-fixed-variant": "#3f465c",
+            "secondary-fixed-dim": "#c3c0ff",
+            "background": "#f8f9ff",
+            "on-tertiary-fixed": "#002113",
+            "surface-variant": "#d3e4fe",
+            "surface-dim": "#cbdbf5",
+            "on-error-container": "#93000a",
+            "error": "#ba1a1a",
+            "surface-container-lowest": "#ffffff",
+            "surface-container-low": "#eff4ff",
+            "on-primary-container": "#7c839b"
+          },
+          borderRadius: {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "full": "9999px"
+          },
+          spacing: {
+            "space-xs": "0.25rem",
+            "space-md": "1rem",
+            "margin": "2rem",
+            "space-xl": "2.5rem",
+            "space-sm": "0.5rem",
+            "gutter": "1.5rem",
+            "space-lg": "1.5rem"
+          },
+          fontFamily: {
+            "data-metric-md": ["Inter"],
+            "label-md": ["Inter"],
+            "headline-lg-mobile": ["Plus Jakarta Sans"],
+            "headline-sm": ["Plus Jakarta Sans"],
+            "label-sm": ["Inter"],
+            "body-lg": ["Inter"],
+            "body-sm": ["Inter"],
+            "data-metric-lg": ["Plus Jakarta Sans"],
+            "headline-xl": ["Plus Jakarta Sans"],
+            "headline-md": ["Plus Jakarta Sans"],
+            "headline-xl-mobile": ["Plus Jakarta Sans"],
+            "headline-lg": ["Plus Jakarta Sans"],
+            "body-md": ["Inter"]
+          },
+          fontSize: {
+            "data-metric-md": ["1.125rem", { lineHeight: "1.5rem", letterSpacing: "-0.01em", fontWeight: "600" }],
+            "label-md": ["0.875rem", { lineHeight: "1.25rem", letterSpacing: "0.01em", fontWeight: "500" }],
+            "headline-lg-mobile": ["1.625rem", { lineHeight: "2.125rem", letterSpacing: "-0.02em", fontWeight: "600" }],
+            "headline-sm": ["1.125rem", { lineHeight: "1.5rem", letterSpacing: "-0.01em", fontWeight: "600" }],
+            "label-sm": ["0.75rem", { lineHeight: "1rem", letterSpacing: "0.04em", fontWeight: "600" }],
+            "body-lg": ["1.125rem", { lineHeight: "1.75rem", letterSpacing: "-0.01em", fontWeight: "400" }],
+            "body-sm": ["0.8125rem", { lineHeight: "1.25rem", letterSpacing: "0", fontWeight: "400" }],
+            "data-metric-lg": ["2rem", { lineHeight: "2.25rem", letterSpacing: "-0.02em", fontWeight: "700" }],
+            "headline-xl": ["3rem", { lineHeight: "3.5rem", letterSpacing: "-0.03em", fontWeight: "700" }],
+            "headline-md": ["1.5rem", { lineHeight: "2rem", letterSpacing: "-0.015em", fontWeight: "600" }],
+            "headline-xl-mobile": ["2rem", { lineHeight: "2.5rem", letterSpacing: "-0.02em", fontWeight: "700" }],
+            "headline-lg": ["2.25rem", { lineHeight: "2.75rem", letterSpacing: "-0.025em", fontWeight: "600" }],
+            "body-md": ["0.9375rem", { lineHeight: "1.5rem", letterSpacing: "0", fontWeight: "400" }]
+          }
+        }
+      }
+    };
+  </script>
+<style>
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      line-height: 1;
+    }
+    input:focus, select:focus {
+      outline: none;
+      box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.15);
+    }
+    .custom-scroll::-webkit-scrollbar {
+      height: 6px;
+      width: 6px;
+    }
+    .custom-scroll::-webkit-scrollbar-track {
+      background: transparent;
+    }
+    .custom-scroll::-webkit-scrollbar-thumb {
+      background: #CBD5E1;
+      border-radius: 9999px;
+    }
+  </style>
+</head>
+<body class="min-h-full font-body-md text-on-surface bg-surface antialiased flex flex-col relative overflow-x-hidden">
+<!-- Interactive Sliding Drawer / Sidebar Navigation -->
+<div aria-hidden="true" class="fixed inset-0 bg-on-surface/40 backdrop-blur-sm z-50 transition-opacity duration-300 opacity-0 pointer-events-none" id="sidebarBackdrop"></div>
+<aside aria-label="Main Sidebar Navigation" class="fixed top-0 left-0 bottom-0 w-72 max-w-[85vw] bg-surface-container-lowest border-r border-surface-container-high z-50 flex flex-col justify-between shadow-2xl transition-transform duration-300 ease-in-out -translate-x-full" id="collapsibleSidebar">
+<!-- Top Branding & Close Header -->
+<div>
+<div class="h-16 px-5 border-b border-surface-container-high flex items-center justify-between">
+<a href="../homepage/homepage.html" class="flex items-center gap-2.5 hover:opacity-90 transition-opacity">
+<div class="w-8 h-8 rounded-lg bg-primary flex items-center justify-center text-on-secondary shadow-sm">
+<span class="material-symbols-outlined text-[19px]" data-icon="insights" style="font-variation-settings: 'FILL' 1;">insights</span>
+</div>
+<div class="flex flex-col">
+<div class="flex items-center gap-1.5 leading-none">
+<span class="font-headline-sm text-sm font-bold text-on-surface tracking-tight">IntelliFinance</span>
+<span class="px-1 py-0.5 rounded text-[9px] font-bold bg-surface-container-low text-secondary border border-surface-container-high">OS v4.2</span>
+</div>
+<span class="text-[10px] text-outline mt-0.5">Wealth Intelligence OS</span>
+</div>
+</a>
+<button aria-label="Close sidebar" class="w-8 h-8 rounded-md flex items-center justify-center text-on-surface-variant hover:text-on-surface hover:bg-surface-container-low transition-colors" id="closeSidebarBtn">
+<span class="material-symbols-outlined text-[20px]" data-icon="chevron_left">chevron_left</span>
+</button>
+</div>
+<!-- Navigation Menu Items -->
+<nav aria-label="Primary Navigation" class="p-3 space-y-1 overflow-y-auto">
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg text-on-surface-variant hover:text-on-surface hover:bg-surface-container-low transition-colors text-xs font-medium" href="../homepage/homepage.html">
+<span class="material-symbols-outlined text-[18px]" data-icon="dashboard">dashboard</span>
+<span class="flex-1">Dashboard</span>
+</a>
+<!-- ACTIVE ITEM -->
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg bg-surface-container text-secondary font-semibold text-xs transition-colors group" href="#">
+<span class="material-symbols-outlined text-[18px] text-secondary" data-icon="person" style="font-variation-settings: 'FILL' 1;">person</span>
+<span class="flex-1">User Profile &amp; Baseline</span>
+<span class="w-1.5 h-1.5 rounded-full bg-secondary"></span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg text-on-surface-variant hover:text-on-surface hover:bg-surface-container-low transition-colors text-xs font-medium" href="../homepage/homepage.html#cashflow">
+<span class="material-symbols-outlined text-[18px]" data-icon="account_balance_wallet">account_balance_wallet</span>
+<span class="">Cash Flow &amp; Budget</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg text-on-surface-variant hover:text-on-surface hover:bg-surface-container-low transition-colors text-xs font-medium" href="../savings and emergency/code.html">
+<span class="material-symbols-outlined text-[18px]" data-icon="shield_with_heart">shield_with_heart</span>
+<span class="">Savings &amp; Emergency</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg text-on-surface-variant hover:text-on-surface hover:bg-surface-container-low transition-colors text-xs font-medium" href="../investmwnt and portfolio/investment and portfolio.html">
+<span class="material-symbols-outlined text-[18px]" data-icon="trending_up">trending_up</span>
+<span class="flex-1">Investments &amp; SIP</span>
+<span class="px-1.5 py-0.5 rounded text-[10px] font-semibold bg-surface-container-low text-on-tertiary-container border border-surface-container-high">+12.4%</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg text-on-surface-variant hover:text-on-surface hover:bg-surface-container-low transition-colors text-xs font-medium" href="../health audit/healthaudit.html">
+<span class="material-symbols-outlined text-[18px]" data-icon="verified_user">verified_user</span>
+<span class="">Financial Health Audit</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg text-on-surface-variant hover:text-on-surface hover:bg-surface-container-low transition-colors text-xs font-medium" href="../homepage/homepage.html#reports">
+<span class="material-symbols-outlined text-[18px]" data-icon="receipt_long">receipt_long</span>
+<span class="">Reports &amp; Export</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg text-on-surface-variant hover:text-on-surface hover:bg-surface-container-low transition-colors text-xs font-medium" href="#settings">
+<span class="material-symbols-outlined text-[18px]" data-icon="settings">settings</span>
+<span class="">Settings</span>
+</a>
+</nav>
+</div>
+<!-- Sidebar Middle/Bottom Action Card & Footer Utility Links -->
+<div class="p-3 border-t border-surface-container-high space-y-2.5">
+<!-- Quick Allocate Action Card -->
+<div class="p-2.5 rounded-lg bg-surface-container-low border border-surface-container-high space-y-1.5">
+<div class="flex items-center gap-1.5 text-secondary font-semibold text-xs">
+<span class="material-symbols-outlined text-[15px]" data-icon="bolt">bolt</span>
+<span class="">Quick Allocate</span>
+</div>
+<p class="text-[11px] text-on-surface-variant leading-relaxed">
+Monthly net surplus float ready for deployment across verified liquidity &amp; index targets.
+</p>
+<a href="#linked-portfolios" class="w-full h-6 rounded bg-secondary text-on-secondary text-[11px] font-semibold hover:bg-secondary-container transition-colors flex items-center justify-center gap-1">
+<span class="material-symbols-outlined text-[13px]" data-icon="tune">tune</span>
+<span class="">Deploy Surplus</span>
+</a>
+</div>
+<!-- Secondary Links -->
+<div class="pt-0.5 space-y-0.5">
+<a class="flex items-center gap-2 px-2.5 py-1.5 rounded-md text-on-surface-variant hover:text-on-surface hover:bg-surface-container-low text-xs transition-colors" href="#">
+<span class="material-symbols-outlined text-[16px]" data-icon="badge">badge</span>
+<span class="">Executive Profile</span>
+</a>
+<a class="flex items-center gap-2 px-2.5 py-1.5 rounded-md text-error hover:bg-error-container/30 text-xs transition-colors cursor-pointer" href="#logout" onclick="window.IntelliFinance.logout('../login.html'); return false;">
+<span class="material-symbols-outlined text-[16px]" data-icon="logout">logout</span>
+<span class="">Log Out</span>
+</a>
+</div>
+</div>
+</aside>
+<!-- Top Navigation Bar (Shared Web Header Anchor) -->
+<header class="sticky top-0 z-40 w-full h-16 bg-surface-container-lowest border-b border-surface-container-high shadow-sm px-6 flex justify-between items-center transition-all duration-150 ease-in-out">
+<div class="flex items-center gap-6">
+<div class="flex items-center gap-3">
+<button aria-label="Open sidebar menu" class="w-9 h-9 flex items-center justify-center rounded-lg border border-surface-container-high bg-surface-container-lowest text-on-surface hover:bg-surface-container-low transition-colors shadow-xs" id="openSidebarBtn">
+<span class="material-symbols-outlined text-[21px]" data-icon="menu">menu</span>
+</button>
+<a href="../homepage/homepage.html" class="flex items-center gap-2 hover:opacity-80 transition-opacity">
+<div class="w-8 h-8 rounded-lg bg-primary flex items-center justify-center text-on-secondary shadow-sm">
+<span class="material-symbols-outlined text-[19px]" data-icon="insights" style="font-variation-settings: 'FILL' 1;">insights</span>
+<span class="font-headline-sm text-headline-sm font-bold text-on-surface tracking-tight">IntelliFinance</span>
+<span class="hidden sm:inline-block px-1.5 py-0.5 rounded-full text-[10px] font-semibold bg-surface-container text-on-surface-variant">OS v4.2</span>
+</a>
+</div>
+<div class="h-5 w-px bg-surface-container-high hidden md:block"></div>
+<!-- Breadcrumb Navigation -->
+<nav aria-label="Breadcrumb" class="hidden md:flex items-center gap-2 font-label-md text-label-md text-on-surface-variant">
+<a class="hover:text-on-surface transition-colors" href="../homepage/homepage.html">IntelliFinance</a>
+<span class="text-outline-variant">/</span>
+<span class="text-secondary font-semibold">User Profile &amp; Settings</span>
+</nav>
+</div>
+<!-- Right Actions / Controls -->
+<div class="flex items-center gap-4">
+<button class="flex items-center gap-2 px-3 py-1.5 rounded-lg border border-secondary-fixed text-secondary hover:bg-surface-container-low font-label-md text-label-md transition-colors">
+<span class="material-symbols-outlined text-[18px]">auto_awesome</span>
+<span class="hidden sm:inline">AI Assistant</span>
+</button>
+<button aria-label="Notifications" class="relative p-2 text-on-surface-variant hover:text-on-surface rounded-lg hover:bg-surface-container-low transition-colors">
+<span class="material-symbols-outlined text-[22px]">notifications</span>
+<span class="absolute top-1.5 right-1.5 w-2 h-2 rounded-full bg-error ring-2 ring-surface-container-lowest"></span>
+</button>
+<div class="h-6 w-px bg-surface-container-high"></div>
+<!-- Clean Typographic User Profile Anchor -->
+<div class="flex items-center gap-3 pl-1">
+<div class="text-right hidden sm:block">
+<div class="font-headline-sm text-headline-sm text-on-surface font-semibold leading-tight if-display-name"></div>
+</div>
+<div class="w-9 h-9 rounded-full bg-surface-container-high text-secondary flex items-center justify-center font-headline-sm text-headline-sm font-bold border border-secondary-fixed if-initials"></div>
+</div>
+</div>
+</header>
+<!-- Sub-Header Status Strip / Anomaly Notice -->
+<!-- Main Canvas Container -->
+<main class="flex-1 max-w-7xl w-full mx-auto px-6 py-8 space-y-8">
+<!-- New User Setup Banner (hidden for existing users) -->
+<div id="if-new-user-banner" class="hidden rounded-xl border border-secondary/30 bg-gradient-to-r from-secondary/10 to-surface-container-low p-5 flex items-start gap-4 shadow-sm">
+  <span class="w-10 h-10 rounded-full bg-secondary text-white flex items-center justify-center flex-shrink-0 mt-0.5">
+    <span class="material-symbols-outlined text-[22px]">waving_hand</span>
+  </span>
+  <div>
+    <h2 class="font-headline-sm text-headline-sm font-bold text-on-surface">Welcome to IntelliFinance!</h2>
+    <p class="font-body-sm text-body-sm text-on-surface-variant mt-0.5">Fill in your details below and click <strong>Save Changes</strong> to set up your financial profile. The app will then track your goals and investments automatically every month.</p>
+  </div>
+</div>
+<!-- Monthly Progression & Timeline Tracker -->
+<div id="if-account-age-strip" class="hidden flex-col sm:flex-row sm:items-center justify-between gap-4 p-4 sm:p-5 rounded-xl border border-secondary/30 bg-gradient-to-r from-secondary/10 via-surface-container-low to-surface-container-lowest shadow-xs">
+  <div class="flex items-center gap-3.5">
+    <div class="w-11 h-11 rounded-xl bg-secondary text-white flex items-center justify-center flex-shrink-0 shadow-sm">
+      <span class="material-symbols-outlined text-[24px]">timelapse</span>
+    </div>
+    <div>
+      <div class="flex items-center gap-2 flex-wrap">
+        <h3 class="font-headline-sm text-sm font-bold text-on-surface">Monthly Investment &amp; Time Tracker</h3>
+        <span class="px-2 py-0.5 rounded-full text-[11px] bg-secondary-fixed text-on-secondary-fixed font-bold tracking-tight" id="if-tracker-badge">Month 0 • Day 1</span>
+      </div>
+      <p class="font-body-sm text-xs text-on-surface-variant mt-0.5" id="if-tracker-desc">
+        Account active for <strong class="text-on-surface" id="if-account-age-val">—</strong>. Systematic SIP auto-accrues each monthly cycle.
+      </p>
+    </div>
+  </div>
+  <div class="flex items-center gap-2 flex-wrap">
+    <div class="flex items-center bg-surface-container-lowest border border-surface-container-high rounded-lg p-1 text-xs shadow-xs">
+      <span class="px-2 text-on-surface-variant font-medium">Timeline:</span>
+      <span class="font-bold text-secondary px-2 border-r border-surface-container-high" id="if-tracker-months-val">0 Mo</span>
+      <button type="button" onclick="window.IntelliFinance.advanceMonths(1)" class="ml-1 px-2.5 py-1 rounded bg-secondary text-white font-semibold hover:opacity-90 transition-all flex items-center gap-1 shadow-xs" title="Simulate +1 month elapsed and deploy monthly SIP">
+        <span class="material-symbols-outlined text-[14px]">fast_forward</span>
+        <span>+1 Month</span>
+      </button>
+      <button type="button" onclick="window.IntelliFinance.advanceMonths(3)" class="px-2.5 py-1 rounded hover:bg-surface-container-low text-on-surface font-medium transition-colors" title="Simulate +3 months">
+        +3 Mo
+      </button>
+      <button type="button" onclick="window.IntelliFinance.resetSimulation()" class="px-2 py-1 text-outline hover:text-error transition-colors" title="Reset timeline to start">
+        <span class="material-symbols-outlined text-[15px]">restart_alt</span>
+      </button>
+    </div>
+  </div>
+</div>
+<!-- Executive Profile Hero Header Card -->
+<section class="bg-surface-container-lowest border border-surface-container-high rounded-xl p-6 lg:p-8 shadow-sm">
+  <div class="flex flex-col md:flex-row md:items-center justify-between gap-6">
+    <div class="flex items-center gap-5">
+      <div class="w-16 h-16 rounded-full bg-surface-container-high text-secondary flex items-center justify-center font-headline-md text-headline-md font-bold border-2 border-secondary-fixed shadow-sm">
+        <span class="if-initials"></span>
+      </div>
+      <div class="space-y-1">
+        <div class="flex items-center gap-3">
+          <h1 class="font-headline-lg text-headline-lg text-on-surface font-bold tracking-tight if-display-name"></h1>
+          <span class="inline-flex items-center gap-1 px-2.5 py-0.5 rounded-full text-xs font-semibold bg-surface-container text-on-tertiary-container border border-surface-container-high" title="Financial Health Score">
+            <span class="material-symbols-outlined text-[14px]">health_and_safety</span>
+            <span id="if-health-score">— / 100</span>
+          </span>
+        </div>
+        <div class="flex flex-wrap items-center gap-y-1.5 gap-x-5 text-on-surface-variant font-body-sm text-body-sm pt-0.5">
+          <div class="flex items-center gap-1.5">
+            <span class="material-symbols-outlined text-[18px] text-outline">mail</span>
+            <span id="if-hdr-email"></span>
+          </div>
+          <div class="flex items-center gap-1.5">
+            <span class="material-symbols-outlined text-[18px] text-outline">call</span>
+            <span id="if-hdr-phone"></span>
+          </div>
+          <div class="flex items-center gap-1.5">
+            <span class="material-symbols-outlined text-[18px] text-outline">location_on</span>
+            <span id="if-hdr-location"></span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="flex items-center gap-2.5 flex-wrap">
+      <a href="../homepage/homepage.html" onclick="silentAutoSave()" class="px-3.5 py-2 rounded-md border border-secondary text-secondary hover:bg-secondary hover:text-white font-label-md text-label-md font-semibold transition-colors flex items-center gap-1.5 shadow-xs">
+        <span class="material-symbols-outlined text-[18px]">dashboard</span>
+        <span>← Back to Dashboard</span>
+      </a>
+      <button class="px-3.5 py-2 rounded-md border border-surface-container-high bg-surface-container-lowest text-on-surface-variant hover:text-on-surface hover:bg-surface-container-low font-label-md text-label-md transition-colors" data-action="discard-profile" type="button">Discard</button>
+      <button class="px-4 py-2 rounded-md bg-primary-container text-on-primary hover:bg-slate-800 font-label-md text-label-md font-semibold transition-all flex items-center gap-2 shadow-sm focus:ring-2 focus:ring-secondary focus:ring-offset-2" data-action="save-profile" onclick="collectAndSave()" type="button">
+        <span class="material-symbols-outlined text-[18px]">check_circle</span>
+        <span>Save Changes</span>
+      </button>
+    </div>
+  </div>
+</section>
+<!-- Anchored Section Navigation Tabs -->
+<!-- SECTION 1: Personal & KYC Parameters (Editable Card Grid) -->
+<section class="bg-surface-container-lowest border border-surface-container-high rounded-xl p-6 lg:p-8 shadow-sm space-y-6" id="personal-details"><div class="flex items-center justify-between pb-4 border-b border-surface-container-low"><div class="space-y-1"><h2 class="font-headline-md text-headline-md font-bold text-on-surface">Personal &amp; Account Details</h2><p class="font-body-sm text-body-sm text-on-surface-variant">Personal identification and verified contact profile. <span class="text-outline text-[11px]" id="if-last-updated"></span></p></div><button class="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-md border border-surface-container-high hover:bg-surface-container-low font-label-md text-label-md text-on-surface transition-colors" data-action="save-profile" onclick="collectAndSave()" type="button"><span class="material-symbols-outlined text-[18px]">edit</span><span class="">Save Details</span></button></div><div class="grid grid-cols-1 md:grid-cols-2 gap-6"><div class="space-y-1.5"><label class="block font-label-sm text-label-sm uppercase tracking-wider text-on-surface-variant font-semibold">Full Legal Name</label><div class="relative"><input class="w-full h-10 px-3.5 rounded-md border border-surface-container-high bg-surface-container-lowest text-on-surface font-body-md text-body-md focus:border-secondary transition-colors" id="if-fullName" type="text" value="" placeholder="Enter your full legal name"><span class="material-symbols-outlined absolute right-3 top-2.5 text-[18px] text-tertiary-fixed-dim" style="font-variation-settings: 'FILL' 1;">check_circle</span></div><p class="font-body-sm text-[11px] text-on-surface-variant">Matches passport and government filings.</p></div><div class="space-y-1.5"><label class="block font-label-sm text-label-sm uppercase tracking-wider text-on-surface-variant font-semibold">Display Name</label><div class="grid grid-cols-3 gap-2"><input class="col-span-2 h-10 px-3.5 rounded-md border border-surface-container-high bg-surface-container-lowest text-on-surface font-body-md text-body-md focus:border-secondary transition-colors" id="if-displayName" type="text" value="" placeholder="Display name"><div class="h-10 flex items-center justify-center rounded-md bg-surface-container-low border border-surface-container-high text-on-surface font-label-md text-label-md font-semibold">Display</div></div><p class="font-body-sm text-[11px] text-on-surface-variant">Shown in header and dashboard greeting.</p></div><div class="space-y-1.5"><label class="block font-label-sm text-label-sm uppercase tracking-wider text-on-surface-variant font-semibold">Date of Birth</label><div class="grid grid-cols-3 gap-2"><input class="col-span-2 h-10 px-3.5 rounded-md border border-surface-container-high bg-surface-container-lowest text-on-surface font-body-md text-body-md focus:border-secondary transition-colors" id="if-dob" type="text" value="" placeholder="YYYY-MM-DD"><div class="h-10 flex items-center justify-center rounded-md bg-surface-container-low border border-surface-container-high text-on-surface font-label-md text-label-md font-semibold">36 yrs</div></div><p class="font-body-sm text-[11px] text-on-surface-variant">Verified civil registration.</p></div><div class="space-y-1.5"><label class="block font-label-sm text-label-sm uppercase tracking-wider text-on-surface-variant font-semibold">Primary Email Address</label><div class="relative"><input class="w-full h-10 px-3.5 rounded-md border border-surface-container-high bg-surface-container-lowest text-on-surface font-body-md text-body-md focus:border-secondary transition-colors" id="if-email" type="email" value="" placeholder="your@email.com"><span class="material-symbols-outlined absolute right-3 top-2.5 text-[18px] text-tertiary-fixed-dim" style="font-variation-settings: 'FILL' 1;">verified</span></div><p class="font-body-sm text-[11px] text-on-surface-variant">Primary security and communications enclave.</p></div><div class="space-y-1.5"><label class="block font-label-sm text-label-sm uppercase tracking-wider text-on-surface-variant font-semibold">Phone Number</label><div class="relative"><input class="w-full h-10 px-3.5 rounded-md border border-surface-container-high bg-surface-container-lowest text-on-surface font-body-md text-body-md focus:border-secondary transition-colors" id="if-phone" type="tel" value="" placeholder="+1 (555) 000-0000"><span class="material-symbols-outlined absolute right-3 top-2.5 text-[18px] text-tertiary-fixed-dim" style="font-variation-settings: 'FILL' 1;">check_circle</span></div><p class="font-body-sm text-[11px] text-on-surface-variant">Two-factor authentication and SMS alerts active.</p></div><div class="space-y-1.5"><label class="block font-label-sm text-label-sm uppercase tracking-wider text-on-surface-variant font-semibold">Location / Office</label><div class="relative"><input class="w-full h-10 px-3.5 rounded-md border border-surface-container-high bg-surface-container-lowest text-on-surface font-body-md text-body-md focus:border-secondary transition-colors" id="if-location" type="text" value="" placeholder="City, State / Country"><span class="material-symbols-outlined absolute right-3 top-2.5 text-[18px] text-outline">location_on</span></div><p class="font-body-sm text-[11px] text-on-surface-variant">Primary operating jurisdiction.</p></div></div></section>
+<!-- SECTION 2: Financial Baseline & Income Parameters (Core Editable Baseline) -->
+<section class="bg-surface-container-lowest border border-surface-container-high rounded-xl p-6 lg:p-8 shadow-sm space-y-6" id="financial-baseline">
+<div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-4 border-b border-surface-container-low">
+<div>
+<h2 class="font-headline-md text-headline-md font-bold text-on-surface">Financial Baseline &amp; Monthly Parameters</h2>
+<p class="font-body-sm text-body-sm text-on-surface-variant">The deterministic cash-flow foundation used for forecasting run-rate, runway, and automated SIP investments.</p>
+</div>
+<div class="flex items-center gap-3">
+<button class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-md border border-surface-container-high bg-surface-container-lowest text-on-surface font-label-md text-label-md hover:bg-surface-container-low transition-colors" type="button">
+<span class="material-symbols-outlined text-[18px]">add</span>
+<span class="">+ Add New Income Stream</span>
+</button>
+<button class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-md border border-surface-container-high bg-surface-container-lowest text-on-surface font-label-md text-label-md hover:bg-surface-container-low transition-colors" type="button">
+<span class="material-symbols-outlined text-[18px]">add_circle</span>
+<span class="">+ Add Liability / Loan</span>
+</button>
+</div>
+</div>
+<!-- Financial Metrics Ribbon Overview -->
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4 p-4 rounded-lg bg-surface-container-low border border-surface-container-high">
+<div>
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-secondary font-bold">Total Net Worth</span>
+<div class="font-data-metric-lg text-data-metric-lg font-bold text-on-surface mt-1" id="if-ribbon-networth">$0.00</div>
+<span class="font-body-sm text-[11px] text-on-surface-variant mt-1" id="if-ribbon-nw-sub">Liquid + Investments</span>
+</div>
+<div>
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-on-surface-variant font-semibold">Total Inflow Baseline</span>
+<div class="font-data-metric-lg text-data-metric-lg font-bold text-on-surface mt-1" id="if-ribbon-inflow">$0.00 <span class="font-body-sm text-body-sm font-normal text-on-surface-variant">/ mo</span></div>
+<span class="inline-flex items-center gap-1 text-[11px] font-semibold text-on-tertiary-container mt-1">
+<span class="material-symbols-outlined text-[14px]">payments</span> Direct Inflow
+          </span>
+</div>
+<div>
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-on-surface-variant font-semibold">Total Baseline Outflow</span>
+<div class="font-data-metric-lg text-data-metric-lg font-bold text-on-surface mt-1" id="if-ribbon-outflow">$4,770.00 <span class="font-body-sm text-body-sm font-normal text-on-surface-variant">/ mo</span></div>
+<span class="font-body-sm text-[11px] text-on-surface-variant mt-1">49.4% Expense-to-Income ratio</span>
+</div>
+<div>
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-on-surface-variant font-semibold">Net Investable Surplus</span>
+<div class="font-data-metric-lg text-data-metric-lg font-bold text-secondary mt-1" id="if-ribbon-surplus">$4,880.00 <span class="font-body-sm text-body-sm font-normal text-on-surface-variant">/ mo</span></div>
+<span class="font-body-sm text-[11px] text-secondary font-semibold mt-1">Allocated to Systematic Wealth SIP</span>
+</div>
+<div>
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-on-surface-variant font-semibold">Liquid Emergency Target</span>
+<div class="font-data-metric-lg text-data-metric-lg font-bold text-on-surface mt-1" id="if-ribbon-emerg">$25,000.00</div>
+<span class="inline-flex items-center gap-1 text-[11px] font-semibold text-on-tertiary-container mt-1">
+<span class="material-symbols-outlined text-[14px]">check</span> 10.3 Months Runway Secured
+          </span>
+</div>
+</div>
+<!-- In-Depth Financial Parameter Fields (Bento Configuration) -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 pt-2">
+<!-- Primary Monthly Salary -->
+<div class="p-4 rounded-xl border border-surface-container-high bg-surface-container-lowest space-y-3">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="w-8 h-8 rounded-lg bg-surface-container text-secondary flex items-center justify-center">
+<span class="material-symbols-outlined text-[18px]">payments</span>
+</span>
+<div>
+<h3 class="font-headline-sm text-headline-sm font-bold text-on-surface">Base Salary / Inflow</h3>
+<span class="font-body-sm text-[11px] text-on-surface-variant">Primary Direct Deposit</span>
+</div>
+</div>
+<select class="h-8 px-2 py-0 rounded text-label-sm font-label-sm border border-surface-container-high bg-surface-container-lowest text-on-surface">
+<option selected="">Monthly</option>
+<option>Annualized</option>
+</select>
+</div>
+<div class="space-y-1">
+<div class="relative">
+<span class="absolute left-3 top-2.5 font-label-md text-label-md text-on-surface-variant">$</span>
+<input class="w-full h-10 pl-7 pr-3 rounded-md border border-surface-container-high bg-surface-container-lowest font-data-metric-md text-data-metric-md font-bold text-on-surface focus:border-secondary" id="if-baseSalary" type="text" value="" placeholder="0.00">
+</div>
+<div class="flex items-center justify-between text-[11px] text-on-surface-variant">
+<span class="">Equivalent: ₹1,50,000 / mo net</span>
+<span class="text-tertiary-fixed-dim font-medium">Post-tax net credit</span>
+</div>
+</div>
+</div>
+
+<!-- Essential Expenses Baseline -->
+<div class="p-4 rounded-xl border border-surface-container-high bg-surface-container-lowest space-y-3">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="w-8 h-8 rounded-lg bg-surface-container text-secondary flex items-center justify-center">
+<span class="material-symbols-outlined text-[18px]">receipt_long</span>
+</span>
+<div>
+<h3 class="font-headline-sm text-headline-sm font-bold text-on-surface">Essential Living Baseline</h3>
+<span class="font-body-sm text-[11px] text-on-surface-variant">Rent/Utilities/Groceries</span>
+</div>
+</div>
+<span class="px-2 py-0.5 rounded bg-surface-container text-secondary font-label-sm text-label-sm font-medium">Core Fixed</span>
+</div>
+<div class="space-y-1">
+<div class="relative">
+<span class="absolute left-3 top-2.5 font-label-md text-label-md text-on-surface-variant">$</span>
+<input class="w-full h-10 pl-7 pr-3 rounded-md border border-surface-container-high bg-surface-container-lowest font-data-metric-md text-data-metric-md font-bold text-on-surface focus:border-secondary" id="if-essentialExpenses" type="text" value="" placeholder="0.00">
+</div>
+<div class="flex items-center justify-between text-[11px] text-on-surface-variant">
+<span class="">Strict non-negotiable run-rate</span>
+<span class="">28.6% of base</span>
+</div>
+</div>
+</div>
+<!-- Discretionary Lifestyle Budget -->
+<div class="p-4 rounded-xl border border-surface-container-high bg-surface-container-lowest space-y-3">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="w-8 h-8 rounded-lg bg-surface-container text-secondary flex items-center justify-center">
+<span class="material-symbols-outlined text-[18px]">shopping_bag</span>
+</span>
+<div>
+<h3 class="font-headline-sm text-headline-sm font-bold text-on-surface">Discretionary Budget</h3>
+<span class="font-body-sm text-[11px] text-on-surface-variant">Dining, Leisure, Tech</span>
+</div>
+</div>
+<span class="px-2 py-0.5 rounded bg-surface-container-low text-on-surface-variant font-label-sm text-label-sm">Flex Pool</span>
+</div>
+<div class="space-y-1">
+<div class="relative">
+<span class="absolute left-3 top-2.5 font-label-md text-label-md text-on-surface-variant">$</span>
+<input class="w-full h-10 pl-7 pr-3 rounded-md border border-surface-container-high bg-surface-container-lowest font-data-metric-md text-data-metric-md font-bold text-on-surface focus:border-secondary" id="if-discretionary" type="text" value="" placeholder="0.00">
+</div>
+<div class="flex items-center justify-between text-[11px] text-on-surface-variant">
+<span class="">Target cap: $1,500.00 max</span>
+<span class="text-tertiary-fixed-dim font-medium">Within target</span>
+</div>
+</div>
+</div>
+<!-- Active Liabilities &amp; EMI Commitments -->
+<div class="p-4 rounded-xl border border-surface-container-high bg-surface-container-lowest space-y-3">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="w-8 h-8 rounded-lg bg-surface-container text-secondary flex items-center justify-center">
+<span class="material-symbols-outlined text-[18px]">credit_card</span>
+</span>
+<div>
+<h3 class="font-headline-sm text-headline-sm font-bold text-on-surface">Active Liabilities / EMI</h3>
+<span class="font-body-sm text-[11px] text-on-surface-variant">Auto Loan &amp; Mortgage Share</span>
+</div>
+</div>
+<button class="text-secondary hover:underline font-label-sm text-label-sm" type="button">Breakdown</button>
+</div>
+<div class="space-y-1">
+<div class="relative">
+<span class="absolute left-3 top-2.5 font-label-md text-label-md text-on-surface-variant">$</span>
+<input class="w-full h-10 pl-7 pr-3 rounded-md border border-surface-container-high bg-surface-container-lowest font-data-metric-md text-data-metric-md font-bold text-on-surface focus:border-secondary" id="if-emiTotal" type="text" value="" placeholder="0.00">
+</div>
+<div class="flex items-center justify-between text-[11px] text-on-surface-variant">
+<span class="">Auto Loan ($450) + Home Equity ($500)</span>
+<span class="font-medium text-on-surface">DTI: 9.8%</span>
+</div>
+</div>
+</div>
+<!-- Insurance Coverages &amp; Premiums -->
+<div class="p-4 rounded-xl border border-surface-container-high bg-surface-container-lowest space-y-3">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="w-8 h-8 rounded-lg bg-surface-container text-secondary flex items-center justify-center">
+<span class="material-symbols-outlined text-[18px]">health_and_safety</span>
+</span>
+<div>
+<h3 class="font-headline-sm text-headline-sm font-bold text-on-surface">Insurance Coverage</h3>
+<span class="font-body-sm text-[11px] text-on-surface-variant">Term Life &amp; Global Health</span>
+</div>
+</div>
+<span class="px-2 py-0.5 rounded bg-surface-container text-on-tertiary-container font-label-sm text-label-sm font-semibold">$1.5M Cover</span>
+</div>
+<div class="space-y-1">
+<div class="relative">
+<span class="absolute left-3 top-2.5 font-label-md text-label-md text-on-surface-variant">$</span>
+<input class="w-full h-10 pl-7 pr-3 rounded-md border border-surface-container-high bg-surface-container-lowest font-data-metric-md text-data-metric-md font-bold text-on-surface focus:border-secondary transition-colors" id="if-insurancePremium" type="text" value="" placeholder="0.00">
+</div>
+<div class="flex items-center justify-between text-[11px] text-on-surface-variant">
+<span class="">Term Life ($120) + PPO Health ($300)</span>
+<span class="text-tertiary-fixed-dim font-medium">Active Policy</span>
+</div>
+</div>
+</div>
+<!-- Monthly Wealth SIP -->
+<div class="p-4 rounded-xl border border-surface-container-high bg-surface-container-lowest space-y-3">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="w-8 h-8 rounded-lg bg-surface-container text-secondary flex items-center justify-center">
+<span class="material-symbols-outlined text-[18px]">trending_up</span>
+</span>
+<div>
+<h3 class="font-headline-sm text-headline-sm font-bold text-on-surface">Monthly Wealth SIP</h3>
+<span class="font-body-sm text-[11px] text-on-surface-variant">Automated Brokerage Inflow</span>
+</div>
+</div>
+<span class="px-2 py-0.5 rounded bg-secondary-fixed text-on-secondary-fixed font-label-sm text-label-sm font-semibold">Wealth Core</span>
+</div>
+<div class="space-y-1">
+<div class="relative">
+<span class="absolute left-3 top-2.5 font-label-md text-label-md text-on-surface-variant">$</span>
+<input class="w-full h-10 pl-7 pr-3 rounded-md border border-surface-container-high bg-surface-container-lowest font-data-metric-md text-data-metric-md font-bold text-on-surface focus:border-secondary transition-colors" id="if-sipMonthly" type="text" value="" placeholder="0.00">
+</div>
+<div class="flex items-center justify-between text-[11px] text-on-surface-variant">
+<span id="if-note-sip">Auto-SIP to Vanguard &amp; Schwab</span>
+<span class="text-secondary font-medium">Auto-invested</span>
+</div>
+</div>
+</div>
+<!-- Emergency Reserve Target -->
+<div class="p-4 rounded-xl border border-surface-container-high bg-surface-container-lowest space-y-3">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="w-8 h-8 rounded-lg bg-surface-container text-secondary flex items-center justify-center">
+<span class="material-symbols-outlined text-[18px]">shield_with_heart</span>
+</span>
+<div>
+<h3 class="font-headline-sm text-headline-sm font-bold text-on-surface">Emergency Buffer Target</h3>
+<span class="font-body-sm text-[11px] text-on-surface-variant">6-Month Runway Pool</span>
+</div>
+</div>
+<span class="px-2 py-0.5 rounded bg-surface-container text-on-surface font-label-sm text-label-sm font-semibold">Safety Net</span>
+</div>
+<div class="space-y-1">
+<div class="relative">
+<span class="absolute left-3 top-2.5 font-label-md text-label-md text-on-surface-variant">$</span>
+<input class="w-full h-10 pl-7 pr-3 rounded-md border border-surface-container-high bg-surface-container-lowest font-data-metric-md text-data-metric-md font-bold text-on-surface focus:border-secondary transition-colors" id="if-emergencyTarget" type="text" value="" placeholder="0.00">
+</div>
+<div class="flex items-center justify-between text-[11px] text-on-surface-variant">
+<span>Liquid cash goal threshold</span>
+<span class="text-tertiary-fixed-dim font-medium">HYSA / T-Bills</span>
+</div>
+</div>
+</div>
+<!-- Emergency Reserve Currently Funded -->
+<div class="p-4 rounded-xl border border-surface-container-high bg-surface-container-lowest space-y-3">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="w-8 h-8 rounded-lg bg-surface-container text-on-tertiary-container flex items-center justify-center">
+<span class="material-symbols-outlined text-[18px]">savings</span>
+</span>
+<div>
+<h3 class="font-headline-sm text-headline-sm font-bold text-on-surface">Emergency Fund Balance</h3>
+<span class="font-body-sm text-[11px] text-on-surface-variant">Verified Liquid Reserve</span>
+</div>
+</div>
+<span class="px-2 py-0.5 rounded bg-surface-container text-on-tertiary-container font-label-sm text-label-sm font-semibold" id="if-emerg-badge">100% Met</span>
+</div>
+<div class="space-y-1">
+<div class="relative">
+<span class="absolute left-3 top-2.5 font-label-md text-label-md text-on-surface-variant">$</span>
+<input class="w-full h-10 pl-7 pr-3 rounded-md border border-surface-container-high bg-surface-container-lowest font-data-metric-md text-data-metric-md font-bold text-on-surface focus:border-secondary transition-colors" id="if-emergencyFunded" type="text" value="" placeholder="0.00">
+</div>
+<div class="flex items-center justify-between text-[11px] text-on-surface-variant">
+<span id="if-emerg-note">Runway: 10.3 months secured</span>
+<span class="text-on-tertiary-container font-medium">Vault Locked</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- SECTION: Monthly Salary Expenditure Breakdown -->
+<section class="bg-surface-container-lowest border border-surface-container-high rounded-xl p-6 lg:p-8 shadow-sm space-y-6">
+  <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-4 border-b border-surface-container-low">
+    <div>
+      <h2 class="font-headline-md text-headline-md font-bold text-on-surface">Monthly Salary Expenditure Breakdown</h2>
+      <p class="font-body-sm text-body-sm text-on-surface-variant">Comprehensive distribution of monthly total salary (<span id="if-breakdown-sub">$9,650.00/mo</span>) across living expenses, investments, and reserves.</p>
+    </div>
+    <div class="flex items-center gap-2">
+      <span class="px-2.5 py-1 rounded bg-surface-container text-secondary font-label-sm text-label-sm font-semibold">100% Allocated</span>
+    </div>
+  </div>
+  <div class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+    <div class="lg:col-span-5 flex flex-col items-center justify-center">
+      <div class="relative w-64 h-64 flex items-center justify-center">
+        <svg class="w-full h-full -rotate-90 transform" viewBox="0 0 100 100">
+          <circle cx="50" cy="50" fill="transparent" r="38" stroke="#eff4ff" stroke-width="14"></circle>
+          <circle id="if-donut-sip" cx="50" cy="50" fill="transparent" r="38" stroke="#4b41e1" stroke-dasharray="90.7 238.8" stroke-dashoffset="0" stroke-width="14"></circle>
+          <circle id="if-donut-ess" cx="50" cy="50" fill="transparent" r="38" stroke="#009668" stroke-dasharray="59.7 238.8" stroke-dashoffset="-90.7" stroke-width="14"></circle>
+          <circle id="if-donut-disc" cx="50" cy="50" fill="transparent" r="38" stroke="#645efb" stroke-dasharray="35.8 238.8" stroke-dashoffset="-150.4" stroke-width="14"></circle>
+          <circle id="if-donut-emi" cx="50" cy="50" fill="transparent" r="38" stroke="#76777d" stroke-dasharray="23.9 238.8" stroke-dashoffset="-186.2" stroke-width="14"></circle>
+          <circle id="if-donut-emerg" cx="50" cy="50" fill="transparent" r="38" stroke="#4edea3" stroke-dasharray="19.1 238.8" stroke-dashoffset="-210.1" stroke-width="14"></circle>
+          <circle id="if-donut-ins" cx="50" cy="50" fill="transparent" r="38" stroke="#cbdbf5" stroke-dasharray="9.6 238.8" stroke-dashoffset="-229.2" stroke-width="14"></circle>
+        </svg>
+        <div class="absolute flex flex-col items-center justify-center text-center">
+          <span class="font-label-sm text-[11px] uppercase tracking-wider text-on-surface-variant font-semibold">Total Inflow</span>
+          <span class="font-data-metric-lg text-data-metric-lg font-bold text-on-surface" id="if-breakdown-total">$9,650</span>
+          <span class="font-body-sm text-[11px] text-secondary font-medium">Monthly Base</span>
+        </div>
+      </div>
+    </div>
+    <div class="lg:col-span-7 grid grid-cols-1 sm:grid-cols-2 gap-4">
+      <div class="p-3.5 rounded-lg bg-surface-container-low border border-surface-container-high flex items-center justify-between">
+        <div class="flex items-center gap-3">
+          <span class="w-3 h-3 rounded-full bg-secondary"></span>
+          <div>
+            <div class="font-label-md text-label-md font-semibold text-on-surface">Investments &amp; Wealth SIP</div>
+            <div class="font-body-sm text-[11px] text-on-surface-variant" id="if-bd-sip-pct">38% of total salary</div>
+          </div>
+        </div>
+        <div class="text-right">
+          <div class="font-data-metric-md text-data-metric-md font-bold text-secondary" id="if-bd-sip-val">$3,680.00</div>
+          <div class="text-[10px] text-on-tertiary-container font-semibold">Wealth building</div>
+        </div>
+      </div>
+      <div class="p-3.5 rounded-lg bg-surface-container-low border border-surface-container-high flex items-center justify-between">
+        <div class="flex items-center gap-3">
+          <span class="w-3 h-3 rounded-full bg-on-tertiary-container"></span>
+          <div>
+            <div class="font-label-md text-label-md font-semibold text-on-surface">Essential Living &amp; Housing</div>
+            <div class="font-body-sm text-[11px] text-on-surface-variant" id="if-bd-ess-pct">25% of total salary</div>
+          </div>
+        </div>
+        <div class="text-right">
+          <div class="font-data-metric-md text-data-metric-md font-bold text-on-surface" id="if-bd-ess-val">$2,420.00</div>
+          <div class="text-[10px] text-on-surface-variant">Core non-negotiable</div>
+        </div>
+      </div>
+      <div class="p-3.5 rounded-lg bg-surface-container-low border border-surface-container-high flex items-center justify-between">
+        <div class="flex items-center gap-3">
+          <span class="w-3 h-3 rounded-full bg-secondary-container"></span>
+          <div>
+            <div class="font-label-md text-label-md font-semibold text-on-surface">Discretionary &amp; Lifestyle</div>
+            <div class="font-body-sm text-[11px] text-on-surface-variant" id="if-bd-disc-pct">15% of total salary</div>
+          </div>
+        </div>
+        <div class="text-right">
+          <div class="font-data-metric-md text-data-metric-md font-bold text-on-surface" id="if-bd-disc-val">$1,400.00</div>
+          <div class="text-[10px] text-on-surface-variant">Dining, travel, leisure</div>
+        </div>
+      </div>
+      <div class="p-3.5 rounded-lg bg-surface-container-low border border-surface-container-high flex items-center justify-between">
+        <div class="flex items-center gap-3">
+          <span class="w-3 h-3 rounded-full bg-outline"></span>
+          <div>
+            <div class="font-label-md text-label-md font-semibold text-on-surface">EMI &amp; Debt Repayment</div>
+            <div class="font-body-sm text-[11px] text-on-surface-variant" id="if-bd-emi-pct">10% of total salary</div>
+          </div>
+        </div>
+        <div class="text-right">
+          <div class="font-data-metric-md text-data-metric-md font-bold text-on-surface" id="if-bd-emi-val">$950.00</div>
+          <div class="text-[10px] text-on-surface-variant">Auto + home equity</div>
+        </div>
+      </div>
+      <div class="p-3.5 rounded-lg bg-surface-container-low border border-surface-container-high flex items-center justify-between">
+        <div class="flex items-center gap-3">
+          <span class="w-3 h-3 rounded-full bg-tertiary-fixed-dim"></span>
+          <div>
+            <div class="font-label-md text-label-md font-semibold text-on-surface">Emergency Liquidity Buffer</div>
+            <div class="font-body-sm text-[11px] text-on-surface-variant" id="if-bd-emerg-pct">8% of total salary</div>
+          </div>
+        </div>
+        <div class="text-right">
+          <div class="font-data-metric-md text-data-metric-md font-bold text-on-surface" id="if-bd-emerg-val">$780.00</div>
+          <div class="text-[10px] text-on-tertiary-container font-semibold">HYSA &amp; T-Bills</div>
+        </div>
+      </div>
+      <div class="p-3.5 rounded-lg bg-surface-container-low border border-surface-container-high flex items-center justify-between">
+        <div class="flex items-center gap-3">
+          <span class="w-3 h-3 rounded-full bg-surface-dim"></span>
+          <div>
+            <div class="font-label-md text-label-md font-semibold text-on-surface">Insurance Coverage</div>
+            <div class="font-body-sm text-[11px] text-on-surface-variant" id="if-bd-ins-pct">4% of total salary</div>
+          </div>
+        </div>
+        <div class="text-right">
+          <div class="font-data-metric-md text-data-metric-md font-bold text-on-surface" id="if-bd-ins-val">$420.00</div>
+          <div class="text-[10px] text-on-surface-variant">Life &amp; Health</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- SECTION 4: Financial Goals & Milestones In Focus -->
+<section class="bg-surface-container-lowest border border-surface-container-high rounded-xl p-6 lg:p-8 shadow-sm space-y-6" id="goals-milestones">
+<div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-4 border-b border-surface-container-low">
+<div>
+<h2 class="font-headline-md text-headline-md font-bold text-on-surface">Active Financial Goals &amp; Horizons</h2>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Parametric milestones tracked against current wealth accretion trajectory and capital deployment rates.</p>
+</div>
+<button id="if-btn-add-goal" class="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-md border border-surface-container-high hover:bg-surface-container-low font-label-md text-label-md text-on-surface transition-colors" type="button">
+<span class="material-symbols-outlined text-[18px]">add_task</span>
+<span class="">+ Add New Financial Goal</span>
+</button>
+</div>
+<!-- Dynamic goals rendered by JS -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-5" id="if-goals-grid"></div>
+</section>
+<!-- SECTION 5: Beneficiary / Nominee Vault & Tax Preferences -->
+
+<!-- Security & Institutional Compliance Audit Footer Panel -->
+
+</main>
+<!-- Global Footer -->
+
+<script>
+(function () {
+'use strict';
+
+// ─── Sidebar Toggle ───────────────────────────────────────────────────────────
+const sidebar   = document.getElementById('collapsibleSidebar') || document.getElementById('collapsible-sidebar');
+const backdrop  = document.getElementById('sidebarBackdrop') || document.getElementById('sidebar-backdrop');
+const toggleBtn = document.getElementById('openSidebarBtn') || document.getElementById('sidebar-toggle-btn');
+const closeBtn  = document.getElementById('closeSidebarBtn') || document.getElementById('close-sidebar-btn');
+
+function openSidebar()  {
+  if (!sidebar || !backdrop) return;
+  sidebar.classList.remove('-translate-x-full');
+  sidebar.classList.add('translate-x-0');
+  backdrop.classList.remove('opacity-0','pointer-events-none');
+  backdrop.classList.add('opacity-100','pointer-events-auto');
+  document.body.classList.add('overflow-hidden');
+}
+function closeSidebar() {
+  if (!sidebar || !backdrop) return;
+  sidebar.classList.remove('translate-x-0');
+  sidebar.classList.add('-translate-x-full');
+  backdrop.classList.remove('opacity-100','pointer-events-auto');
+  backdrop.classList.add('opacity-0','pointer-events-none');
+  document.body.classList.remove('overflow-hidden');
+}
+if (toggleBtn) {
+  toggleBtn.addEventListener('click', function(e) {
+    e.stopPropagation();
+    if (sidebar.classList.contains('-translate-x-full')) {
+      openSidebar();
+    } else {
+      closeSidebar();
+    }
+  });
+}
+if (closeBtn)  closeBtn.addEventListener('click', closeSidebar);
+if (backdrop)  backdrop.addEventListener('click', closeSidebar);
+
+document.addEventListener('keydown', function(e) {
+  if (e.key === 'Escape' && sidebar && !sidebar.classList.contains('-translate-x-full')) {
+    closeSidebar();
+  }
+});
+
+// ─── Data Store Helpers ───────────────────────────────────────────────────────
+const { loadProfile, saveProfile, fmtCurrency, pct } = window.IntelliFinance;
+
+/** Parse a dollar-formatted string to a float */
+function parseDollar(str) {
+  return parseFloat(String(str).replace(/[^0-9.]/g, '')) || 0;
+}
+
+/** Map field key → input id; inputs must have id="if-<key>" */
+const FIELD_MAP = {
+  fullName:          'if-fullName',
+  displayName:       'if-displayName',
+  dob:               'if-dob',
+  email:             'if-email',
+  phone:             'if-phone',
+  location:          'if-location',
+  baseSalary:        'if-baseSalary',
+  essentialExpenses: 'if-essentialExpenses',
+  discretionary:     'if-discretionary',
+  emiTotal:          'if-emiTotal',
+  insurancePremium:  'if-insurancePremium',
+  sipMonthly:        'if-sipMonthly',
+  emergencyTarget:   'if-emergencyTarget',
+  emergencyFunded:   'if-emergencyFunded',
+};
+
+// Currency fields (need parseDollar)
+const CURRENCY_FIELDS = new Set([
+  'baseSalary','essentialExpenses','discretionary',
+  'emiTotal','insurancePremium','sipMonthly','emergencyTarget','emergencyFunded'
+]);
+
+let currentProfile = null;
+
+// ─── Populate inputs from stored profile ─────────────────────────────────────
+function populateForm(profile) {
+  currentProfile = profile;
+  for (const [key, id] of Object.entries(FIELD_MAP)) {
+    const el = document.getElementById(id);
+    if (!el) continue;
+    if (CURRENCY_FIELDS.has(key)) {
+      if (profile.isNewUser && (!profile[key] || profile[key] === 0)) {
+        el.value = '';
+      } else {
+        el.value = Number(profile[key] || 0).toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+      }
+    } else {
+      el.value = profile[key] || '';
+    }
+  }
+
+  // Update header display name & initials
+  setTextAll('.if-display-name', profile.displayName || profile.fullName);
+  setTextAll('.if-initials', profile.initials || 'AM');
+  setText('if-hdr-email', profile.email || '');
+  setText('if-hdr-phone', profile.phone || '');
+  setText('if-hdr-location', profile.location || '');
+
+  // Derived ribbon values
+  updateRibbon(profile.totalInflow, profile.totalOutflow, profile.netSurplus, profile.emergencyTarget, profile.emergencyFunded, profile.netWorth, profile.totalInvestments);
+  setText('if-last-updated', profile.lastUpdated ? 'Last saved: ' + new Date(profile.lastUpdated).toLocaleString() : '');
+
+  // Emergency runway & status
+  const runwayMonths = profile.totalOutflow > 0 ? (profile.emergencyFunded / profile.totalOutflow).toFixed(1) : '10+';
+  const emergPct = pct(profile.emergencyFunded, profile.emergencyTarget);
+  setText('if-emerg-badge', emergPct >= 100 ? '100% Met' : emergPct + '% Funded');
+  setText('if-emerg-note', `Runway: ${runwayMonths} months secured`);
+
+  // Health score badge
+  const hs = document.getElementById('if-health-score');
+  if (hs) hs.textContent = (profile.healthScore || 78) + ' / 100';
+
+  // Monthly Salary Expenditure Breakdown Section
+  updateExpenditureBreakdown(profile);
+
+  // (Connected Accounts section removed)
+
+  // Goals
+  renderGoals(profile.goals || []);
+
+  // New-user banner / account age strip
+  const banner   = document.getElementById('if-new-user-banner');
+  const ageStrip = document.getElementById('if-account-age-strip');
+  if (profile.isNewUser !== false) {
+    if (banner)   banner.classList.remove('hidden');
+    if (ageStrip) ageStrip.classList.add('hidden');
+  } else {
+    if (banner)   banner.classList.add('hidden');
+    if (ageStrip) { ageStrip.classList.remove('hidden'); ageStrip.classList.add('flex'); }
+  }
+
+  // Account tenure and tracker
+  const ageVal = document.getElementById('if-account-age-val');
+  if (ageVal) {
+    const age = window.IntelliFinance.accountAge(profile);
+    ageVal.textContent = age || '—';
+  }
+  const badgeEl = document.getElementById('if-tracker-badge');
+  const moValEl = document.getElementById('if-tracker-months-val');
+  const descEl  = document.getElementById('if-tracker-desc');
+  if (badgeEl && window.IntelliFinance.getElapsedMonths) {
+    const elapsed = window.IntelliFinance.getElapsedMonths(profile);
+    badgeEl.textContent = `Month ${elapsed} • Active`;
+    if (moValEl) moValEl.textContent = `${elapsed} Mo`;
+    if (descEl) {
+      const sip = Number(profile.sipMonthly) || 0;
+      descEl.innerHTML = `Account active for <strong class="text-on-surface">${window.IntelliFinance.accountAge(profile) || 'Day 1'}</strong>. Monthly SIP: <strong class="text-secondary">${fmtCurrency(sip, 0)}/mo</strong> auto-accrues into goals.`;
+    }
+  }
+
+  // DOB age calculation
+  if (profile.dob) {
+    const dobEl = document.getElementById('if-dob');
+    if (dobEl) {
+      const dobDate = new Date(profile.dob);
+      const today   = new Date();
+      let age = today.getFullYear() - dobDate.getFullYear();
+      const m = today.getMonth() - dobDate.getMonth();
+      if (m < 0 || (m === 0 && today.getDate() < dobDate.getDate())) age--;
+      const ageBox = dobEl.closest('.grid')?.querySelector('.h-10.flex');
+      if (ageBox && !isNaN(age) && age > 0) ageBox.textContent = age + ' yrs';
+    }
+  }
+}
+
+function updateRibbon(inflow, outflow, surplus, emergencyTarget, emergencyFunded, netWorth, totalInvestments) {
+  const elIn = document.getElementById('if-ribbon-inflow');
+  if (elIn) elIn.innerHTML = `${fmtCurrency(inflow)} <span class="font-body-sm text-body-sm font-normal text-on-surface-variant">/ mo</span>`;
+  const elOut = document.getElementById('if-ribbon-outflow');
+  if (elOut) elOut.innerHTML = `${fmtCurrency(outflow)} <span class="font-body-sm text-body-sm font-normal text-on-surface-variant">/ mo</span>`;
+  const elSur = document.getElementById('if-ribbon-surplus');
+  if (elSur) elSur.innerHTML = `${fmtCurrency(surplus)} <span class="font-body-sm text-body-sm font-normal text-on-surface-variant">/ mo</span>`;
+  setText('if-ribbon-emerg', fmtCurrency(emergencyTarget));
+
+  const elNW = document.getElementById('if-ribbon-networth');
+  if (elNW) elNW.textContent = fmtCurrency(netWorth != null ? netWorth : emergencyFunded + (totalInvestments || 0));
+  const elNWSub = document.getElementById('if-ribbon-nw-sub');
+  if (elNWSub) {
+    elNWSub.textContent = `Liquid: ${fmtCurrency(emergencyFunded, 0)} • Inv: ${fmtCurrency(totalInvestments || 0, 0)}`;
+  }
+}
+
+function updateExpenditureBreakdown(p) {
+  const totalIn = p.totalInflow || 1;
+  setText('if-breakdown-sub', fmtCurrency(totalIn) + '/mo');
+  setText('if-breakdown-total', '$' + Math.round(totalIn).toLocaleString('en-US'));
+
+  setText('if-bd-sip-val', fmtCurrency(p.sipMonthly));
+  setText('if-bd-sip-pct', pct(p.sipMonthly, totalIn) + '% of total salary');
+
+  setText('if-bd-ess-val', fmtCurrency(p.essentialExpenses));
+  setText('if-bd-ess-pct', pct(p.essentialExpenses, totalIn) + '% of total salary');
+
+  setText('if-bd-disc-val', fmtCurrency(p.discretionary));
+  setText('if-bd-disc-pct', pct(p.discretionary, totalIn) + '% of total salary');
+
+  setText('if-bd-emi-val', fmtCurrency(p.emiTotal));
+  setText('if-bd-emi-pct', pct(p.emiTotal, totalIn) + '% of total salary');
+
+  const emergReserveMonthly = Math.max(0, (p.netSurplus || 0) - (p.sipMonthly || 0));
+  setText('if-bd-emerg-val', fmtCurrency(emergReserveMonthly));
+  setText('if-bd-emerg-pct', pct(emergReserveMonthly, totalIn) + '% of total salary');
+
+  setText('if-bd-ins-val', fmtCurrency(p.insurancePremium));
+  setText('if-bd-ins-pct', pct(p.insurancePremium, totalIn) + '% of total salary');
+
+  // Dynamic SVG Donut Chart update (radius = 38 -> circumference = 2 * PI * 38 = 238.76)
+  const C = 238.76;
+  const segments = [
+    { id: 'if-donut-sip', val: p.sipMonthly || 0 },
+    { id: 'if-donut-ess', val: p.essentialExpenses || 0 },
+    { id: 'if-donut-disc', val: p.discretionary || 0 },
+    { id: 'if-donut-emi', val: p.emiTotal || 0 },
+    { id: 'if-donut-emerg', val: emergReserveMonthly },
+    { id: 'if-donut-ins', val: p.insurancePremium || 0 },
+  ];
+  let offset = 0;
+  segments.forEach(seg => {
+    const el = document.getElementById(seg.id);
+    if (!el) return;
+    const arcLen = Math.max(0, (seg.val / totalIn) * C);
+    el.setAttribute('stroke-dasharray', `${arcLen.toFixed(1)} ${C.toFixed(1)}`);
+    el.setAttribute('stroke-dashoffset', `${(-offset).toFixed(1)}`);
+    offset += arcLen;
+  });
+}
+
+function setText(id, val) {
+  const el = document.getElementById(id);
+  if (el) el.textContent = val;
+}
+function setTextAll(selector, val) {
+  document.querySelectorAll(selector).forEach(el => el.textContent = val);
+}
+
+// ─── Render goals section ─────────────────────────────────────────────────────
+function renderGoals(goals) {
+  const container = document.getElementById('if-goals-grid');
+  if (!container) return;
+  if (!goals || goals.length === 0) {
+    container.innerHTML = `
+    <div class="col-span-full p-8 border border-dashed border-secondary/30 rounded-xl text-center bg-surface-container-low/40 space-y-3">
+      <div class="w-12 h-12 rounded-full bg-secondary/10 text-secondary mx-auto flex items-center justify-center">
+        <span class="material-symbols-outlined text-[24px]">flag</span>
+      </div>
+      <div>
+        <h3 class="font-headline-sm text-sm font-bold text-on-surface">No Financial Goals Created Yet</h3>
+        <p class="font-body-sm text-xs text-on-surface-variant max-w-md mx-auto mt-0.5">Set a milestone (e.g. Target: $10,000, Monthly Investment: $1,000) and watch it grow automatically month by month!</p>
+      </div>
+      <button onclick="addNewGoal()" type="button" class="inline-flex items-center gap-1.5 px-4 py-2 rounded-lg bg-secondary text-white text-xs font-semibold hover:opacity-90 transition-opacity shadow-xs">
+        <span class="material-symbols-outlined text-[16px]">add_task</span>
+        <span>+ Create Your First Goal ($10,000 @ $1,000/mo)</span>
+      </button>
+    </div>`;
+    return;
+  }
+  container.innerHTML = goals.map(g => {
+    const target = Number(g.target) || 1;
+    const current = Number(g.current) || 0;
+    const sip = Number(g.sipCurrent) || Number(g.sipRequired) || 0;
+    const p = Math.min(100, ((current / target) * 100)).toFixed(1);
+    const isComplete = current >= target;
+    const remAmount = Math.max(0, target - current);
+    const remMonths = sip > 0 ? Math.ceil(remAmount / sip) : 0;
+    const timelineText = isComplete ? 'Goal Achieved!' : (remMonths > 0 ? `${remMonths} mo remaining` : g.deadline || 'In Progress');
+
+    return `
+    <div class="p-5 rounded-xl border border-surface-container-high bg-surface-container-lowest space-y-4 hover:border-secondary transition-colors" data-goal-id="${g.id}">
+      <div class="flex items-center justify-between">
+        <span class="w-8 h-8 rounded-lg bg-surface-container ${isComplete ? 'text-on-tertiary-container' : 'text-secondary'} flex items-center justify-center">
+          <span class="material-symbols-outlined text-[18px]">${g.icon || 'savings'}</span>
+        </span>
+        <span class="font-label-sm text-[11px] px-2 py-0.5 rounded ${isComplete ? 'bg-on-tertiary-container/10 text-on-tertiary-container' : 'bg-secondary-fixed text-on-secondary-fixed'} font-semibold">
+          ${isComplete ? '100% Met' : timelineText}
+        </span>
+      </div>
+      <div>
+        <h3 class="font-headline-sm text-headline-sm font-bold text-on-surface">${g.label}</h3>
+        <p class="font-body-sm text-[11px] text-on-surface-variant mt-0.5">${g.description || 'Monthly systematic accumulation'}</p>
+      </div>
+      <div class="space-y-1.5">
+        <div class="flex justify-between font-label-sm text-label-sm">
+          <span class="text-on-surface-variant font-medium">Accumulated: <strong class="text-on-surface">${fmtCurrency(current, 0)}</strong></span>
+          <span class="font-bold text-on-surface">Target: ${fmtCurrency(target, 0)}</span>
+        </div>
+        <div class="w-full h-2.5 rounded-full bg-surface-container overflow-hidden">
+          <div class="h-full ${isComplete ? 'bg-on-tertiary-container' : 'bg-secondary'} rounded-full transition-all duration-500" style="width:${p}%"></div>
+        </div>
+        <div class="flex justify-between text-[11px] text-on-surface-variant pt-0.5">
+          <span class="font-semibold ${isComplete ? 'text-on-tertiary-container' : 'text-secondary'}">${p}% Achieved</span>
+          <span class="text-on-surface-variant font-medium">${isComplete ? 'Vault Secured' : 'SIP: ' + fmtCurrency(sip, 0) + '/mo'}</span>
+        </div>
+      </div>
+      <div class="pt-2 border-t border-surface-container-low flex justify-between items-center text-xs">
+        <button class="text-error/70 hover:text-error text-[11px] hover:underline" onclick="deleteGoal('${g.id}')" type="button">Remove</button>
+        <button class="text-secondary hover:underline font-medium" onclick="adjustGoal('${g.id}')" type="button">Adjust Target &amp; SIP</button>
+      </div>
+    </div>`;
+  }).join('');
+}
+
+window.adjustGoal = function(goalId) {
+  const p = loadProfile();
+  const goal = (p.goals || []).find(g => g.id === goalId);
+  if (!goal) return;
+  const newTargetStr = prompt(`Set Target Amount for "${goal.label}":`, goal.target);
+  if (newTargetStr === null) return;
+  const newTarget = parseDollar(newTargetStr);
+  if (newTarget <= 0) return;
+  const newCurrentStr = prompt(`Set Current Accumulated Amount for "${goal.label}":`, goal.current);
+  if (newCurrentStr === null) return;
+  goal.target = newTarget;
+  goal.current = parseDollar(newCurrentStr);
+  const updated = saveProfile({ goals: p.goals });
+  populateForm(updated);
+  showToast(`Updated goal: "${goal.label}"`);
+};
+
+window.deleteGoal = function(goalId) {
+  const p = loadProfile();
+  if (!confirm('Are you sure you want to remove this financial goal?')) return;
+  p.goals = (p.goals || []).filter(g => g.id !== goalId);
+  const updated = saveProfile({ goals: p.goals });
+  populateForm(updated);
+  showToast('Goal removed');
+};
+
+function addNewGoal() {
+  const title = prompt('Enter goal name:', 'Emergency / Wealth Target');
+  if (!title || !title.trim()) return;
+  const targetStr = prompt('Enter target amount ($):', '10000');
+  if (!targetStr) return;
+  const target = parseDollar(targetStr) || 10000;
+  const sipStr = prompt('Enter monthly investment / SIP amount ($/month):', '1000');
+  const sip = parseDollar(sipStr) || 1000;
+  const estMonths = Math.ceil(target / (sip || 1));
+  const deadline = `${estMonths} Months`;
+  const p = loadProfile();
+  p.goals = p.goals || [];
+  p.goals.push({
+    id: 'g' + Date.now(),
+    icon: 'savings',
+    label: title.trim(),
+    description: `Systematic $${sip.toLocaleString()}/mo accumulation`,
+    current: 0,
+    startingAmount: 0,
+    target: target,
+    sipCurrent: sip,
+    sipRequired: sip,
+    deadline: deadline,
+    score: 88,
+    scoreLabel: 'Optimal'
+  });
+  if (!p.sipMonthly || p.sipMonthly === 0) {
+    p.sipMonthly = sip;
+  }
+  const updated = saveProfile({ goals: p.goals, sipMonthly: p.sipMonthly });
+  populateForm(updated);
+  showToast(`Goal "${title.trim()}" created ($${target.toLocaleString()} target @ $${sip.toLocaleString()}/mo)!`);
+}
+
+window.adjustGoal = function(goalId) {
+  const p = loadProfile();
+  const goal = (p.goals || []).find(g => g.id === goalId);
+  if (!goal) return;
+  const newTargetStr = prompt(`Target Amount for "${goal.label}":`, goal.target);
+  if (newTargetStr === null) return;
+  const newTarget = parseDollar(newTargetStr);
+  if (newTarget <= 0) return;
+  const newSipStr = prompt(`Monthly Investment / SIP ($/month) for "${goal.label}":`, goal.sipCurrent || goal.sipRequired || 1000);
+  const newSip = parseDollar(newSipStr) || goal.sipCurrent || 1000;
+  const newCurrentStr = prompt(`Current Accumulated Amount for "${goal.label}":`, goal.current);
+  if (newCurrentStr === null) return;
+  goal.target = newTarget;
+  goal.sipCurrent = newSip;
+  goal.sipRequired = newSip;
+  goal.current = parseDollar(newCurrentStr);
+  goal.startingAmount = goal.current;
+  const estMonths = Math.ceil(Math.max(0, goal.target - goal.current) / (goal.sipCurrent || 1));
+  goal.deadline = `${estMonths} Months`;
+  const updated = saveProfile({ goals: p.goals });
+  populateForm(updated);
+  showToast(`Updated goal: "${goal.label}"`);
+};
+
+// ─── Live Recalculation on typing (no auto-save — only Save Changes button saves) ─────
+function handleLiveInput() {
+  const baseSalary        = parseDollar(document.getElementById('if-baseSalary')?.value);
+  const essentialExpenses = parseDollar(document.getElementById('if-essentialExpenses')?.value);
+  const discretionary     = parseDollar(document.getElementById('if-discretionary')?.value);
+  const emiTotal          = parseDollar(document.getElementById('if-emiTotal')?.value);
+  const insurancePremium  = parseDollar(document.getElementById('if-insurancePremium')?.value);
+  const sipMonthly        = parseDollar(document.getElementById('if-sipMonthly')?.value);
+  const emergencyTarget   = parseDollar(document.getElementById('if-emergencyTarget')?.value);
+  const emergencyFunded   = parseDollar(document.getElementById('if-emergencyFunded')?.value);
+
+  const totalInflow  = +baseSalary.toFixed(2);
+  const totalOutflow = +(essentialExpenses + discretionary + emiTotal + insurancePremium).toFixed(2);
+  const netSurplus   = +(totalInflow - totalOutflow).toFixed(2);
+
+  // Live Ribbon
+  const currentInv = (currentProfile?.totalInvestments || 0);
+  const liveNetWorth = emergencyFunded + currentInv;
+  updateRibbon(totalInflow, totalOutflow, netSurplus, emergencyTarget, emergencyFunded, liveNetWorth, currentInv);
+
+  // Live Emergency runway & status
+  const runwayMonths = totalOutflow > 0 ? (emergencyFunded / totalOutflow).toFixed(1) : '10+';
+  const emergPct = emergencyTarget > 0 ? Math.min(100, Math.round((emergencyFunded / emergencyTarget) * 100)) : 100;
+  setText('if-emerg-badge', emergPct >= 100 ? '100% Met' : emergPct + '% Funded');
+  setText('if-emerg-note', `Runway: ${runwayMonths} months secured`);
+
+  // Live Expenditure Breakdown & SVG Donut Chart
+  updateExpenditureBreakdown({
+    totalInflow,
+    sipMonthly,
+    essentialExpenses,
+    discretionary,
+    emiTotal,
+    insurancePremium,
+    netSurplus,
+    emergencyFunded
+  });
+
+}
+
+/** Silent background auto-save (used only when navigating away, not on typing) */
+function silentAutoSave() {
+  // No-op: changes are only saved when user explicitly clicks Save Changes
+}
+
+/** Collect current values from all mapped inputs */
+function collectFormValues() {
+  const partial = {};
+  for (const [key, id] of Object.entries(FIELD_MAP)) {
+    const el = document.getElementById(id);
+    if (!el) continue;
+    partial[key] = CURRENCY_FIELDS.has(key) ? parseDollar(el.value) : el.value.trim();
+  }
+  return partial;
+}
+
+// ─── Collect form values & explicit save with visual confirmation ────────────
+function collectAndSave() {
+  const partial = collectFormValues();
+  const saved = saveProfile(partial);
+  populateForm(saved);
+  showToast('Profile saved — dashboard updated ✓');
+
+  // Visual confirmation on all save buttons
+  document.querySelectorAll('[data-action="save-profile"]').forEach(btn => {
+    const originalText = btn.innerHTML;
+    btn.innerHTML = '<span class="material-symbols-outlined text-[18px]">check</span><span>Saved!</span>';
+    btn.classList.add('bg-emerald-600', 'text-white');
+    setTimeout(() => {
+      btn.innerHTML = originalText;
+      btn.classList.remove('bg-emerald-600', 'text-white');
+    }, 1800);
+  });
+}
+
+// ─── Toast notification ───────────────────────────────────────────────────────
+function showToast(msg) {
+  let toast = document.getElementById('if-toast');
+  if (!toast) {
+    toast = document.createElement('div');
+    toast.id = 'if-toast';
+    toast.style.cssText = 'position:fixed;top:28px;right:28px;z-index:99999;padding:14px 24px;' +
+      'border-radius:12px;background:#10b981;color:#ffffff;font-size:14px;font-weight:700;' +
+      'box-shadow:0 12px 28px rgba(0,0,0,0.35);display:flex;align-items:center;gap:10px;' +
+      'transition:all 0.3s cubic-bezier(0.16, 1, 0.3, 1);opacity:0;transform:translateY(-14px);pointer-events:none;';
+    document.body.appendChild(toast);
+  }
+  toast.innerHTML = '<span class="material-symbols-outlined text-[20px]">check_circle</span><span>' + msg + '</span>';
+  toast.style.opacity = '1';
+  toast.style.transform = 'translateY(0)';
+  clearTimeout(toast._timer);
+  toast._timer = setTimeout(() => {
+    toast.style.opacity = '0';
+    toast.style.transform = 'translateY(-14px)';
+  }, 3200);
+}
+
+// ─── Boot & Event Listeners ───────────────────────────────────────────────────
+function initProfile() {
+  const profile = loadProfile();
+  populateForm(profile);
+
+  // Wire Save buttons
+  document.querySelectorAll('[data-action="save-profile"]').forEach(btn => {
+    btn.onclick = collectAndSave;
+  });
+
+  // Wire Discard buttons
+  document.querySelectorAll('[data-action="discard-profile"]').forEach(btn => {
+    btn.onclick = () => {
+      populateForm(loadProfile());
+      showToast('Changes discarded');
+    };
+  });
+
+  // Wire Add Goal button
+  const addGoalBtn = document.getElementById('if-btn-add-goal');
+  if (addGoalBtn) addGoalBtn.onclick = addNewGoal;
+
+  // Wire live input on all mapped inputs (visual recalculation only — no auto-save)
+  for (const [key, id] of Object.entries(FIELD_MAP)) {
+    const el = document.getElementById(id);
+    if (!el) continue;
+    el.addEventListener('input', handleLiveInput);
+  }
+}
+
+// 1. Immediate boot or wait for DOM
+// ── One-time migration: wipe old demo data so new users start clean ──────────
+(function() {
+  try {
+    const raw = localStorage.getItem('IF_PROFILE');
+    if (raw) {
+      const p = JSON.parse(raw);
+      // If this looks like the old demo profile (Alex Morgan preset), clear it
+      if (p.fullName === 'Alexander James Morgan' && p.isNewUser !== false) {
+        localStorage.removeItem('IF_PROFILE');
+        try { window.name = ''; } catch(e) {}
+        window.__IF_CACHE__ = null;
+      }
+      // If profile has old demo net worth ($651,070 / $336,000), recalculate clean net worth
+      if (p.netWorth === 651070 || p.altAssets === 290070 || p.totalInvestments === 336000) {
+        p.altAssets = 0;
+        const goalsInvested = Array.isArray(p.goals) ? p.goals.reduce((s, g) => s + (Number(g.current) || 0), 0) : 0;
+        p.totalInvestments = goalsInvested;
+        p.liquidCash = Number(p.emergencyFunded) || 0;
+        p.netWorth = p.liquidCash + p.totalInvestments;
+        localStorage.setItem('IF_PROFILE', JSON.stringify(p));
+      }
+    }
+  } catch(e) {}
+})();
+
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', initProfile);
+} else {
+  initProfile();
+}
+
+// 2. React to back/forward navigation and window focus
+window.addEventListener('pageshow', initProfile);
+window.addEventListener('focus', () => {
+  populateForm(loadProfile());
+});
+document.addEventListener('visibilitychange', () => {
+  if (document.visibilityState === 'visible') populateForm(loadProfile());
+});
+
+// 3. Cross-tab & reactive events
+window.addEventListener('storage', (e) => {
+  if (e.key === 'IF_PROFILE' || !e.key) {
+    populateForm(loadProfile());
+  }
+});
+window.addEventListener('IF_PROFILE_UPDATED', (e) => {
+  populateForm(e.detail);
+});
+
+// Expose global handlers for HTML inline event triggers
+window.collectAndSave = collectAndSave;
+window.silentAutoSave = silentAutoSave;
+window.adjustGoal     = adjustGoal;
+window.deleteGoal     = deleteGoal;
+window.addNewGoal     = addNewGoal;
+window.showToast      = showToast;
+})();
+</script>
+
+<!-- Toast slot (created dynamically) -->
+</body></html>

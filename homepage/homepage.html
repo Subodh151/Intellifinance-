@@ -1,0 +1,1154 @@
+<!DOCTYPE html><html class="h-full bg-background" lang="en"><head>
+<script src="../shared/data.js"></script>
+<script>
+  if (window.IntelliFinance && !window.IntelliFinance.requireAuth('../login.html')) {
+    // will redirect to login if unauthenticated
+  }
+</script>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>IntelliFinance - Wealth Intelligence OS</title>
+<link href="https://fonts.googleapis.com" rel="preconnect">
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Plus+Jakarta+Sans:wght@500;600;700;800&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "secondary-container": "#645efb",
+            "inverse-primary": "#bec6e0",
+            "secondary": "#4b41e1",
+            "on-primary-fixed-variant": "#3f465c",
+            "on-secondary-fixed": "#0f0069",
+            "on-primary": "#ffffff",
+            "on-primary-fixed": "#131b2e",
+            "tertiary": "#000000",
+            "surface-dim": "#cbdbf5",
+            "surface-variant": "#d3e4fe",
+            "background": "#f8f9ff",
+            "error": "#ba1a1a",
+            "tertiary-fixed-dim": "#4edea3",
+            "surface": "#f8f9ff",
+            "tertiary-container": "#002113",
+            "primary-container": "#131b2e",
+            "on-tertiary-fixed-variant": "#005236",
+            "inverse-on-surface": "#eaf1ff",
+            "surface-container-highest": "#d3e4fe",
+            "on-surface-variant": "#45464d",
+            "on-tertiary-container": "#009668",
+            "on-tertiary-fixed": "#002113",
+            "on-primary-container": "#7c839b",
+            "on-error-container": "#93000a",
+            "on-background": "#0b1c30",
+            "tertiary-fixed": "#6ffbbe",
+            "surface-container-low": "#eff4ff",
+            "outline-variant": "#c6c6cd",
+            "primary-fixed": "#dae2fd",
+            "on-secondary": "#ffffff",
+            "surface-container": "#e5eeff",
+            "primary": "#000000",
+            "on-tertiary": "#ffffff",
+            "on-error": "#ffffff",
+            "surface-container-lowest": "#ffffff",
+            "primary-fixed-dim": "#bec6e0",
+            "secondary-fixed-dim": "#c3c0ff",
+            "surface-tint": "#565e74",
+            "on-surface": "#0b1c30",
+            "on-secondary-fixed-variant": "#3323cc",
+            "surface-container-high": "#dce9ff",
+            "inverse-surface": "#213145",
+            "secondary-fixed": "#e2dfff",
+            "on-secondary-container": "#fffbff",
+            "surface-bright": "#f8f9ff",
+            "error-container": "#ffdad6",
+            "outline": "#76777d"
+          },
+          "fontFamily": {
+            "headline-sm": ["Plus Jakarta Sans", "sans-serif"],
+            "headline-xl": ["Plus Jakarta Sans", "sans-serif"],
+            "headline-lg": ["Plus Jakarta Sans", "sans-serif"],
+            "data-metric-lg": ["Plus Jakarta Sans", "sans-serif"],
+            "headline-md": ["Plus Jakarta Sans", "sans-serif"],
+            "body-lg": ["Inter", "sans-serif"],
+            "body-sm": ["Inter", "sans-serif"],
+            "label-sm": ["Inter", "sans-serif"],
+            "label-md": ["Inter", "sans-serif"],
+            "body-md": ["Inter", "sans-serif"],
+            "data-metric-md": ["Inter", "sans-serif"]
+          }
+        }
+      }
+    }
+  </script>
+</head>
+<body class="h-full bg-background text-on-surface antialiased flex flex-col font-body-md text-sm selection:bg-secondary selection:text-on-secondary relative">
+<!-- Sidebar Backdrop Overlay -->
+<div aria-hidden="true" class="fixed inset-0 bg-on-surface/40 backdrop-blur-sm z-50 transition-opacity duration-300 opacity-0 pointer-events-none" id="sidebarBackdrop"></div>
+<!-- Collapsible Navigation Sidebar -->
+<aside aria-label="Main Sidebar Navigation" class="fixed top-0 left-0 bottom-0 w-72 max-w-[85vw] bg-surface-container-lowest border-r border-surface-container-high z-50 flex flex-col justify-between shadow-2xl transition-transform duration-300 ease-in-out -translate-x-full" id="collapsibleSidebar">
+<!-- Top Branding & Close Header -->
+<div>
+<div class="h-16 px-5 border-b border-surface-container-high flex items-center justify-between">
+<div class="flex items-center gap-2.5">
+<div class="w-8 h-8 rounded-lg bg-primary flex items-center justify-center text-on-secondary shadow-sm">
+<span class="material-symbols-outlined text-[19px]" data-icon="insights" style="font-variation-settings: 'FILL' 1;">insights</span>
+</div>
+<div class="flex flex-col">
+<div class="flex items-center gap-1.5 leading-none">
+<span class="font-headline-sm text-sm font-bold text-on-surface tracking-tight">IntelliFinance</span>
+<span class="px-1 py-0.5 rounded text-[9px] font-bold bg-surface-container-low text-secondary border border-surface-container-high">OS v4.2</span>
+</div>
+<span class="text-[10px] text-outline mt-0.5">Wealth Intelligence OS</span>
+</div>
+</div>
+<button aria-label="Close sidebar" class="w-8 h-8 rounded-md flex items-center justify-center text-on-surface-variant hover:text-on-surface hover:bg-surface-container-low transition-colors" id="closeSidebarBtn">
+<span class="material-symbols-outlined text-[20px]" data-icon="chevron_left">chevron_left</span>
+</button>
+</div>
+<!-- Navigation Menu Items -->
+<nav aria-label="Primary Navigation" class="p-3 space-y-1 overflow-y-auto">
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg bg-surface-container text-secondary font-semibold text-xs transition-colors group" href="#">
+<span class="material-symbols-outlined text-[18px] text-secondary" data-icon="dashboard" style="font-variation-settings: 'FILL' 1;">dashboard</span>
+<span class="flex-1">Dashboard</span>
+<span class="w-1.5 h-1.5 rounded-full bg-secondary"></span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg text-on-surface-variant hover:text-on-surface hover:bg-surface-container-low transition-colors text-xs font-medium" href="../profile/code.html">
+<span class="material-symbols-outlined text-[18px]" data-icon="person">person</span>
+<span class="flex-1">User Profile &amp; Baseline</span>
+<span class="px-1.5 py-0.5 rounded text-[10px] font-semibold bg-secondary-fixed text-on-secondary-fixed">Edit</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg text-on-surface-variant hover:text-on-surface hover:bg-surface-container-low transition-colors text-xs font-medium" href="#cashflow">
+<span class="material-symbols-outlined text-[18px]" data-icon="account_balance_wallet">account_balance_wallet</span>
+<span class="">Cash Flow &amp; Budget</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg text-on-surface-variant hover:text-on-surface hover:bg-surface-container-low transition-colors text-xs font-medium" href="../savings and emergency/code.html">
+<span class="material-symbols-outlined text-[18px]" data-icon="shield_with_heart">shield_with_heart</span>
+<span class="">Savings &amp; Emergency</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg text-on-surface-variant hover:text-on-surface hover:bg-surface-container-low transition-colors text-xs font-medium" href="../investmwnt and portfolio/investment and portfolio.html">
+<span class="material-symbols-outlined text-[18px]" data-icon="trending_up">trending_up</span>
+<span class="flex-1">Investments &amp; SIP</span>
+<span class="px-1.5 py-0.5 rounded text-[10px] font-semibold bg-surface-container-low text-on-tertiary-container border border-surface-container-high">+12.4%</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg text-on-surface-variant hover:text-on-surface hover:bg-surface-container-low transition-colors text-xs font-medium" href="../health audit/healthaudit.html">
+<span class="material-symbols-outlined text-[18px]" data-icon="verified_user">verified_user</span>
+<span class="">Financial Health Audit</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg text-on-surface-variant hover:text-on-surface hover:bg-surface-container-low transition-colors text-xs font-medium" href="#reports">
+<span class="material-symbols-outlined text-[18px]" data-icon="receipt_long">receipt_long</span>
+<span class="">Reports &amp; Export</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg text-on-surface-variant hover:text-on-surface hover:bg-surface-container-low transition-colors text-xs font-medium" href="../profile/code.html">
+<span class="material-symbols-outlined text-[18px]" data-icon="settings">settings</span>
+<span class="">Settings</span>
+</a>
+</nav>
+</div>
+<!-- Sidebar Middle/Bottom Action Card & Footer Utility Links -->
+<div class="p-3 border-t border-surface-container-high space-y-2.5">
+<!-- Quick Allocate Action Card -->
+<div class="p-2.5 rounded-lg bg-surface-container-low border border-surface-container-high space-y-1.5">
+<div class="flex items-center gap-1.5 text-secondary font-semibold text-xs">
+<span class="material-symbols-outlined text-[15px]" data-icon="bolt">bolt</span>
+<span class="">Quick Allocate</span>
+</div>
+<p class="text-[11px] text-on-surface-variant leading-relaxed">
+        Monthly net surplus float of <strong class="text-on-surface font-semibold" id="hm-surplus-float">$4,880.00</strong> available for deployment.
+      </p>
+<a href="../profile/code.html#linked-portfolios" class="w-full h-6 rounded bg-secondary text-on-secondary text-[11px] font-semibold hover:bg-secondary-container transition-colors flex items-center justify-center gap-1">
+<span class="material-symbols-outlined text-[13px]" data-icon="tune">tune</span>
+<span class="">Deploy Surplus</span>
+</a>
+</div>
+<!-- Secondary Links -->
+<div class="pt-0.5 space-y-0.5">
+<a class="flex items-center gap-2 px-2.5 py-1.5 rounded-md text-on-surface-variant hover:text-on-surface hover:bg-surface-container-low text-xs transition-colors" href="../profile/code.html">
+<span class="material-symbols-outlined text-[16px]" data-icon="badge">badge</span>
+<span class="">Executive Profile</span>
+</a>
+<a class="flex items-center gap-2 px-2.5 py-1.5 rounded-md text-error hover:bg-error-container/30 text-xs transition-colors cursor-pointer" href="#logout" onclick="window.IntelliFinance.logout('../login.html'); return false;">
+<span class="material-symbols-outlined text-[16px]" data-icon="logout">logout</span>
+<span class="">Log Out</span>
+</a>
+</div>
+</div>
+</aside>
+<!-- Top Navigation Bar (Edge-to-Edge with clean padding) -->
+<header class="w-full h-16 sticky top-0 z-40 bg-surface-container-lowest border-b border-surface-container-high shadow-sm px-6 md:px-8">
+<div class="max-w-7xl mx-auto w-full flex items-center justify-between h-full">
+<div class="flex items-center gap-3 sm:gap-4">
+<button aria-label="Open sidebar menu" class="w-9 h-9 flex items-center justify-center rounded-lg border border-surface-container-high bg-surface-container-lowest text-on-surface hover:bg-surface-container-low transition-colors shadow-xs" id="openSidebarBtn">
+<span class="material-symbols-outlined text-[21px]" data-icon="menu">menu</span>
+</button>
+<div class="flex items-center gap-2.5">
+<div class="w-8 h-8 rounded-lg bg-primary flex items-center justify-center text-on-secondary shadow-xs">
+<span class="material-symbols-outlined text-[19px]" data-icon="insights" style="font-variation-settings: 'FILL' 1;">insights</span>
+</div>
+<div class="flex items-center gap-1.5 leading-none">
+<span class="font-headline-sm text-base font-bold text-on-surface tracking-tight">IntelliFinance</span>
+<span class="hidden sm:inline-block px-1.5 py-0.5 rounded text-[10px] font-bold bg-surface-container-low text-secondary border border-surface-container-high">OS v4.2</span>
+</div>
+</div>
+</div>
+<div class="flex items-center gap-2.5 sm:gap-3">
+<button class="h-8 px-3 rounded-full bg-secondary-fixed text-on-secondary-fixed flex items-center gap-1.5 border border-secondary-fixed-dim hover:bg-secondary hover:text-on-secondary transition-all duration-150 shadow-xs group">
+<span class="material-symbols-outlined text-[16px] text-secondary group-hover:text-on-secondary" data-icon="auto_awesome" style="font-variation-settings: 'FILL' 1;">auto_awesome</span>
+<span class="text-xs font-semibold">AI Insights</span>
+<span class="flex h-1.5 w-1.5 relative ml-0.5">
+<span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-secondary opacity-75"></span>
+<span class="relative inline-flex rounded-full h-1.5 w-1.5 bg-secondary"></span>
+</span>
+</button>
+<div class="relative">
+<button aria-label="Notifications" class="w-8 h-8 flex items-center justify-center rounded-lg border border-surface-container-high bg-surface-container-lowest text-on-surface-variant hover:bg-surface-container-low hover:text-on-surface transition-colors">
+<span class="material-symbols-outlined text-[18px]" data-icon="notifications">notifications</span>
+</button>
+<span class="absolute top-1 right-1 flex h-2 w-2">
+<span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-error opacity-75"></span>
+<span class="relative inline-flex rounded-full h-2 w-2 bg-error"></span>
+</span>
+</div>
+<a href="../profile/code.html" class="flex items-center gap-2.5 pl-3 border-l border-surface-container-high ml-1 hover:opacity-90 transition-all cursor-pointer group" title="Open User Profile & Financial Baseline">
+<div class="w-8 h-8 rounded-full bg-surface-container-high text-secondary flex items-center justify-center font-bold text-xs border border-secondary-fixed shadow-xs if-initials group-hover:bg-secondary group-hover:text-on-secondary transition-colors">AM</div>
+<div class="hidden md:flex flex-col text-left leading-tight">
+<div class="flex items-center gap-1">
+<span class="text-xs font-bold text-on-surface group-hover:text-secondary transition-colors if-display-name"></span>
+<span class="material-symbols-outlined text-[13px] text-outline group-hover:text-secondary transition-colors">arrow_outward</span>
+</div>
+<span class="text-[10px] text-outline">Executive Profile &amp; Baseline</span>
+</div>
+</a>
+</div>
+</div>
+</header>
+<!-- Main Executive Canvas Container (Fluid wide-span container) -->
+<main class="flex-1 w-full mx-auto px-6 md:px-8 py-5 space-y-5 max-w-7xl">
+<!-- Section Header & Status Ribbon (Audit Grade AAA removed as requested) -->
+<div class="flex flex-col md:flex-row md:items-center justify-between gap-3 pb-3 border-b border-surface-container-high">
+<div>
+<div class="flex items-center gap-2">
+<h1 class="font-headline-md text-2xl font-bold text-on-surface tracking-tight">Executive Wealth Overview</h1>
+<span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-xs font-medium bg-surface-container-low text-secondary border border-surface-container-high">
+<span class="w-1.5 h-1.5 rounded-full bg-secondary animate-pulse"></span>
+          Real-time Sync
+        </span>
+</div>
+<p class="text-xs text-on-surface-variant mt-0.5">Consolidated balance, liquid assets, debt leverage, and multi-year milestone feasibility index.</p>
+</div>
+<!-- Timeline & Monthly SIP Simulation Controls -->
+<div class="flex items-center gap-2 bg-surface-container-low border border-surface-container-high rounded-xl p-1.5 text-xs shadow-xs">
+  <span class="px-2 text-on-surface-variant font-medium flex items-center gap-1">
+    <span class="material-symbols-outlined text-[15px] text-secondary">schedule</span>
+    <span>Time:</span>
+  </span>
+  <span class="font-bold text-secondary px-2 border-r border-surface-container-high" id="hm-tracker-months">0 Mo</span>
+  <button type="button" onclick="window.IntelliFinance.advanceMonths(1)" class="px-2.5 py-1 rounded bg-secondary text-white font-semibold hover:bg-secondary-container transition-all flex items-center gap-1 shadow-xs" title="Fast-forward 1 month of SIP investments">
+    <span class="material-symbols-outlined text-[13px]">fast_forward</span>
+    <span>+1 Month</span>
+  </button>
+  <button type="button" onclick="window.IntelliFinance.advanceMonths(3)" class="px-2.5 py-1 rounded hover:bg-surface-container-lowest text-on-surface font-medium transition-colors" title="Fast-forward 3 months of SIP investments">
+    +3 Mo
+  </button>
+  <button type="button" onclick="window.IntelliFinance.resetSimulation()" class="px-2 py-1 text-outline hover:text-error transition-colors" title="Reset timeline simulation">
+    <span class="material-symbols-outlined text-[15px]">restart_alt</span>
+  </button>
+</div>
+</div>
+<!-- Dynamic New User Alert Banner (shown when baseline is $0) -->
+<div id="hm-new-user-banner" class="hidden p-4 rounded-xl bg-gradient-to-r from-secondary-fixed/50 via-surface-container-low to-secondary-fixed/20 border border-secondary-fixed-dim flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 shadow-xs">
+  <div class="flex items-center gap-3">
+    <div class="w-10 h-10 rounded-xl bg-secondary text-white flex items-center justify-center font-bold text-lg shadow-sm shrink-0">
+      <span class="material-symbols-outlined text-[20px]">flag</span>
+    </div>
+    <div>
+      <h3 class="font-headline-sm text-sm font-bold text-on-surface">Welcome! Your Financial Baseline is at $0.00</h3>
+      <p class="text-xs text-on-surface-variant mt-0.5">As a new user, all metrics are zeroed. Go to Profile &amp; Baseline to enter your income, expenses, and investment goals.</p>
+    </div>
+  </div>
+  <a href="../profile/code.html" class="px-3.5 py-2 rounded-lg bg-secondary text-white font-semibold text-xs hover:bg-secondary-container transition-all flex items-center gap-1.5 shadow-xs whitespace-nowrap">
+    <span class="material-symbols-outlined text-[15px]">tune</span>
+    <span>Configure Baseline in Profile</span>
+    <span class="material-symbols-outlined text-[14px]">arrow_forward</span>
+  </a>
+</div>
+<!-- 1. FINANCIAL OVERVIEW SUMMARY CARDS (KPI BENTO ROW - Compact Executive Figures) -->
+<section aria-label="Financial Health Overview" class="bg-surface-container-lowest border border-surface-container-high rounded-xl p-4 sm:p-5 shadow-xs flex flex-col md:flex-row gap-5 items-stretch justify-between relative overflow-hidden">
+<div class="flex flex-col justify-between md:w-5/12 border-b md:border-b-0 md:border-r border-surface-container-high pb-4 md:pb-0 md:pr-5">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<div class="w-8 h-8 rounded-lg bg-surface-container text-secondary flex items-center justify-center">
+<span class="material-symbols-outlined text-[19px]" data-icon="health_and_safety" style="font-variation-settings: 'FILL' 1;">health_and_safety</span>
+</div>
+<div>
+<h2 class="font-headline-sm text-sm font-bold text-on-surface">Financial Health</h2>
+<p class="text-[11px] text-outline">Comprehensive liquidity, debt &amp; resilience metrics</p>
+</div>
+</div>
+<span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-xs font-bold bg-surface-container-low text-on-tertiary-container border border-surface-container-high" id="hm-health-badge">
+<span class="w-2 h-2 rounded-full bg-on-tertiary-container" id="hm-health-dot"></span>
+<span id="hm-health-label">Good</span>
+</span>
+</div>
+<div class="my-3 p-3 bg-surface-container-low rounded-lg border border-surface-container-high flex items-center justify-between">
+<div>
+<div class="text-[10px] uppercase tracking-wider text-outline font-semibold">Health Score</div>
+<div class="text-3xl font-bold text-on-surface tracking-tight font-headline-md" id="hm-health-score">78 <span class="text-sm text-outline font-normal">/ 100</span></div>
+</div>
+<div class="text-right text-xs">
+<span class="text-on-tertiary-container font-semibold flex items-center justify-end gap-0.5" id="hm-health-peer">
+<span class="material-symbols-outlined text-[14px]" data-icon="trending_up">trending_up</span><span id="hm-health-peer-pts">+7 pts</span>
+</span>
+<span class="text-[10px] text-outline block" id="hm-health-peer-text">Above peer avg (71)</span>
+</div>
+</div>
+<div class="flex items-center justify-between text-xs">
+<span class="text-[11px] text-outline">Real-time sync with profile data</span>
+<a class="text-secondary font-semibold hover:underline text-xs flex items-center gap-1 cursor-pointer" href="../profile/code.html">
+<span class="">Edit Baseline in Profile →</span>
+</a>
+</div>
+</div>
+<div class="flex-1 flex flex-col justify-center space-y-2.5">
+<div>
+<div class="flex justify-between text-xs mb-1">
+<span class="text-on-surface font-medium">Savings</span>
+<span class="font-bold text-on-surface tabular-nums" id="hm-bar-savings-pct">80%</span>
+</div>
+<div class="w-full h-2 bg-surface-container rounded-full overflow-hidden">
+<div class="h-full bg-secondary rounded-full" id="hm-bar-savings" style="width: 80%"></div>
+</div>
+</div>
+<div>
+<div class="flex justify-between text-xs mb-1">
+<span class="text-on-surface font-medium">Spending</span>
+<span class="font-bold text-on-surface tabular-nums" id="hm-bar-spending-pct">70%</span>
+</div>
+<div class="w-full h-2 bg-surface-container rounded-full overflow-hidden">
+<div class="h-full bg-on-surface rounded-full" id="hm-bar-spending" style="width: 70%"></div>
+</div>
+</div>
+<div>
+<div class="flex justify-between text-xs mb-1">
+<span class="text-on-surface font-medium">Emergency</span>
+<span class="font-bold text-on-surface tabular-nums" id="hm-bar-emergency-pct">50%</span>
+</div>
+<div class="w-full h-2 bg-surface-container rounded-full overflow-hidden">
+<div class="h-full bg-on-tertiary-container rounded-full" id="hm-bar-emergency" style="width: 50%"></div>
+</div>
+</div>
+<div>
+<div class="flex justify-between text-xs mb-1">
+<span class="text-on-surface font-medium">Debt</span>
+<span class="font-bold text-on-surface tabular-nums" id="hm-bar-debt-pct">85%</span>
+</div>
+<div class="w-full h-2 bg-surface-container rounded-full overflow-hidden">
+<div class="h-full bg-primary-container rounded-full" id="hm-bar-debt" style="width: 85%"></div>
+</div>
+</div>
+</div>
+</section><section aria-label="Financial Overview Summary" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-3.5">
+<!-- Net Worth Card (Hero Tile) -->
+<div class="bg-surface-container-lowest border border-surface-container-high rounded-xl p-3.5 flex flex-col justify-between shadow-xs relative overflow-hidden group hover:border-secondary transition-all">
+<div class="absolute top-0 left-0 w-1 h-full bg-secondary"></div>
+<div class="flex items-start justify-between">
+<span class="text-[11px] uppercase tracking-wider text-outline font-medium">Total Net Worth</span>
+<span class="inline-flex items-center gap-0.5 px-1.5 py-0.5 rounded text-[11px] bg-surface-container-low text-on-tertiary-container font-semibold" id="hm-net-worth-badge">
+<span class="material-symbols-outlined text-[13px]" data-icon="account_balance_wallet">account_balance_wallet</span>
+          Baseline
+        </span>
+</div>
+<div class="my-2">
+<div class="text-2xl font-bold text-on-surface tracking-tight tabular-nums font-headline-md" id="hm-net-worth">$0<span class="text-xs text-outline font-normal">.00</span></div>
+<div class="text-xs text-on-surface-variant flex items-center gap-1.5 mt-0.5">
+<span class="font-mono text-outline text-[11px]" id="hm-net-worth-inr">₹0 equiv.</span>
+<span class="">•</span>
+<span class="text-on-tertiary-container font-medium text-[11px]" id="hm-net-worth-mom">+$0 this mo</span>
+</div>
+</div>
+<div class="pt-2 border-t border-surface-container-low flex items-center justify-between text-[11px] text-outline">
+<span id="hm-liquid-ratio-label">Liquid Ratio: 0%</span>
+<a class="text-secondary font-semibold hover:underline cursor-pointer" href="../profile/code.html#linked-portfolios">Deep Breakdown →</a>
+</div>
+</div>
+<!-- Total Monthly Inflow Card -->
+<div class="bg-surface-container-lowest border border-surface-container-high rounded-xl p-3.5 flex flex-col justify-between shadow-xs hover:border-surface-variant transition-all">
+<div class="flex items-start justify-between">
+<span class="text-[11px] uppercase tracking-wider text-outline font-medium">Total Income</span>
+<div class="w-6 h-6 rounded-md bg-surface-container-low text-on-tertiary-container flex items-center justify-center">
+<span class="material-symbols-outlined text-[16px]" data-icon="south_west">south_west</span>
+</div>
+</div>
+<div class="my-2">
+<div class="text-2xl font-bold text-on-surface tracking-tight tabular-nums font-headline-md" id="hm-total-income">$9,650<span class="text-xs text-outline font-normal">.00</span></div>
+<div class="text-xs text-on-surface-variant flex items-center gap-1 mt-0.5">
+<span class="font-mono text-outline text-[11px]" id="hm-income-inr">₹8,10,600 gross</span>
+<span class="text-on-tertiary-container font-medium text-[11px]">(100% realized)</span>
+</div>
+</div>
+<div class="pt-2 border-t border-surface-container-low flex items-center justify-between text-[11px]">
+<span class="text-outline" id="hm-income-breakdown">Base: $8,450 • Var: $1,200</span>
+<span class="inline-flex items-center text-on-tertiary-container font-medium">+1.8% vs avg</span>
+</div>
+</div>
+<!-- Monthly Expenses Card -->
+<div class="bg-surface-container-lowest border border-surface-container-high rounded-xl p-3.5 flex flex-col justify-between shadow-xs hover:border-surface-variant transition-all">
+<div class="flex items-start justify-between">
+<span class="text-[11px] uppercase tracking-wider text-outline font-medium">Monthly Expenses</span>
+<div class="w-6 h-6 rounded-md bg-surface-container-low text-on-surface-variant flex items-center justify-center">
+<span class="material-symbols-outlined text-[16px]" data-icon="north_east">north_east</span>
+</div>
+</div>
+<div class="my-2">
+<div class="text-2xl font-bold text-on-surface tracking-tight tabular-nums font-headline-md" id="hm-monthly-expenses">$3,820<span class="text-xs text-outline font-normal">.00</span></div>
+<div class="text-xs text-on-surface-variant flex items-center gap-1 mt-0.5">
+<span class="font-mono text-outline text-[11px]" id="hm-expenses-inr">₹3,20,880 spent</span>
+<span class="text-outline text-[11px]" id="hm-expenses-pct-income">• 39.6% of income</span>
+</div>
+</div>
+<div class="pt-2 border-t border-surface-container-low flex items-center justify-between text-[11px]">
+<span class="text-outline" id="hm-exp-essential-sub">Essential: $2,420</span>
+<span class="text-outline" id="hm-exp-discretionary-sub">Discretionary: $1,400</span>
+</div>
+</div>
+<!-- EMI & Active Loans Card -->
+<div class="bg-surface-container-lowest border border-surface-container-high rounded-xl p-3.5 flex flex-col justify-between shadow-xs hover:border-surface-variant transition-all">
+<div class="flex items-start justify-between">
+<span class="text-[11px] uppercase tracking-wider text-outline font-medium">EMI &amp; Debt Obligations</span>
+<span class="inline-flex items-center px-1.5 py-0.5 rounded text-[10px] bg-surface-container text-secondary font-semibold" id="hm-kpi-dti">
+          DTI: 9.8%
+        </span>
+</div>
+<div class="my-2">
+<div class="text-2xl font-bold text-on-surface tracking-tight tabular-nums font-headline-md" id="hm-emi-total">$950<span class="text-xs text-outline font-normal">.00</span></div>
+<div class="text-xs text-on-surface-variant flex items-center gap-1 mt-0.5">
+<span class="font-mono text-outline text-[11px]" id="hm-emi-inr">₹79,800/mo</span>
+<span class="text-outline text-[11px]" id="hm-emi-facilities">• 2 Active Facilities</span>
+</div>
+</div>
+<div class="pt-2 border-t border-surface-container-low flex items-center justify-between text-[11px]">
+<span class="text-outline" id="hm-emi-sub-auto">Auto: $450</span>
+<span class="text-outline" id="hm-emi-sub-mort">Mortgage: $500</span>
+</div>
+</div>
+<!-- Savings & Investments Card -->
+<div class="bg-surface-container-lowest border border-surface-container-high rounded-xl p-3.5 flex flex-col justify-between shadow-xs hover:border-surface-variant transition-all">
+<div class="flex items-start justify-between">
+<span class="text-[11px] uppercase tracking-wider text-outline font-medium">Total Investment Done</span>
+<div class="w-6 h-6 rounded-md bg-secondary-fixed text-on-secondary-fixed flex items-center justify-center">
+<span class="material-symbols-outlined text-[16px]" data-icon="account_balance">account_balance</span>
+</div>
+</div>
+<div class="my-2">
+<div class="text-2xl font-bold text-secondary tracking-tight tabular-nums font-headline-md" id="hm-total-investments">$445,240<span class="text-xs text-outline font-normal">.00</span></div>
+<div class="text-xs text-on-surface-variant flex items-center gap-1 mt-0.5">
+<span class="font-mono text-outline text-[11px]" id="hm-investments-inr">₹3,73,99,000</span>
+<span class="text-on-tertiary-container font-medium text-[11px]">• 12.4% ARR</span>
+</div>
+</div>
+<div class="pt-2 border-t border-surface-container-low flex items-center justify-between text-[11px]">
+<span class="text-outline" id="hm-kpi-sip">SIP: $2,100/mo</span>
+<span class="text-secondary font-medium" id="hm-kpi-liquid">Liquid: $60,830</span>
+</div>
+</div>
+</section>
+<!-- 2. CASH FLOW BALANCE BREAKDOWN (Visual Summary Bar) -->
+<section class="bg-surface-container-lowest border border-surface-container-high rounded-xl p-4 sm:p-5 shadow-xs">
+<div class="flex flex-col md:flex-row md:items-center justify-between gap-3 mb-3.5 pb-3 border-b border-surface-container-high">
+<div>
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px] text-secondary" data-icon="account_balance_wallet">account_balance_wallet</span>
+<h2 class="font-headline-sm text-base font-bold text-on-surface tracking-tight">Monthly Cashflow Structure</h2>
+<span class="px-2 py-0.5 rounded text-[11px] bg-surface-container font-semibold text-secondary">100% Allocated</span>
+</div>
+<p class="text-xs text-on-surface-variant mt-0.5">Holistic breakdown of monthly income baseline allocation across essential outlays, debt servicing, insurance safeguards, and wealth accumulation alongside net capital assets.</p>
+</div>
+<div class="flex items-center gap-3 bg-surface-container-low px-3 py-1.5 rounded-lg border border-surface-container-high self-start md:self-auto">
+<div class="text-right">
+<span class="text-[10px] text-outline uppercase tracking-wider block font-medium">Total Net Worth</span>
+<span class="text-sm font-bold text-on-surface tabular-nums" id="hm-cashflow-networth">$0<span class="text-[10px] text-outline font-normal">.00</span></span>
+</div>
+<div class="h-6 w-px bg-surface-container-high"></div>
+<div>
+<span class="text-[11px] text-on-tertiary-container font-semibold flex items-center gap-0.5" id="hm-cf-surplus-mom">
+<span class="material-symbols-outlined text-[13px]" data-icon="trending_up">trending_up</span>+$0 MoM
+          </span>
+<span class="text-[10px] text-outline block" id="hm-cf-liquid-ratio">Liquid: 0%</span>
+</div>
+</div>
+</div>
+<div class="mb-3.5">
+<div class="flex flex-wrap justify-between items-center text-xs mb-1.5 gap-2">
+<span class="font-semibold text-on-surface flex items-center gap-1.5 text-xs">
+<span class="material-symbols-outlined text-[15px] text-secondary" data-icon="donut_small">donut_small</span>
+          Income Allocation Partition (<span id="hm-cf-income-label">$9,650.00 Total Baseline</span>)
+        </span>
+<div class="flex items-center gap-3.5 flex-wrap text-xs text-on-surface-variant">
+<span class="flex items-center gap-1.5"><span class="w-2.5 h-2.5 rounded-sm bg-on-surface"></span><span id="hm-cf-legend-exp">Expenses (39.6%)</span></span>
+<span class="flex items-center gap-1.5"><span class="w-2.5 h-2.5 rounded-sm bg-primary-container"></span><span id="hm-cf-legend-emi">EMI / Loans (9.8%)</span></span>
+<span class="flex items-center gap-1.5"><span class="w-2.5 h-2.5 rounded-sm bg-on-tertiary-container"></span><span id="hm-cf-legend-ins">Insurance (4.4%)</span></span>
+<span class="flex items-center gap-1.5"><span class="w-2.5 h-2.5 rounded-sm bg-secondary"></span><span id="hm-cf-legend-sav">Savings &amp; Inv. (46.2%)</span></span>
+</div>
+</div>
+<div class="w-full h-3.5 rounded-lg bg-surface-container flex overflow-hidden p-0.5 gap-0.5 border border-surface-container-high">
+<div class="h-full bg-on-surface rounded-l transition-all" id="hm-cf-bar-exp" style="width: 39.6%" title="Monthly Expenses"></div>
+<div class="h-full bg-primary-container transition-all" id="hm-cf-bar-emi" style="width: 9.8%" title="EMI / Loans"></div>
+<div class="h-full bg-on-tertiary-container transition-all" id="hm-cf-bar-ins" style="width: 4.4%" title="Insurance"></div>
+<div class="h-full bg-secondary rounded-r transition-all" id="hm-cf-bar-sav" style="width: 46.2%" title="Investments / Savings"></div>
+</div>
+</div>
+<div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-3">
+<div class="p-3 rounded-lg bg-surface-container-low border border-surface-container-high flex flex-col justify-between">
+<div class="flex items-center justify-between">
+<span class="text-[10px] text-outline uppercase tracking-wider font-semibold">Monthly Expenses</span>
+<span class="px-1.5 py-0.5 rounded text-[10px] bg-surface-container font-bold text-on-surface tabular-nums" id="hm-cf-exp-pct">39.6%</span>
+</div>
+<div class="mt-1.5">
+<p class="text-base font-bold text-on-surface tabular-nums" id="hm-cf-exp-val">$3,820<span class="text-[11px] text-outline font-normal">.00</span></p>
+<div class="w-full h-1 bg-surface-container rounded-full overflow-hidden mt-1.5">
+<div class="h-full bg-on-surface rounded-full" id="hm-cf-mini-exp" style="width: 39.6%"></div>
+</div>
+<div class="flex items-center justify-between mt-1 text-[11px] text-outline">
+<span class="">Essential &amp; Lifestyle</span>
+<span class="font-semibold text-on-surface" id="hm-cf-exp-used">39.6% used</span>
+</div>
+</div>
+<div class="mt-2 pt-1.5 border-t border-surface-container-high flex items-center justify-between text-[11px]">
+<span class="text-outline">Essential Spend</span>
+<span class="font-mono text-on-surface" id="hm-cf-exp-essential">$2,420</span>
+</div>
+</div>
+<div class="p-3 rounded-lg bg-surface-container-low border border-surface-container-high flex flex-col justify-between">
+<div class="flex items-center justify-between">
+<span class="text-[10px] text-outline uppercase tracking-wider font-semibold">EMI / Loans</span>
+<span class="px-1.5 py-0.5 rounded text-[10px] bg-surface-container font-bold text-primary-container tabular-nums" id="hm-cf-emi-pct">9.8%</span>
+</div>
+<div class="mt-1.5">
+<p class="text-base font-bold text-on-surface tabular-nums" id="hm-cf-emi-val">$950<span class="text-[11px] text-outline font-normal">.00</span></p>
+<div class="w-full h-1 bg-surface-container rounded-full overflow-hidden mt-1.5">
+<div class="h-full bg-primary-container rounded-full" id="hm-cf-mini-emi" style="width: 9.8%"></div>
+</div>
+<div class="flex items-center justify-between mt-1 text-[11px] text-outline">
+<span class="">Debt Service Ratio</span>
+<span class="font-semibold text-primary-container" id="hm-cf-emi-used">9.8% used</span>
+</div>
+</div>
+<div class="mt-2 pt-1.5 border-t border-surface-container-high flex items-center justify-between text-[11px]">
+<span class="text-outline">Active Facilities</span>
+<span class="font-mono text-on-surface" id="hm-cf-emi-sub-fac">2 facilities</span>
+</div>
+</div>
+<div class="p-3 rounded-lg bg-surface-container-low border border-surface-container-high flex flex-col justify-between">
+<div class="flex items-center justify-between">
+<span class="text-[10px] text-outline uppercase tracking-wider font-semibold">Insurance</span>
+<span class="px-1.5 py-0.5 rounded text-[10px] bg-surface-container font-bold text-on-tertiary-container tabular-nums" id="hm-cf-ins-pct">4.4%</span>
+</div>
+<div class="mt-1.5">
+<p class="text-base font-bold text-on-tertiary-container tabular-nums" id="hm-cf-ins-val">$420<span class="text-[11px] text-outline font-normal">.00</span></p>
+<div class="w-full h-1 bg-surface-container rounded-full overflow-hidden mt-1.5">
+<div class="h-full bg-on-tertiary-container rounded-full" id="hm-cf-mini-ins" style="width: 4.4%"></div>
+</div>
+<div class="flex items-center justify-between mt-1 text-[11px] text-outline">
+<span class="">Health &amp; Term Life</span>
+<span class="font-semibold text-on-tertiary-container" id="hm-cf-ins-used">4.4% used</span>
+</div>
+</div>
+<div class="mt-2 pt-1.5 border-t border-surface-container-high flex items-center justify-between text-[11px]">
+<span class="text-outline">Active Policies</span>
+<span class="font-semibold text-on-tertiary-container">Health &amp; Term (2)</span>
+</div>
+</div>
+<div class="p-3 rounded-lg bg-surface-container-low border border-surface-container-high flex flex-col justify-between">
+<div class="flex items-center justify-between">
+<span class="text-[10px] text-outline uppercase tracking-wider font-semibold">Investments / Savings</span>
+<span class="px-1.5 py-0.5 rounded text-[10px] bg-secondary-fixed text-on-secondary-fixed font-bold tabular-nums" id="hm-cf-sav-pct">21.8%</span>
+</div>
+<div class="mt-1.5">
+<p class="text-base font-bold text-secondary tabular-nums" id="hm-cf-sav-val">$2,100<span class="text-[11px] text-outline font-normal">.00</span></p>
+<div class="w-full h-1 bg-surface-container rounded-full overflow-hidden mt-1.5">
+<div class="h-full bg-secondary rounded-full" id="hm-cf-mini-sav" style="width: 21.8%"></div>
+</div>
+<div class="flex items-center justify-between mt-1 text-[11px] text-outline">
+<span class="">Wealth Accumulation</span>
+<span class="font-semibold text-secondary" id="hm-cf-sav-used">21.8% SIP</span>
+</div>
+</div>
+<div class="mt-2 pt-1.5 border-t border-surface-container-high flex items-center justify-between text-[11px]">
+<span class="text-outline">Auto-SIP Active</span>
+<span class="font-semibold text-secondary" id="hm-cf-sip-sub">$2,100/mo</span>
+</div>
+</div>
+<div class="p-3 rounded-lg bg-surface-container-low border border-surface-container-high flex flex-col justify-between">
+<div class="flex items-center justify-between">
+<span class="text-[10px] text-outline uppercase tracking-wider font-semibold">Total Net Worth</span>
+<div class="w-5 h-5 rounded bg-surface-container flex items-center justify-center text-on-surface">
+<span class="material-symbols-outlined text-[14px]" data-icon="account_balance">account_balance</span>
+</div>
+</div>
+<div class="mt-1.5">
+<p class="text-base font-bold text-on-surface tabular-nums" id="hm-cf-nw-val">$0<span class="text-[11px] text-outline font-normal">.00</span></p>
+<div class="flex items-center justify-between mt-1 text-[11px]">
+<span class="text-outline">Capital Base</span>
+<span class="font-semibold text-secondary" id="hm-cf-multiple">0.0x Annual</span>
+</div>
+</div>
+<div class="mt-2 pt-1.5 border-t border-surface-container-high flex items-center justify-between text-[11px]">
+<span class="text-outline">Liquid Ratio</span>
+<span class="font-semibold text-on-surface" id="hm-cf-liquid-sub">0%</span>
+</div>
+</div>
+</div>
+</section>
+<!-- 3. FINANCIAL GOALS SECTION (Compact Executive Goal Grid) -->
+<section aria-label="Financial Goals Section" class="space-y-3.5">
+<div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+<div>
+<div class="flex items-center gap-2">
+<h2 class="font-headline-md text-xl font-bold text-on-surface">Target Financial Goals &amp; Milestones</h2>
+<span class="px-2 py-0.5 rounded text-[11px] bg-surface-container font-semibold text-secondary" id="hm-goals-count">4 Active Projects</span>
+</div>
+<p class="text-xs text-on-surface-variant">Deterministic timeline projections driven by compound yield, inflation-adjustment, and monthly SIP execution.</p>
+</div>
+<div class="flex items-center gap-2">
+<a href="../profile/code.html#goals-milestones" class="h-8 px-3 rounded-md bg-surface-container-lowest border border-surface-container-high text-on-surface text-xs font-medium hover:bg-surface-container-low transition-colors flex items-center gap-1">
+<span class="material-symbols-outlined text-[15px] text-outline" data-icon="tune">tune</span>
+<span class="">Adjust Goals</span>
+</a>
+<a href="../profile/code.html#goals-milestones" class="h-8 px-3 rounded-md bg-primary text-on-primary text-xs font-semibold hover:bg-primary-container transition-colors flex items-center gap-1 shadow-xs">
+<span class="material-symbols-outlined text-[15px]" data-icon="add">add</span>
+<span class="">+ New Goal in Profile</span>
+</a>
+</div>
+</div>
+<!-- Interactive Monthly Progress & Time Tracker Card on Homepage -->
+<div id="hm-monthly-tracker" class="mb-4 flex flex-col sm:flex-row sm:items-center justify-between gap-3.5 p-3.5 sm:p-4 rounded-xl border border-secondary/30 bg-gradient-to-r from-secondary/10 via-surface-container-low to-surface-container-lowest shadow-xs">
+  <div class="flex items-center gap-3">
+    <div class="w-9 h-9 rounded-lg bg-secondary text-white flex items-center justify-center flex-shrink-0 shadow-xs">
+      <span class="material-symbols-outlined text-[20px]">timelapse</span>
+    </div>
+    <div>
+      <div class="flex items-center gap-2">
+        <span class="text-xs font-bold text-on-surface">Monthly Timeline Tracker</span>
+        <span class="px-2 py-0.5 rounded text-[10px] bg-secondary-fixed text-on-secondary-fixed font-bold" id="hm-tracker-badge">Month 0 • Active</span>
+      </div>
+      <p class="text-[11px] text-on-surface-variant mt-0.5" id="hm-tracker-desc">
+        Tracking active contributions: monthly SIP investments auto-accrue to goals.
+      </p>
+    </div>
+  </div>
+  <div class="flex items-center gap-1.5 self-end sm:self-center">
+    <span class="text-xs text-on-surface-variant mr-1">Fast-Forward:</span>
+    <button type="button" onclick="window.IntelliFinance.advanceMonths(1); if(window.renderDashboard) window.renderDashboard();" class="px-2.5 py-1 rounded bg-secondary text-white text-xs font-semibold hover:opacity-90 transition-all flex items-center gap-1 shadow-xs" title="Advance 1 month and deploy monthly SIP">
+      <span class="material-symbols-outlined text-[13px]">fast_forward</span>
+      <span>+1 Mo</span>
+    </button>
+    <button type="button" onclick="window.IntelliFinance.advanceMonths(3); if(window.renderDashboard) window.renderDashboard();" class="px-2 py-1 rounded bg-surface-container text-on-surface hover:bg-surface-container-high text-xs font-medium transition-colors" title="Advance 3 months">
+      +3 Mo
+    </button>
+    <button type="button" onclick="window.IntelliFinance.resetSimulation(); if(window.renderDashboard) window.renderDashboard();" class="p-1 rounded text-outline hover:text-error transition-colors" title="Reset timeline to start">
+      <span class="material-symbols-outlined text-[15px]">restart_alt</span>
+    </button>
+  </div>
+</div>
+<!-- Goals 4-Column Grid (dynamically rendered by JS engine) -->
+<div class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-3.5" id="hm-goals-grid">
+<!-- Goals injected by render engine -->
+</div>
+</section>
+<!-- 4. LOWER SECTION: DEDICATED FINANCIAL HEALTH & FINANCIAL ALERTS (Replacing previous recent ledgers) -->
+<section class="grid grid-cols-1 lg:grid-cols-12 gap-3.5">
+<!-- Financial Health Card (5 Columns) -->
+
+<!-- Financial Alerts Feature Card (7 Columns) -->
+<div class="bg-surface-container-lowest border border-surface-container-high rounded-xl p-4 sm:p-5 shadow-xs flex flex-col justify-between lg:col-span-12">
+<div>
+<div class="flex items-center justify-between pb-3 border-b border-surface-container-high">
+<div class="flex items-center gap-2">
+<div class="w-8 h-8 rounded-lg bg-surface-container text-secondary flex items-center justify-center">
+<span class="material-symbols-outlined text-[19px]" data-icon="notifications_active" style="font-variation-settings: 'FILL' 1;">notifications_active</span>
+</div>
+<div>
+<h2 class="font-headline-sm text-sm font-bold text-on-surface">Financial Alerts</h2>
+<p class="text-[11px] text-outline">Actionable smart triggers and critical fiscal milestones</p>
+</div>
+</div>
+<span class="px-2 py-0.5 rounded text-[11px] bg-surface-container font-semibold text-secondary" id="hm-alerts-count">3 Active Triggers</span>
+</div>
+<div class="mt-3 space-y-2.5" id="hm-alerts-container">
+<!-- High Severity Alert -->
+<div class="p-3 rounded-lg border border-surface-container-high bg-surface-container-low hover:border-secondary transition-all flex flex-col sm:flex-row sm:items-center justify-between gap-2.5">
+<div class="flex items-start gap-2.5 flex-1">
+<span class="px-2 py-0.5 rounded text-[10px] font-bold uppercase tracking-wider bg-error text-on-error flex-shrink-0 mt-0.5">High</span>
+<div>
+<p class="text-xs font-bold text-on-surface leading-snug" id="hm-alert-1-title">Upcoming Loan EMI due in 3 days: ₹79,800 ($950) auto-debit scheduled</p>
+<p class="text-[11px] text-outline mt-0.5" id="hm-alert-1-sub">Active debt facilities • Liquid reserve balance ($60,830 avail.) verified sufficient</p>
+</div>
+</div>
+<div class="flex items-center gap-1.5 self-end sm:self-auto flex-shrink-0">
+<a href="../profile/code.html#personal-details" class="px-2.5 py-1 bg-secondary text-on-secondary rounded text-[11px] font-semibold hover:bg-secondary-container transition-colors">Review</a>
+<button class="px-2 py-1 bg-surface-container border border-surface-container-high text-on-surface-variant rounded text-[11px] hover:bg-surface-container-lowest transition-colors" onclick="this.closest('.p-3').remove()">Dismiss</button>
+</div>
+</div>
+<!-- Warning Severity Alert -->
+<div class="p-3 rounded-lg border border-surface-container-high bg-surface-container-lowest hover:border-surface-variant transition-all flex flex-col sm:flex-row sm:items-center justify-between gap-2.5">
+<div class="flex items-start gap-2.5 flex-1">
+<span class="px-2 py-0.5 rounded text-[10px] font-bold uppercase tracking-wider bg-secondary-fixed text-on-secondary-fixed flex-shrink-0 mt-0.5">Warning</span>
+<div>
+<p class="text-xs font-bold text-on-surface leading-snug" id="hm-alert-2-title">Dining &amp; Lifestyle spend reached 88% of monthly limit</p>
+<p class="text-[11px] text-outline mt-0.5" id="hm-alert-2-sub">$1,232 of $1,400 monthly discretionary envelope utilized with 6 days remaining</p>
+</div>
+</div>
+<div class="flex items-center gap-1.5 self-end sm:self-auto flex-shrink-0">
+<a href="../profile/code.html#personal-details" class="px-2.5 py-1 bg-surface-container border border-surface-container-high text-on-surface rounded text-[11px] font-semibold hover:bg-surface-container-low transition-colors">Adjust Cap</a>
+<button class="px-2 py-1 text-outline hover:text-on-surface rounded text-[11px] transition-colors" onclick="this.closest('.p-3').remove()">Dismiss</button>
+</div>
+</div>
+<!-- Opportunity / Info Alert -->
+<div class="p-3 rounded-lg border border-surface-container-high bg-surface-container-lowest hover:border-surface-variant transition-all flex flex-col sm:flex-row sm:items-center justify-between gap-2.5">
+<div class="flex items-start gap-2.5 flex-1">
+<span class="px-2 py-0.5 rounded text-[10px] font-bold uppercase tracking-wider bg-surface-container text-secondary flex-shrink-0 mt-0.5">Info</span>
+<div>
+<p class="text-xs font-bold text-on-surface leading-snug" id="hm-alert-3-title">Emergency Fund 6-Month Buffer Status</p>
+<p class="text-[11px] text-outline mt-0.5" id="hm-alert-3-sub">Emergency target $25,000 is 100% funded ($25,000) • High-yield reserve optimal</p>
+</div>
+</div>
+<div class="flex items-center gap-1.5 self-end sm:self-auto flex-shrink-0">
+<a href="../profile/code.html#linked-portfolios" class="px-2.5 py-1 bg-surface-container border border-surface-container-high text-on-surface rounded text-[11px] font-semibold hover:bg-surface-container-low transition-colors">Details</a>
+<button class="px-2 py-1 text-outline hover:text-on-surface rounded text-[11px] transition-colors" onclick="this.closest('.p-3').remove()">Dismiss</button>
+</div>
+</div>
+</div>
+</div>
+<div class="mt-4 pt-3 border-t border-surface-container-high flex items-center justify-between text-xs text-outline">
+<span class="flex items-center gap-1 text-[11px]">
+<span class="material-symbols-outlined text-[15px] text-on-tertiary-container" data-icon="verified_user">verified_user</span>
+          Real-time notification engine active
+        </span>
+<a class="text-secondary font-semibold hover:underline text-[11px] cursor-pointer" href="../profile/code.html">Manage Alert Rules in Profile →</a>
+</div>
+</div>
+</section>
+</main>
+<!-- Executive Institutional Footer Bar -->
+
+<!-- Interactive Sidebar Script -->
+<script>
+  (function() {
+    const sidebar = document.getElementById('collapsibleSidebar');
+    const backdrop = document.getElementById('sidebarBackdrop');
+    const openBtn = document.getElementById('openSidebarBtn');
+    const closeBtn = document.getElementById('closeSidebarBtn');
+
+    function openSidebar() {
+      sidebar.classList.remove('-translate-x-full');
+      sidebar.classList.add('translate-x-0');
+      backdrop.classList.remove('opacity-0', 'pointer-events-none');
+      backdrop.classList.add('opacity-100', 'pointer-events-auto');
+      document.body.classList.add('overflow-hidden');
+    }
+
+    function closeSidebar() {
+      sidebar.classList.remove('translate-x-0');
+      sidebar.classList.add('-translate-x-full');
+      backdrop.classList.remove('opacity-100', 'pointer-events-auto');
+      backdrop.classList.add('opacity-0', 'pointer-events-none');
+      document.body.classList.remove('overflow-hidden');
+    }
+
+    if (openBtn) {
+      openBtn.addEventListener('click', function(e) {
+        e.stopPropagation();
+        if (sidebar.classList.contains('-translate-x-full')) {
+          openSidebar();
+        } else {
+          closeSidebar();
+        }
+      });
+    }
+
+    if (closeBtn) {
+      closeBtn.addEventListener('click', closeSidebar);
+    }
+
+    if (backdrop) {
+      backdrop.addEventListener('click', closeSidebar);
+    }
+
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape' && !sidebar.classList.contains('-translate-x-full')) {
+        closeSidebar();
+      }
+    });
+  })();
+</script>
+
+<!-- ═══════════════════════════════════════════════════════════════════════
+  IntelliFinance – Homepage Data Render Engine
+  Reads profile data from localStorage (saved by the Profile page)
+  and dynamically populates all KPI cards, bars, goals grid, and identity.
+════════════════════════════════════════════════════════════════════════ -->
+<script>
+(function () {
+  const { loadProfile, fmtCurrency, fmtINR, pct } = window.IntelliFinance;
+
+  function setText(id, val) {
+    const el = document.getElementById(id);
+    if (el) el.textContent = val;
+  }
+  function setHtml(id, val) {
+    const el = document.getElementById(id);
+    if (el) el.innerHTML = val;
+  }
+  function setWidth(id, pctVal) {
+    const el = document.getElementById(id);
+    if (el) el.style.width = Math.min(100, Math.max(0, pctVal)) + '%';
+  }
+  function setTextAll(sel, val) {
+    document.querySelectorAll(sel).forEach(el => el.textContent = val);
+  }
+
+  function fmt(val) {
+    const num = Number(val) || 0;
+    const parts = num.toFixed(2).split('.');
+    return '$' + Number(parts[0]).toLocaleString('en-US') +
+           '<span class="text-xs text-outline font-normal">.' + parts[1] + '</span>';
+  }
+
+  function renderDashboard() {
+    const p = loadProfile();
+
+    /* ── Identity ── */
+    const name = (p.displayName || p.fullName || '').trim() || (p.isNewUser ? 'New User' : 'User');
+    setTextAll('.if-display-name', name);
+    setTextAll('.if-initials',     p.initials || (p.isNewUser ? 'NU' : 'U'));
+
+    /* ── Health Score & Comparison ── */
+    const hs = p.isNewUser ? (p.healthScore || 0) : (p.healthScore || 78);
+    if (hs > 0) {
+      setHtml('hm-health-score', hs + ' <span class="text-sm text-outline font-normal">/ 100</span>');
+      const badgeLabel = hs >= 80 ? 'Optimal' : hs >= 70 ? 'Good' : hs >= 50 ? 'Fair' : 'Attention';
+      setText('hm-health-label', badgeLabel);
+    } else {
+      setHtml('hm-health-score', '— <span class="text-sm text-outline font-normal">/ 100</span>');
+      setText('hm-health-label', 'Setup Profile');
+    }
+    const peerDiff = hs - 71;
+    setText('hm-health-peer-pts', (peerDiff >= 0 ? '+' : '') + peerDiff + ' pts');
+    setText('hm-health-peer-text', (peerDiff >= 0 ? 'Above' : 'Below') + ' peer avg (71)');
+
+    /* ── Timeline Simulation Month Counter ── */
+    setText('hm-tracker-months', (p.simulatedMonths || 0) + ' Mo');
+
+    /* ── New User Setup Banner Toggle ── */
+    const newBanner = document.getElementById('hm-new-user-banner');
+    if (newBanner) {
+      if (p.isNewUser && (p.totalInflow === 0 && p.netWorth === 0)) {
+        newBanner.classList.remove('hidden');
+      } else {
+        newBanner.classList.add('hidden');
+      }
+    }
+
+    const ti = p.totalInflow || 0;
+    const surplus  = p.netSurplus || 0;
+    const savPct   = ti > 0 ? Math.min(100, Math.max(0, Math.round((surplus / ti) * 100))) : 0;
+    const spendPct = ti > 0 ? Math.min(100, Math.max(0, Math.round(((p.essentialExpenses + p.discretionary) / ti) * 100))) : 0;
+    const emergPct = p.emergencyTarget > 0 ? Math.min(100, Math.round((p.emergencyFunded / p.emergencyTarget) * 100)) : (p.isNewUser ? 0 : 100);
+    const debtBar  = ti > 0 ? Math.min(100, Math.round(((p.dtiRatio || 0) / 40) * 100)) : 0;
+
+    setText('hm-bar-savings-pct', savPct + '%');     setWidth('hm-bar-savings',  savPct);
+    setText('hm-bar-spending-pct', spendPct + '%');   setWidth('hm-bar-spending', spendPct);
+    setText('hm-bar-emergency-pct', emergPct + '%'); setWidth('hm-bar-emergency', emergPct);
+    setText('hm-bar-debt-pct', (p.dtiRatio || 0) + '%'); setWidth('hm-bar-debt', debtBar);
+
+    /* ── 5 KPI Bento Cards ── */
+    // 1. Net Worth
+    setHtml('hm-net-worth', fmt(p.netWorth));
+    setText('hm-net-worth-inr', fmtINR(p.netWorth) + ' equiv.');
+    setText('hm-net-worth-mom', (surplus >= 0 ? '+$' : '-$') + Math.abs(surplus).toLocaleString('en-US', {minimumFractionDigits:0, maximumFractionDigits:0}) + ' this mo surplus');
+    setText('hm-liquid-ratio-label', 'Liquid Ratio: ' + (p.liquidRatio || 0) + '%');
+    const nwBadge = document.getElementById('hm-net-worth-badge');
+    if (nwBadge) {
+      if (p.netWorth > 0 && surplus > 0) {
+        const momGrowth = Math.min(100, ((surplus / p.netWorth) * 100)).toFixed(1);
+        nwBadge.innerHTML = `<span class="material-symbols-outlined text-[13px]">trending_up</span> +${momGrowth}% MoM`;
+      } else {
+        nwBadge.innerHTML = `<span class="material-symbols-outlined text-[13px]">account_balance_wallet</span> Baseline`;
+      }
+    }
+
+    // 2. Total Inflow
+    setHtml('hm-total-income', fmt(p.totalInflow));
+    setText('hm-income-inr', fmtINR(p.totalInflow) + ' gross');
+    setText('hm-income-breakdown', 'Base: $' + Number(p.baseSalary || 0).toLocaleString() + (p.sipMonthly > 0 ? ' • SIP: $' + Number(p.sipMonthly).toLocaleString() + '/mo' : ''));
+
+    // 3. Monthly Expenses
+    const totalExp = (p.essentialExpenses || 0) + (p.discretionary || 0);
+    setHtml('hm-monthly-expenses', fmt(totalExp));
+    setText('hm-expenses-inr', fmtINR(totalExp) + ' spent');
+    const expPctVal = +((totalExp / ti) * 100).toFixed(1);
+    setText('hm-expenses-pct-income', '• ' + expPctVal + '% of income');
+    setText('hm-exp-essential-sub', 'Essential: $' + Number(p.essentialExpenses || 0).toLocaleString());
+    setText('hm-exp-discretionary-sub', 'Discretionary: $' + Number(p.discretionary || 0).toLocaleString());
+
+    // 4. EMI & Debt Obligations
+    setHtml('hm-emi-total', fmt(p.emiTotal));
+    setText('hm-kpi-dti', 'DTI: ' + (p.dtiRatio || 0) + '%');
+    setText('hm-emi-inr', fmtINR(p.emiTotal) + '/mo');
+
+    // 5. Total Investments Done
+    setHtml('hm-total-investments', fmt(p.totalInvestments));
+    setText('hm-investments-inr', fmtINR(p.totalInvestments));
+    setText('hm-kpi-sip', 'SIP: $' + Number(p.sipMonthly || 0).toLocaleString() + '/mo');
+    setText('hm-kpi-liquid', 'Liquid: $' + Number(p.liquidCash || 0).toLocaleString());
+
+    /* ── Cashflow Allocation Section ── */
+    setHtml('hm-cashflow-networth', fmt(p.netWorth));
+    setText('hm-cf-surplus-mom', (surplus >= 0 ? '+$' : '-$') + Math.abs(surplus).toLocaleString('en-US', {minimumFractionDigits:0, maximumFractionDigits:0}) + ' MoM');
+    setText('hm-cf-liquid-ratio', 'Liquid: ' + (p.liquidRatio || 0) + '%');
+    setText('hm-cf-income-label', fmtCurrency(ti) + ' Total Baseline');
+
+    const emiPctVal = +(((p.emiTotal || 0) / ti) * 100).toFixed(1);
+    const insPctVal = +(((p.insurancePremium || 0) / ti) * 100).toFixed(1);
+    const sipPctVal = +(((p.sipMonthly || 0) / ti) * 100).toFixed(1);
+
+    setText('hm-cf-legend-exp', 'Expenses (' + expPctVal + '%)');
+    setText('hm-cf-legend-emi', 'EMI / Loans (' + emiPctVal + '%)');
+    setText('hm-cf-legend-ins', 'Insurance (' + insPctVal + '%)');
+    setText('hm-cf-legend-sav', 'Savings & Inv. (' + sipPctVal + '%)');
+
+    setWidth('hm-cf-bar-exp', expPctVal);
+    setWidth('hm-cf-bar-emi', emiPctVal);
+    setWidth('hm-cf-bar-ins', insPctVal);
+    setWidth('hm-cf-bar-sav', sipPctVal);
+
+    function cfCard(valId, pctId, widId, val, pctNum) {
+      setText(valId, '$' + Number(val).toLocaleString('en-US', {minimumFractionDigits:2, maximumFractionDigits:2}));
+      setText(pctId, pctNum + '%');
+      setWidth(widId, pctNum);
+    }
+    cfCard('hm-cf-exp-val','hm-cf-exp-pct','hm-cf-mini-exp', totalExp, expPctVal);
+    setText('hm-cf-exp-used', expPctVal + '% used');
+    setText('hm-cf-exp-essential', '$' + Number(p.essentialExpenses || 0).toLocaleString());
+
+    cfCard('hm-cf-emi-val','hm-cf-emi-pct','hm-cf-mini-emi', p.emiTotal || 0, emiPctVal);
+    setText('hm-cf-emi-used', (p.dtiRatio || 0) + '% used');
+
+    cfCard('hm-cf-ins-val','hm-cf-ins-pct','hm-cf-mini-ins', p.insurancePremium || 0, insPctVal);
+    setText('hm-cf-ins-used', insPctVal + '% used');
+
+    cfCard('hm-cf-sav-val','hm-cf-sav-pct','hm-cf-mini-sav', p.sipMonthly || 0, sipPctVal);
+    setText('hm-cf-sav-used', sipPctVal + '% SIP');
+    setText('hm-cf-sip-sub', '$' + Number(p.sipMonthly || 0).toLocaleString() + '/mo');
+
+    setText('hm-cf-nw-val', '$' + Number(p.netWorth || 0).toLocaleString('en-US', {minimumFractionDigits:2, maximumFractionDigits:2}));
+    const annualMultiple = ti > 0 ? (p.netWorth / (ti * 12)).toFixed(1) : '0.0';
+    setText('hm-cf-multiple', annualMultiple + 'x Annual');
+    setText('hm-cf-liquid-sub', (p.liquidRatio || 0) + '%');
+
+    // Sidebar surplus
+    setText('hm-surplus-float', fmtCurrency(surplus, 0));
+
+    /* ── Goals Grid ── */
+    const goals = p.goals || [];
+    setText('hm-goals-count', goals.length + ' Active Goals');
+    renderGoals(goals);
+
+    /* ── Financial Alerts ── */
+    renderAlerts(p);
+  }
+
+  function renderGoals(goals) {
+    const container = document.getElementById('hm-goals-grid');
+    if (!container) return;
+
+    // Update Tracker badge & desc
+    const badgeEl = document.getElementById('hm-tracker-badge');
+    const descEl  = document.getElementById('hm-tracker-desc');
+    const p       = window.IntelliFinance.loadProfile();
+    const elapsed = window.IntelliFinance.getElapsedMonths ? window.IntelliFinance.getElapsedMonths(p) : 0;
+    const age     = window.IntelliFinance.accountAge ? window.IntelliFinance.accountAge(p) : 'Day 1';
+    if (badgeEl) badgeEl.textContent = `Month ${elapsed} • Active`;
+    if (descEl) {
+      const sip = Number(p.sipMonthly) || 0;
+      descEl.innerHTML = `Active for <strong class="text-on-surface">${age || 'Day 1'}</strong>. Monthly SIP of <strong class="text-secondary">${fmtCurrency(sip, 0)}/mo</strong> systematically auto-accrues into goals.`;
+    }
+
+    if (!goals || goals.length === 0) {
+      container.innerHTML = `
+      <div class="col-span-full p-8 border border-dashed border-secondary/30 rounded-xl text-center bg-surface-container-lowest space-y-3">
+        <div class="w-12 h-12 rounded-full bg-secondary/10 text-secondary mx-auto flex items-center justify-center">
+          <span class="material-symbols-outlined text-[24px]">flag</span>
+        </div>
+        <div>
+          <h3 class="font-headline-sm text-sm font-bold text-on-surface">No Active Financial Goals Yet</h3>
+          <p class="text-xs text-on-surface-variant max-w-md mx-auto mt-0.5">Set a goal (e.g. Target: $10,000, Monthly Investment: $1,000) in your Profile to watch it automatically grow each month!</p>
+        </div>
+        <a href="../profile/code.html#goals-milestones" class="inline-flex items-center gap-1.5 px-4 py-2 rounded-lg bg-secondary text-white text-xs font-semibold hover:opacity-90 transition-opacity shadow-xs">
+          <span class="material-symbols-outlined text-[16px]">add_task</span>
+          <span>Set Up Your Goals in Profile</span>
+        </a>
+      </div>`;
+      return;
+    }
+
+    const barColors = ['bg-secondary','bg-primary-container','bg-on-tertiary-container','bg-on-surface'];
+    const txtColors = ['text-secondary','text-primary-container','text-on-tertiary-container','text-on-surface'];
+
+    container.innerHTML = goals.map((g, i) => {
+      const target = Number(g.target) || 1;
+      const current = Number(g.current) || 0;
+      const sip = Number(g.sipCurrent) || Number(g.sipRequired) || 0;
+      const prog = Math.min(100, Math.max(0, ((current / target) * 100))).toFixed(1);
+      const done = current >= target;
+      const bc   = barColors[i % barColors.length];
+      const tc   = txtColors[i % txtColors.length];
+      const remAmount = Math.max(0, target - current);
+      const remMonths = sip > 0 ? Math.ceil(remAmount / sip) : 0;
+      const timelineText = done ? 'Vault Locked' : (remMonths > 0 ? `${remMonths} mo remaining` : g.deadline || 'In Progress');
+
+      return `
+      <div class="bg-surface-container-lowest border border-surface-container-high rounded-xl p-3.5 flex flex-col justify-between shadow-xs hover:border-secondary hover:shadow-sm transition-all group">
+        <div>
+          <div class="flex items-start justify-between">
+            <div class="w-8 h-8 rounded-lg bg-surface-container flex items-center justify-center ${tc}">
+              <span class="material-symbols-outlined text-[18px]" style="font-variation-settings:'FILL' 1">${g.icon || 'savings'}</span>
+            </div>
+            <span class="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[10px] bg-surface-container-low ${done ? 'text-on-tertiary-container' : 'text-secondary'} font-semibold border border-surface-container-high">
+              <span class="material-symbols-outlined text-[12px]">${done ? 'check_circle' : 'verified'}</span>
+              Score: ${g.score || 85} (${g.scoreLabel || 'Optimal'})
+            </span>
+          </div>
+          <div class="mt-3">
+            <h3 class="font-headline-sm text-sm font-bold text-on-surface leading-tight">${g.label}</h3>
+            <p class="text-[11px] text-outline mt-0.5">${g.description || 'Monthly accumulation'}</p>
+          </div>
+          <div class="mt-3 space-y-1.5">
+            <div class="flex justify-between items-baseline">
+              <span class="text-sm font-bold text-on-surface">${fmtCurrency(current, 0)}</span>
+              <span class="text-[11px] text-outline">Target: ${fmtCurrency(target, 0)}</span>
+            </div>
+            <div class="w-full h-2 bg-surface-container rounded-full overflow-hidden">
+              <div class="h-full ${bc} rounded-full transition-all duration-500" style="width:${prog}%"></div>
+            </div>
+            <div class="flex justify-between text-[11px] text-outline pt-0.5">
+              <span class="font-semibold ${tc}">${prog}% ${done ? 'Completed' : 'Achieved'}</span>
+              <span>${timelineText}</span>
+            </div>
+          </div>
+        </div>
+        <div class="mt-4 pt-2.5 border-t border-surface-container-low space-y-1.5">
+          <div class="flex justify-between text-xs">
+            <span class="text-outline">Monthly SIP:</span>
+            <span class="font-semibold text-on-surface">${fmtCurrency(sip, 0)} /mo</span>
+          </div>
+          <div class="flex justify-between text-xs">
+            <span class="text-outline">Accumulation Status:</span>
+            <span class="font-semibold ${done ? 'text-on-tertiary-container' : tc}">${done ? 'Goal Reached!' : fmtCurrency(current, 0) + ' of ' + fmtCurrency(target, 0)}</span>
+          </div>
+          <a href="../profile/code.html#goals-milestones" class="w-full mt-1.5 h-7 rounded-md flex items-center justify-center gap-1 ${done ? 'bg-surface-container-low border border-surface-container-high text-on-surface text-xs font-medium' : 'bg-secondary text-on-secondary text-xs font-semibold'} hover:opacity-85 transition-colors">
+            <span class="material-symbols-outlined text-[13px]">tune</span>
+            <span>${done ? 'View in Profile' : 'Adjust Goal in Profile'}</span>
+          </a>
+        </div>
+      </div>`;
+    }).join('');
+  }
+
+  function renderAlerts(p) {
+    const container = document.getElementById('hm-alerts-container');
+    if (!container) return;
+
+    const emiDue = fmtCurrency(p.emiTotal, 0);
+    const emiINR = fmtINR(p.emiTotal);
+    const liquid = fmtCurrency(p.liquidCash, 0);
+    const discUsed = fmtCurrency((p.discretionary || 0) * 0.88, 0);
+    const discLimit = fmtCurrency(p.discretionary || 0, 0);
+    const emergFunded = fmtCurrency(p.emergencyFunded || 0, 0);
+    const emergTarget = fmtCurrency(p.emergencyTarget || 0, 0);
+    const emergPct = pct(p.emergencyFunded, p.emergencyTarget);
+
+    container.innerHTML = `
+    <!-- High Severity Alert: EMI & Liquid Buffer -->
+    <div class="p-3 rounded-lg border border-surface-container-high bg-surface-container-low hover:border-secondary transition-all flex flex-col sm:flex-row sm:items-center justify-between gap-2.5">
+      <div class="flex items-start gap-2.5 flex-1">
+        <span class="px-2 py-0.5 rounded text-[10px] font-bold uppercase tracking-wider bg-error text-on-error flex-shrink-0 mt-0.5">High</span>
+        <div>
+          <p class="text-xs font-bold text-on-surface leading-snug">Upcoming Loan EMI due in 3 days: ${emiINR} (${emiDue}) auto-debit scheduled</p>
+          <p class="text-[11px] text-outline mt-0.5">Active debt facilities • Liquid reserve balance (${liquid} avail.) verified sufficient</p>
+        </div>
+      </div>
+      <div class="flex items-center gap-1.5 self-end sm:self-auto flex-shrink-0">
+        <a href="../profile/code.html#personal-details" class="px-2.5 py-1 bg-secondary text-on-secondary rounded text-[11px] font-semibold hover:bg-secondary-container transition-colors">Review in Profile</a>
+        <button class="px-2 py-1 text-outline hover:text-on-surface rounded text-[11px] transition-colors" onclick="this.closest('.p-3').remove()">Dismiss</button>
+      </div>
+    </div>
+
+    <!-- Warning Severity Alert: Discretionary Spend Envelope -->
+    <div class="p-3 rounded-lg border border-surface-container-high bg-surface-container-lowest hover:border-surface-variant transition-all flex flex-col sm:flex-row sm:items-center justify-between gap-2.5">
+      <div class="flex items-start gap-2.5 flex-1">
+        <span class="px-2 py-0.5 rounded text-[10px] font-bold uppercase tracking-wider bg-secondary-fixed text-on-secondary-fixed flex-shrink-0 mt-0.5">Warning</span>
+        <div>
+          <p class="text-xs font-bold text-on-surface leading-snug">Lifestyle &amp; discretionary spend reached 88% of monthly limit</p>
+          <p class="text-[11px] text-outline mt-0.5">${discUsed} of ${discLimit} monthly discretionary budget utilized with 6 days remaining</p>
+        </div>
+      </div>
+      <div class="flex items-center gap-1.5 self-end sm:self-auto flex-shrink-0">
+        <a href="../profile/code.html#personal-details" class="px-2.5 py-1 bg-surface-container border border-surface-container-high text-on-surface rounded text-[11px] font-semibold hover:bg-surface-container-low transition-colors">Adjust Cap</a>
+        <button class="px-2 py-1 text-outline hover:text-on-surface rounded text-[11px] transition-colors" onclick="this.closest('.p-3').remove()">Dismiss</button>
+      </div>
+    </div>
+
+    <!-- Opportunity / Info Alert: Emergency Reserve Liquidity -->
+    <div class="p-3 rounded-lg border border-surface-container-high bg-surface-container-lowest hover:border-surface-variant transition-all flex flex-col sm:flex-row sm:items-center justify-between gap-2.5">
+      <div class="flex items-start gap-2.5 flex-1">
+        <span class="px-2 py-0.5 rounded text-[10px] font-bold uppercase tracking-wider bg-surface-container text-secondary flex-shrink-0 mt-0.5">Info</span>
+        <div>
+          <p class="text-xs font-bold text-on-surface leading-snug">Emergency Buffer Resilience: ${emergPct}% Funded</p>
+          <p class="text-[11px] text-outline mt-0.5">${emergFunded} of ${emergTarget} target secured in high-yield liquid reserves</p>
+        </div>
+      </div>
+      <div class="flex items-center gap-1.5 self-end sm:self-auto flex-shrink-0">
+        <a href="../profile/code.html#personal-details" class="px-2.5 py-1 bg-surface-container border border-surface-container-high text-on-surface rounded text-[11px] font-semibold hover:bg-surface-container-low transition-colors">Manage Reserve</a>
+        <button class="px-2 py-1 text-outline hover:text-on-surface rounded text-[11px] transition-colors" onclick="this.closest('.p-3').remove()">Dismiss</button>
+      </div>
+    </div>`;
+  }
+
+  /* ── Boot & Reactive Listeners ── */
+  // 1. Immediate boot or wait for DOM
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', renderDashboard);
+  } else {
+    renderDashboard();
+  }
+
+  // 2. React to back/forward cache navigation (bfcache)
+  window.addEventListener('pageshow', function() {
+    renderDashboard();
+  });
+
+  // 3. React to tab focus / visibility
+  window.addEventListener('focus', renderDashboard);
+  document.addEventListener('visibilitychange', function() {
+    if (document.visibilityState === 'visible') renderDashboard();
+  });
+
+  // 4. React to same-window and cross-tab updates
+  window.addEventListener('IF_PROFILE_UPDATED', renderDashboard);
+  window.addEventListener('storage', function(e) {
+    if (e.key === 'IF_PROFILE' || !e.key) renderDashboard();
+  });
+
+  // 5. Expose renderDashboard globally for programmatic refresh
+  window.renderDashboard = renderDashboard;
+  if (window.IntelliFinance) {
+    window.IntelliFinance.renderDashboard = renderDashboard;
+  }
+})();
+</script>
+
+</body></html>

@@ -1,0 +1,849 @@
+<!DOCTYPE html><html lang="en" style=""><head>
+<script src="../shared/data.js"></script>
+<script>
+  if (window.IntelliFinance && !window.IntelliFinance.requireAuth('../login.html')) {
+    // will redirect
+  }
+</script>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Financial Health Audit - IntelliFinance</title>
+<!-- Google Fonts: Inter & Plus Jakarta Sans -->
+<link href="https://fonts.googleapis.com" rel="preconnect">
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Plus+Jakarta+Sans:wght@500;600;700;800&amp;display=swap" rel="stylesheet">
+<!-- Material Symbols Outlined -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<!-- Tailwind CSS v3 -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Theme Configuration Verbatim -->
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "on-secondary-container": "#fffbff",
+            "background": "#f8f9ff",
+            "on-background": "#0b1c30",
+            "on-error-container": "#93000a",
+            "primary-fixed": "#dae2fd",
+            "inverse-surface": "#213145",
+            "primary-fixed-dim": "#bec6e0",
+            "secondary-fixed-dim": "#c3c0ff",
+            "on-secondary": "#ffffff",
+            "on-tertiary-container": "#009668",
+            "error": "#ba1a1a",
+            "tertiary-fixed": "#6ffbbe",
+            "on-error": "#ffffff",
+            "on-secondary-fixed-variant": "#3323cc",
+            "surface-dim": "#cbdbf5",
+            "on-tertiary": "#ffffff",
+            "on-tertiary-fixed-variant": "#005236",
+            "primary": "#000000",
+            "surface-container-low": "#eff4ff",
+            "tertiary-container": "#002113",
+            "surface-variant": "#d3e4fe",
+            "surface": "#f8f9ff",
+            "tertiary": "#000000",
+            "surface-container-lowest": "#ffffff",
+            "secondary": "#4b41e1",
+            "outline": "#76777d",
+            "surface-container": "#e5eeff",
+            "surface-container-highest": "#d3e4fe",
+            "on-secondary-fixed": "#0f0069",
+            "on-primary-fixed-variant": "#3f465c",
+            "tertiary-fixed-dim": "#4edea3",
+            "on-primary-container": "#7c839b",
+            "surface-tint": "#565e74",
+            "inverse-primary": "#bec6e0",
+            "secondary-fixed": "#e2dfff",
+            "outline-variant": "#c6c6cd",
+            "on-primary-fixed": "#131b2e",
+            "surface-container-high": "#dce9ff",
+            "on-surface": "#0b1c30",
+            "on-surface-variant": "#45464d",
+            "on-tertiary-fixed": "#002113",
+            "inverse-on-surface": "#eaf1ff",
+            "secondary-container": "#645efb",
+            "error-container": "#ffdad6",
+            "on-primary": "#ffffff",
+            "surface-bright": "#f8f9ff",
+            "primary-container": "#131b2e"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "full": "9999px"
+          },
+          "spacing": {
+            "space-xl": "2.5rem",
+            "gutter": "1.5rem",
+            "margin": "2rem",
+            "space-lg": "1.5rem",
+            "space-xs": "0.25rem",
+            "space-md": "1rem",
+            "space-sm": "0.5rem"
+          },
+          "fontFamily": {
+            "label-sm": ["Inter"],
+            "body-md": ["Inter"],
+            "body-sm": ["Inter"],
+            "headline-md": ["Plus Jakarta Sans"],
+            "data-metric-md": ["Inter"],
+            "data-metric-lg": ["Plus Jakarta Sans"],
+            "body-lg": ["Inter"],
+            "label-md": ["Inter"],
+            "headline-xl-mobile": ["Plus Jakarta Sans"],
+            "headline-sm": ["Plus Jakarta Sans"],
+            "headline-lg": ["Plus Jakarta Sans"],
+            "headline-xl": ["Plus Jakarta Sans"],
+            "headline-lg-mobile": ["Plus Jakarta Sans"]
+          },
+          "fontSize": {
+            "label-sm": ["0.75rem", { "lineHeight": "1rem", "letterSpacing": "0.04em", "fontWeight": "600" }],
+            "body-md": ["0.9375rem", { "lineHeight": "1.5rem", "letterSpacing": "0", "fontWeight": "400" }],
+            "body-sm": ["0.8125rem", { "lineHeight": "1.25rem", "letterSpacing": "0", "fontWeight": "400" }],
+            "headline-md": ["1.5rem", { "lineHeight": "2rem", "letterSpacing": "-0.015em", "fontWeight": "600" }],
+            "data-metric-md": ["1.125rem", { "lineHeight": "1.5rem", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+            "data-metric-lg": ["2rem", { "lineHeight": "2.25rem", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+            "body-lg": ["1.125rem", { "lineHeight": "1.75rem", "letterSpacing": "-0.01em", "fontWeight": "400" }],
+            "label-md": ["0.875rem", { "lineHeight": "1.25rem", "letterSpacing": "0.01em", "fontWeight": "500" }],
+            "headline-xl-mobile": ["2rem", { "lineHeight": "2.5rem", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+            "headline-sm": ["1.125rem", { "lineHeight": "1.5rem", "letterSpacing": "-0.01em", "fontWeight": "600" }],
+            "headline-lg": ["2.25rem", { "lineHeight": "2.75rem", "letterSpacing": "-0.025em", "fontWeight": "600" }],
+            "headline-xl": ["3rem", { "lineHeight": "3.5rem", "letterSpacing": "-0.03em", "fontWeight": "700" }],
+            "headline-lg-mobile": ["1.625rem", { "lineHeight": "2.125rem", "letterSpacing": "-0.02em", "fontWeight": "600" }]
+          }
+        },
+      },
+    }
+  </script>
+<style>
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      display: inline-block;
+      vertical-align: middle;
+      line-height: 1;
+    }
+    .custom-scrollbar::-webkit-scrollbar {
+      width: 4px;
+    }
+    .custom-scrollbar::-webkit-scrollbar-track {
+      background: transparent;
+    }
+    .custom-scrollbar::-webkit-scrollbar-thumb {
+      background: #CBD5E1;
+      border-radius: 4px;
+    }
+  </style>
+</head>
+<body class="bg-surface text-on-surface antialiased font-body-md min-h-screen flex flex-col selection:bg-secondary-fixed selection:text-secondary">
+<!-- Sidebar Backdrop Overlay -->
+<div aria-hidden="true" class="fixed inset-0 bg-on-surface/40 backdrop-blur-sm z-50 transition-opacity duration-300 opacity-0 pointer-events-none" id="sidebarBackdrop"></div>
+<!-- Collapsible Navigation Sidebar -->
+<aside aria-label="Main Sidebar Navigation" class="fixed top-0 left-0 bottom-0 w-72 max-w-[85vw] bg-surface-container-lowest border-r border-surface-container-high z-50 flex flex-col justify-between shadow-2xl transition-transform duration-300 ease-in-out -translate-x-full" id="collapsibleSidebar">
+<!-- Top Branding & Close Header -->
+<div>
+<div class="h-16 px-5 border-b border-surface-container-high flex items-center justify-between">
+<a href="../homepage/homepage.html" class="flex items-center gap-2.5 hover:opacity-90 transition-opacity">
+<div class="w-8 h-8 rounded-lg bg-primary flex items-center justify-center text-on-secondary shadow-sm">
+<span class="material-symbols-outlined text-[19px]" data-icon="insights" style="font-variation-settings: 'FILL' 1;">insights</span>
+</div>
+<div class="flex flex-col">
+<div class="flex items-center gap-1.5 leading-none">
+<span class="font-headline-sm text-sm font-bold text-on-surface tracking-tight">IntelliFinance</span>
+<span class="px-1 py-0.5 rounded text-[9px] font-bold bg-surface-container-low text-secondary border border-surface-container-high">OS v4.2</span>
+</div>
+<span class="text-[10px] text-outline mt-0.5">Wealth Intelligence OS</span>
+</div>
+</a>
+<button aria-label="Close sidebar" class="w-8 h-8 rounded-md flex items-center justify-center text-on-surface-variant hover:text-on-surface hover:bg-surface-container-low transition-colors" id="closeSidebarBtn">
+<span class="material-symbols-outlined text-[20px]" data-icon="chevron_left">chevron_left</span>
+</button>
+</div>
+<!-- Navigation Menu Items -->
+<nav aria-label="Primary Navigation" class="p-3 space-y-1 overflow-y-auto">
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg text-on-surface-variant hover:text-on-surface hover:bg-surface-container-low transition-colors text-xs font-medium" href="../homepage/homepage.html">
+<span class="material-symbols-outlined text-[18px]" data-icon="dashboard">dashboard</span>
+<span class="flex-1">Dashboard</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg text-on-surface-variant hover:text-on-surface hover:bg-surface-container-low transition-colors text-xs font-medium" href="../profile/code.html">
+<span class="material-symbols-outlined text-[18px]" data-icon="person">person</span>
+<span class="flex-1">User Profile &amp; Baseline</span>
+<span class="px-1.5 py-0.5 rounded text-[10px] font-semibold bg-secondary-fixed text-on-secondary-fixed">Edit</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg text-on-surface-variant hover:text-on-surface hover:bg-surface-container-low transition-colors text-xs font-medium" href="../homepage/homepage.html#cashflow">
+<span class="material-symbols-outlined text-[18px]" data-icon="account_balance_wallet">account_balance_wallet</span>
+<span class="">Cash Flow &amp; Budget</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg text-on-surface-variant hover:text-on-surface hover:bg-surface-container-low transition-colors text-xs font-medium" href="../savings and emergency/code.html">
+<span class="material-symbols-outlined text-[18px]" data-icon="shield_with_heart">shield_with_heart</span>
+<span class="">Savings &amp; Emergency</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg text-on-surface-variant hover:text-on-surface hover:bg-surface-container-low transition-colors text-xs font-medium" href="../investmwnt and portfolio/investment and portfolio.html">
+<span class="material-symbols-outlined text-[18px]" data-icon="trending_up">trending_up</span>
+<span class="flex-1">Investments &amp; SIP</span>
+<span class="px-1.5 py-0.5 rounded text-[10px] font-semibold bg-surface-container-low text-on-tertiary-container border border-surface-container-high">+12.4%</span>
+</a>
+<!-- ACTIVE ITEM -->
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg bg-surface-container text-secondary font-semibold text-xs transition-colors group" href="#">
+<span class="material-symbols-outlined text-[18px] text-secondary" data-icon="verified_user" style="font-variation-settings: 'FILL' 1;">verified_user</span>
+<span class="flex-1">Financial Health Audit</span>
+<span class="w-1.5 h-1.5 rounded-full bg-secondary"></span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg text-on-surface-variant hover:text-on-surface hover:bg-surface-container-low transition-colors text-xs font-medium" href="../homepage/homepage.html#reports">
+<span class="material-symbols-outlined text-[18px]" data-icon="receipt_long">receipt_long</span>
+<span class="">Reports &amp; Export</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg text-on-surface-variant hover:text-on-surface hover:bg-surface-container-low transition-colors text-xs font-medium" href="../profile/code.html">
+<span class="material-symbols-outlined text-[18px]" data-icon="settings">settings</span>
+<span class="">Settings</span>
+</a>
+</nav>
+</div>
+<!-- Sidebar Middle/Bottom Action Card & Footer Utility Links -->
+<div class="p-3 border-t border-surface-container-high space-y-2.5">
+<!-- Quick Allocate Action Card -->
+<div class="p-2.5 rounded-lg bg-surface-container-low border border-surface-container-high space-y-1.5">
+<div class="flex items-center gap-1.5 text-secondary font-semibold text-xs">
+<span class="material-symbols-outlined text-[15px]" data-icon="bolt">bolt</span>
+<span class="">Quick Allocate</span>
+</div>
+<p class="text-[11px] text-on-surface-variant leading-relaxed">
+Monthly net surplus float ready for deployment across verified liquidity &amp; index targets.
+</p>
+<a href="../profile/code.html#linked-portfolios" class="w-full h-6 rounded bg-secondary text-on-secondary text-[11px] font-semibold hover:bg-secondary-container transition-colors flex items-center justify-center gap-1">
+<span class="material-symbols-outlined text-[13px]" data-icon="tune">tune</span>
+<span class="">Deploy Surplus</span>
+</a>
+</div>
+<!-- Secondary Links -->
+<div class="pt-0.5 space-y-0.5">
+<a class="flex items-center gap-2 px-2.5 py-1.5 rounded-md text-on-surface-variant hover:text-on-surface hover:bg-surface-container-low text-xs transition-colors" href="../profile/code.html">
+<span class="material-symbols-outlined text-[16px]" data-icon="badge">badge</span>
+<span class="">Executive Profile</span>
+</a>
+<a class="flex items-center gap-2 px-2.5 py-1.5 rounded-md text-error hover:bg-error-container/30 text-xs transition-colors cursor-pointer" href="#logout" onclick="window.IntelliFinance.logout('../login.html'); return false;">
+<span class="material-symbols-outlined text-[16px]" data-icon="logout">logout</span>
+<span class="">Log Out</span>
+</a>
+</div>
+</div>
+</aside>
+<!-- ==================== MAIN CONTENT WRAPPER ==================== -->
+<div class="w-full flex flex-col min-h-screen bg-background">
+<!-- ==================== TOP HEADER BAR ==================== -->
+<header class="flex justify-between items-center w-full px-6 md:px-8 h-16 sticky top-0 z-40 bg-surface-container-lowest border-b border-surface-container-high transition-all duration-150">
+<!-- Left: Hamburger Button & Breadcrumbs -->
+<div class="flex items-center gap-3 sm:gap-4">
+<button aria-label="Open sidebar menu" class="w-9 h-9 flex items-center justify-center rounded-lg border border-surface-container-high bg-surface-container-lowest text-on-surface hover:bg-surface-container-low transition-colors shadow-xs" id="openSidebarBtn">
+<span class="material-symbols-outlined text-[21px]" data-icon="menu">menu</span>
+</button>
+<div class="flex items-center gap-2 font-label-md text-label-md text-on-surface-variant">
+<a href="../homepage/homepage.html" class="hover:text-on-surface transition-colors cursor-pointer">IntelliFinance</a>
+<span class="material-symbols-outlined text-sm text-outline">chevron_right</span>
+<span class="text-on-surface font-semibold">Financial Health Audit</span>
+</div>
+</div>
+
+</div>
+<!-- Right: AI Pill, Currency Switcher, Notification, Profile -->
+<div class="flex items-center gap-3">
+<!-- AI Insights Pill Button -->
+
+<!-- Currency Selector -->
+
+<!-- Notification Icon -->
+<button class="w-9 h-9 rounded-lg border border-surface-container-high bg-surface-container-lowest text-on-surface-variant hover:text-on-surface hover:bg-surface-container-low flex items-center justify-center transition-colors relative">
+<span class="material-symbols-outlined text-lg">notifications</span>
+<span class="w-2 h-2 rounded-full bg-error absolute top-2 right-2 ring-2 ring-white"></span>
+</button>
+<div class="h-6 w-px bg-surface-container-high mx-1"></div>
+<!-- User Profile Pill -->
+<div class="flex items-center gap-2.5 pl-1 cursor-pointer">
+<div class="w-9 h-9 rounded-full bg-primary-container text-white flex items-center justify-center text-xs font-bold tracking-tight border border-surface-container-high shadow-xs if-initials"></div>
+<div class="flex flex-col text-left hidden sm:flex">
+<span class="font-label-md text-label-md font-semibold text-on-surface leading-tight if-display-name"></span>
+<span class="font-label-sm text-[11px] text-on-surface-variant font-medium">Pro Tier Tier A</span>
+</div>
+</div>
+</div>
+</header>
+<!-- ==================== MAIN AUDIT VIEWPORT ==================== -->
+<main class="flex-1 p-8 max-w-[1520px] mx-auto w-full flex flex-col gap-6">
+<!-- Page Header & Action Controls -->
+<div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+<div>
+<h1 class="font-headline-lg text-headline-lg font-bold text-on-surface tracking-tight">
+            Financial Health Audit
+          </h1>
+<p class="font-body-md text-body-md text-on-surface-variant mt-1">
+            Comprehensive diagnosis of your liquidity, debt profile, savings velocity, and net worth growth.
+          </p>
+</div>
+<div class="flex items-center gap-3 flex-wrap">
+<!-- Simulation Timeline Stepper -->
+<div class="flex items-center bg-surface-container-low border border-surface-container-high rounded-md p-0.5 text-xs">
+<span class="px-2 font-mono text-outline font-semibold" id="sim-month-counter">Time: +0m</span>
+<button onclick="window.IntelliFinance.advanceMonths(1)" class="px-2 py-1 rounded bg-surface-container-lowest hover:bg-surface-container-high text-on-surface font-medium transition-colors" title="Advance 1 Month">+1 Mo</button>
+<button onclick="window.IntelliFinance.advanceMonths(3)" class="px-2 py-1 rounded bg-surface-container-lowest hover:bg-surface-container-high text-on-surface font-medium transition-colors" title="Advance 3 Months">+3 Mo</button>
+<button onclick="window.IntelliFinance.resetSimulation()" class="px-2 py-1 rounded hover:bg-error/10 text-error font-medium transition-colors" title="Reset timeline">Reset</button>
+</div>
+<a href="../profile/code.html" class="h-10 px-4 rounded-md border border-surface-container-high bg-surface-container-lowest text-on-surface hover:bg-surface-container-low font-label-md text-label-md font-medium transition-all shadow-sm flex items-center gap-2">
+<span class="material-symbols-outlined text-lg">tune</span>
+<span>Re-baseline Parameters</span>
+</a>
+</div>
+</div>
+<!-- ==================== TOP OVERVIEW: 4 CORE METRIC CARDS ==================== -->
+<!-- Prominent Overall Health Score Indicator Card -->
+<div class="bg-surface-container-lowest rounded-xl border border-surface-container-high p-6 shadow-sm hover:border-surface-dim transition-all">
+  <div class="flex flex-col lg:flex-row items-center lg:items-stretch justify-between gap-6">
+    <!-- Left: Circular Gauge & Score Presentation -->
+    <div class="flex flex-col sm:flex-row items-center gap-6 shrink-0 lg:border-r lg:border-surface-container-high lg:pr-8">
+      <div class="relative flex items-center justify-center">
+        <svg class="w-36 h-36 transform -rotate-90" viewBox="0 0 120 120">
+          <circle cx="60" cy="60" r="50" stroke="currentColor" stroke-width="10" class="text-surface-container-high fill-none"></circle>
+          <circle id="ha-gauge-circle" cx="60" cy="60" r="50" stroke="currentColor" stroke-width="10" stroke-dasharray="314.159" stroke-dashoffset="62.8" stroke-linecap="round" class="text-secondary fill-none"></circle>
+        </svg>
+        <div class="absolute flex flex-col items-center justify-center text-center">
+          <span class="font-headline-xl text-3xl font-bold text-on-surface tracking-tight leading-none" id="ha-score-val">80</span>
+          <span class="font-label-sm text-xs font-semibold text-on-surface-variant">OUT OF 100</span>
+        </div>
+      </div>
+      <div class="flex flex-col text-center sm:text-left">
+        <div class="flex items-center justify-center sm:justify-start gap-2">
+          <span class="px-2.5 py-0.5 rounded-full bg-emerald-50 text-[#047857] font-label-sm text-label-sm font-semibold border border-emerald-100 flex items-center gap-1.5" id="ha-score-tier-badge">
+            <span class="w-2 h-2 rounded-full bg-[#047857]"></span>
+            Tier A • Optimal Health
+          </span>
+        </div>
+        <h2 class="font-headline-md text-headline-md font-bold text-on-surface mt-1.5 tracking-tight" id="ha-headline-title">
+          Financial Health Audit
+        </h2>
+        <p class="font-body-sm text-body-sm text-on-surface-variant mt-1 max-w-md" id="ha-headline-desc">
+          Live diagnostic analysis computed directly from your active balance, debt leverage, and investment velocity.
+        </p>
+      </div>
+    </div>
+    <!-- Right: Executive Health Diagnostic Highlights -->
+    <div class="flex-1 grid grid-cols-1 sm:grid-cols-3 gap-4 self-center w-full">
+      <div class="p-3.5 rounded-lg bg-surface-container-low border border-surface-container-high flex flex-col justify-between">
+        <div class="flex items-center justify-between text-on-surface-variant font-label-sm text-xs uppercase tracking-wider">
+          <span class="">Debt-To-Income</span>
+          <span class="material-symbols-outlined text-sm text-[#047857]">check_circle</span>
+        </div>
+        <div class="my-2">
+          <div class="font-headline-sm text-xl font-bold text-on-surface" id="ha-dti-val">15.5%</div>
+          <div class="font-body-sm text-xs text-on-surface-variant">Benchmark: ≤ 20-30%</div>
+        </div>
+        <span class="text-[11px] font-semibold text-[#047857]">DTI Health Metric</span>
+      </div>
+      <div class="p-3.5 rounded-lg bg-surface-container-low border border-surface-container-high flex flex-col justify-between">
+        <div class="flex items-center justify-between text-on-surface-variant font-label-sm text-xs uppercase tracking-wider">
+          <span class="">Cash Runway</span>
+          <span class="material-symbols-outlined text-sm text-[#047857]">shield</span>
+        </div>
+        <div class="my-2">
+          <div class="font-headline-sm text-xl font-bold text-on-surface" id="ha-runway-val">5.0 Mos</div>
+          <div class="font-body-sm text-xs text-on-surface-variant">Target: 3-6 Months</div>
+        </div>
+        <span class="text-[11px] font-semibold text-[#047857]">Emergency Shield</span>
+      </div>
+      <div class="p-3.5 rounded-lg bg-surface-container-low border border-surface-container-high flex flex-col justify-between">
+        <div class="flex items-center justify-between text-on-surface-variant font-label-sm text-xs uppercase tracking-wider">
+          <span class="">Total Net Worth</span>
+          <span class="material-symbols-outlined text-sm text-secondary">account_balance</span>
+        </div>
+        <div class="my-2">
+          <div class="font-headline-sm text-xl font-bold text-on-surface" id="ha-networth-val">$501,740</div>
+          <div class="font-body-sm text-xs text-on-surface-variant">Liquid + Investments</div>
+        </div>
+        <span class="text-[11px] font-semibold text-secondary">$1M Corpus by 2028</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 5 Core Parameter Breakdown Section Header -->
+<div class="flex items-center justify-between pt-2">
+  <div class="flex items-center gap-2">
+    <span class="material-symbols-outlined text-secondary text-2xl">fact_check</span>
+    <div>
+      <h2 class="font-headline-md text-xl font-bold text-on-surface tracking-tight">
+        Financial Parameters &amp; Spending Diagnostics
+      </h2>
+      <p class="font-body-sm text-xs text-on-surface-variant">
+        Granular audit of salary allocation vs. institutional wealth standards (Monthly Net Income: $9,650)
+      </p>
+    </div>
+  </div>
+  <span class="hidden sm:inline-block font-label-sm text-xs text-on-surface-variant bg-surface-container-low border border-surface-container-high px-3 py-1 rounded-full">
+    5 Pillars Evaluated
+  </span>
+</div>
+
+<!-- Grid of 5 Dedicated Parameter Breakdown Cards -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
+  <!-- Parameter Card 1: Monthly Living Expenses & Baseline -->
+  <div class="bg-surface-container-lowest rounded-xl border border-surface-container-high p-5 shadow-sm hover:border-surface-dim transition-all flex flex-col justify-between">
+    <div>
+      <div class="flex items-start justify-between pb-3 border-b border-surface-container-high">
+        <div class="flex items-center gap-2.5">
+          <div class="w-9 h-9 rounded-lg bg-emerald-100 text-[#047857] flex items-center justify-center shrink-0">
+            <span class="material-symbols-outlined text-xl">home</span>
+          </div>
+          <div>
+            <h3 class="font-label-md text-label-md font-bold text-on-surface leading-tight">Living Expenses &amp; Housing</h3>
+            <span class="font-label-sm text-[11px] text-on-surface-variant">Essentials &amp; Overhead</span>
+          </div>
+        </div>
+        <div class="flex flex-col items-end">
+          <span class="font-data-metric-md text-base font-bold text-on-surface">94<span class="text-xs text-on-surface-variant font-normal">/100</span></span>
+          <span class="px-2 py-0.5 rounded-full text-[11px] font-semibold bg-emerald-50 text-[#047857] border border-emerald-100">Optimal</span>
+        </div>
+      </div>
+      <!-- Actual vs Standard Metric Comparison -->
+      <div class="grid grid-cols-2 gap-3 py-3">
+        <div class="p-2.5 rounded-lg bg-surface-container-low border border-surface-container-high">
+          <div class="font-label-sm text-[11px] text-on-surface-variant">Standard Benchmark</div>
+          <div class="font-data-metric-md text-sm font-bold text-on-surface mt-0.5">≤ 30 - 35%</div>
+          <div class="text-[10px] text-on-surface-variant mt-0.5">of net income</div>
+        </div>
+        <div class="p-2.5 rounded-lg bg-surface-bright border border-surface-container-high">
+          <div class="font-label-sm text-[11px] text-on-surface-variant">Actual User Spending</div>
+          <div class="font-data-metric-md text-sm font-bold text-[#047857] mt-0.5">25.1% ($2,420/mo)</div>
+          <div class="text-[10px] text-on-surface-variant mt-0.5">Rent, utilities &amp; groceries</div>
+        </div>
+      </div>
+      <!-- Progress Bar Visual -->
+      <div class="mt-1">
+        <div class="flex justify-between text-[11px] text-on-surface-variant mb-1">
+          <span class="">Capacity Utilized</span>
+          <span class="font-semibold text-on-surface">25.1% / Max 35.0%</span>
+        </div>
+        <div class="w-full bg-surface-container-high rounded-full h-2 overflow-hidden">
+          <div class="bg-[#047857] h-2 rounded-full" style="width: 71.7%"></div>
+        </div>
+      </div>
+    </div>
+    <div class="mt-4 pt-3 border-t border-surface-container-high flex items-center gap-1.5 text-xs text-on-surface-variant">
+      <span class="material-symbols-outlined text-sm text-[#047857]">check_circle</span>
+      <span class="">Comfortably within healthy range with zero lifestyle creep.</span>
+    </div>
+  </div>
+
+  <!-- Parameter Card 2: EMI, Loans & Debt Servicing -->
+  <div class="bg-surface-container-lowest rounded-xl border border-surface-container-high p-5 shadow-sm hover:border-surface-dim transition-all flex flex-col justify-between">
+    <div>
+      <div class="flex items-start justify-between pb-3 border-b border-surface-container-high">
+        <div class="flex items-center gap-2.5">
+          <div class="w-9 h-9 rounded-lg bg-emerald-100 text-[#047857] flex items-center justify-center shrink-0">
+            <span class="material-symbols-outlined text-xl">credit_card</span>
+          </div>
+          <div>
+            <h3 class="font-label-md text-label-md font-bold text-on-surface leading-tight">EMI / Loans &amp; Debt</h3>
+            <span class="font-label-sm text-[11px] text-on-surface-variant">Liability Servicing</span>
+          </div>
+        </div>
+        <div class="flex flex-col items-end">
+          <span class="font-data-metric-md text-base font-bold text-on-surface">92<span class="text-xs text-on-surface-variant font-normal">/100</span></span>
+          <span class="px-2 py-0.5 rounded-full text-[11px] font-semibold bg-emerald-50 text-[#047857] border border-emerald-100">Safe</span>
+        </div>
+      </div>
+      <!-- Actual vs Standard Metric Comparison -->
+      <div class="grid grid-cols-2 gap-3 py-3">
+        <div class="p-2.5 rounded-lg bg-surface-container-low border border-surface-container-high">
+          <div class="font-label-sm text-[11px] text-on-surface-variant">Standard Benchmark</div>
+          <div class="font-data-metric-md text-sm font-bold text-on-surface mt-0.5">≤ 10 - 15%</div>
+          <div class="text-[10px] text-on-surface-variant mt-0.5">Max safe DTI ceiling</div>
+        </div>
+        <div class="p-2.5 rounded-lg bg-surface-bright border border-surface-container-high">
+          <div class="font-label-sm text-[11px] text-on-surface-variant">Actual User Spending</div>
+          <div class="font-data-metric-md text-sm font-bold text-[#047857] mt-0.5">9.8% ($950/mo)</div>
+          <div class="text-[10px] text-on-surface-variant mt-0.5">Auto loan &amp; low-interest</div>
+        </div>
+      </div>
+      <!-- Progress Bar Visual -->
+      <div class="mt-1">
+        <div class="flex justify-between text-[11px] text-on-surface-variant mb-1">
+          <span class="">DTI Utilization</span>
+          <span class="font-semibold text-on-surface">9.8% / Limit 15.0%</span>
+        </div>
+        <div class="w-full bg-surface-container-high rounded-full h-2 overflow-hidden">
+          <div class="bg-[#047857] h-2 rounded-full" style="width: 65.3%"></div>
+        </div>
+      </div>
+    </div>
+    <div class="mt-4 pt-3 border-t border-surface-container-high flex items-center gap-1.5 text-xs text-on-surface-variant">
+      <span class="material-symbols-outlined text-sm text-[#047857]">check_circle</span>
+      <span class="">Well below danger threshold; zero revolving credit card balances.</span>
+    </div>
+  </div>
+
+  <!-- Parameter Card 3: Savings & Emergency Reserves -->
+  <div class="bg-surface-container-lowest rounded-xl border border-surface-container-high p-5 shadow-sm hover:border-surface-dim transition-all flex flex-col justify-between">
+    <div>
+      <div class="flex items-start justify-between pb-3 border-b border-surface-container-high">
+        <div class="flex items-center gap-2.5">
+          <div class="w-9 h-9 rounded-lg bg-emerald-100 text-[#047857] flex items-center justify-center shrink-0">
+            <span class="material-symbols-outlined text-xl">savings</span>
+          </div>
+          <div>
+            <h3 class="font-label-md text-label-md font-bold text-on-surface leading-tight">Savings &amp; Emergency</h3>
+            <span class="font-label-sm text-[11px] text-on-surface-variant">Liquidity &amp; Buffer</span>
+          </div>
+        </div>
+        <div class="flex flex-col items-end">
+          <span class="font-data-metric-md text-base font-bold text-on-surface">96<span class="text-xs text-on-surface-variant font-normal">/100</span></span>
+          <span class="px-2 py-0.5 rounded-full text-[11px] font-semibold bg-emerald-50 text-[#047857] border border-emerald-100">Exceptional</span>
+        </div>
+      </div>
+      <!-- Actual vs Standard Metric Comparison -->
+      <div class="grid grid-cols-2 gap-3 py-3">
+        <div class="p-2.5 rounded-lg bg-surface-container-low border border-surface-container-high">
+          <div class="font-label-sm text-[11px] text-on-surface-variant">Standard Benchmark</div>
+          <div class="font-data-metric-md text-sm font-bold text-on-surface mt-0.5">≥ 20.0%</div>
+          <div class="text-[10px] text-on-surface-variant mt-0.5">3 to 6 months runway</div>
+        </div>
+        <div class="p-2.5 rounded-lg bg-surface-bright border border-surface-container-high">
+          <div class="font-label-sm text-[11px] text-on-surface-variant">Actual User Spending</div>
+          <div class="font-data-metric-md text-sm font-bold text-[#047857] mt-0.5">24.9% ($2,400/mo)</div>
+          <div class="text-[10px] text-on-surface-variant mt-0.5">6.5 months cash stored</div>
+        </div>
+      </div>
+      <!-- Progress Bar Visual -->
+      <div class="mt-1">
+        <div class="flex justify-between text-[11px] text-on-surface-variant mb-1">
+          <span class="">Target Achievement</span>
+          <span class="font-semibold text-on-surface">124.5% of Baseline Target</span>
+        </div>
+        <div class="w-full bg-surface-container-high rounded-full h-2 overflow-hidden">
+          <div class="bg-[#047857] h-2 rounded-full" style="width: 100%"></div>
+        </div>
+      </div>
+    </div>
+    <div class="mt-4 pt-3 border-t border-surface-container-high flex items-center gap-1.5 text-xs text-on-surface-variant">
+      <span class="material-symbols-outlined text-sm text-[#047857]">check_circle</span>
+      <span class="">Exceeds standard 20% savings rule with 6.5 months cash buffer.</span>
+    </div>
+  </div>
+
+  <!-- Parameter Card 4: Investments & Systematic Wealth SIP -->
+  <div class="bg-surface-container-lowest rounded-xl border border-surface-container-high p-5 shadow-sm hover:border-surface-dim transition-all flex flex-col justify-between">
+    <div>
+      <div class="flex items-start justify-between pb-3 border-b border-surface-container-high">
+        <div class="flex items-center gap-2.5">
+          <div class="w-9 h-9 rounded-lg bg-secondary-fixed text-secondary flex items-center justify-center shrink-0">
+            <span class="material-symbols-outlined text-xl">trending_up</span>
+          </div>
+          <div>
+            <h3 class="font-label-md text-label-md font-bold text-on-surface leading-tight">Investments &amp; Wealth SIP</h3>
+            <span class="font-label-sm text-[11px] text-on-surface-variant">Long-Term Compounding</span>
+          </div>
+        </div>
+        <div class="flex flex-col items-end">
+          <span class="font-data-metric-md text-base font-bold text-on-surface">88<span class="text-xs text-on-surface-variant font-normal">/100</span></span>
+          <span class="px-2 py-0.5 rounded-full text-[11px] font-semibold bg-secondary-fixed text-secondary border border-secondary/20">Strong</span>
+        </div>
+      </div>
+      <!-- Actual vs Standard Metric Comparison -->
+      <div class="grid grid-cols-2 gap-3 py-3">
+        <div class="p-2.5 rounded-lg bg-surface-container-low border border-surface-container-high">
+          <div class="font-label-sm text-[11px] text-on-surface-variant">Standard Benchmark</div>
+          <div class="font-data-metric-md text-sm font-bold text-on-surface mt-0.5">≥ 20 - 25%</div>
+          <div class="text-[10px] text-on-surface-variant mt-0.5">Wealth accumulation rate</div>
+        </div>
+        <div class="p-2.5 rounded-lg bg-surface-bright border border-surface-container-high">
+          <div class="font-label-sm text-[11px] text-on-surface-variant">Actual User Spending</div>
+          <div class="font-data-metric-md text-sm font-bold text-secondary mt-0.5">38.1% ($3,680/mo)</div>
+          <div class="text-[10px] text-on-surface-variant mt-0.5">Index SIPs + equity funds</div>
+        </div>
+      </div>
+      <!-- Progress Bar Visual -->
+      <div class="mt-1">
+        <div class="flex justify-between text-[11px] text-on-surface-variant mb-1">
+          <span class="">Surplus Deployed</span>
+          <span class="font-semibold text-on-surface">38.1% / Target 25.0%</span>
+        </div>
+        <div class="w-full bg-surface-container-high rounded-full h-2 overflow-hidden">
+          <div class="bg-secondary h-2 rounded-full" style="width: 100%"></div>
+        </div>
+      </div>
+    </div>
+    <div class="mt-4 pt-3 border-t border-surface-container-high flex items-center gap-1.5 text-xs text-on-surface-variant">
+      <span class="material-symbols-outlined text-sm text-secondary">rocket_launch</span>
+      <span class="">High compounding velocity; consider slight non-tech international rebalancing.</span>
+    </div>
+  </div>
+
+  <!-- Parameter Card 5: Insurance & Risk Protection -->
+  <div class="bg-surface-container-lowest rounded-xl border border-surface-container-high p-5 shadow-sm hover:border-surface-dim transition-all flex flex-col justify-between md:col-span-2 lg:col-span-1">
+    <div>
+      <div class="flex items-start justify-between pb-3 border-b border-surface-container-high">
+        <div class="flex items-center gap-2.5">
+          <div class="w-9 h-9 rounded-lg bg-amber-100 text-amber-800 flex items-center justify-center shrink-0">
+            <span class="material-symbols-outlined text-xl">security</span>
+          </div>
+          <div>
+            <h3 class="font-label-md text-label-md font-bold text-on-surface leading-tight">Insurance &amp; Risk Protection</h3>
+            <span class="font-label-sm text-[11px] text-on-surface-variant">Shielding &amp; Liability</span>
+          </div>
+        </div>
+        <div class="flex flex-col items-end">
+          <span class="font-data-metric-md text-base font-bold text-on-surface">80<span class="text-xs text-on-surface-variant font-normal">/100</span></span>
+          <span class="px-2 py-0.5 rounded-full text-[11px] font-semibold bg-amber-50 text-amber-800 border border-amber-200">Attention</span>
+        </div>
+      </div>
+      <!-- Actual vs Standard Metric Comparison -->
+      <div class="grid grid-cols-2 gap-3 py-3">
+        <div class="p-2.5 rounded-lg bg-surface-container-low border border-surface-container-high">
+          <div class="font-label-sm text-[11px] text-on-surface-variant">Standard Benchmark</div>
+          <div class="font-data-metric-md text-sm font-bold text-on-surface mt-0.5">3 - 5% / 8-10x</div>
+          <div class="text-[10px] text-on-surface-variant mt-0.5">Comprehensive umbrella cover</div>
+        </div>
+        <div class="p-2.5 rounded-lg bg-surface-bright border border-surface-container-high">
+          <div class="font-label-sm text-[11px] text-on-surface-variant">Actual User Spending</div>
+          <div class="font-data-metric-md text-sm font-bold text-amber-800 mt-0.5">4.4% ($420/mo)</div>
+          <div class="text-[10px] text-on-surface-variant mt-0.5">7x income term life + PPO</div>
+        </div>
+      </div>
+      <!-- Progress Bar Visual -->
+      <div class="mt-1">
+        <div class="flex justify-between text-[11px] text-on-surface-variant mb-1">
+          <span class="">Coverage Adequacy</span>
+          <span class="font-semibold text-on-surface">7.0x / Target 10.0x</span>
+        </div>
+        <div class="w-full bg-surface-container-high rounded-full h-2 overflow-hidden">
+          <div class="bg-amber-500 h-2 rounded-full" style="width: 70%"></div>
+        </div>
+      </div>
+    </div>
+    <div class="mt-4 pt-3 border-t border-surface-container-high flex items-center gap-1.5 text-xs text-on-surface-variant">
+      <span class="material-symbols-outlined text-sm text-amber-800">warning</span>
+      <span class="">Liability gap identified: Add $1M personal umbrella shield to achieve Tier A+.</span>
+    </div>
+  </div>
+</div>
+<!-- ==================== MID SECTION: 2-COLUMN ANALYTIC GRID ==================== -->
+
+<!-- ==================== DETAILED BREAKDOWN: VULNERABILITIES & RISK EXPOSURE ==================== -->
+<div class="bg-surface-container-lowest rounded-xl border border-surface-container-high p-6 shadow-sm">
+<div class="flex items-center justify-between pb-4 border-b border-surface-container-high">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-secondary text-xl">biotech</span>
+<h2 class="font-headline-sm text-headline-sm font-bold text-on-surface">Vulnerabilities &amp; Risk Exposure Diagnostic</h2>
+</div>
+<span class="font-label-sm text-label-sm text-on-surface-variant">4 Insights Flagged</span>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-5">
+<!-- Finding 1: Positive Green -->
+<div class="p-4 rounded-xl border border-emerald-200 bg-emerald-50/40 flex items-start gap-3.5">
+<div class="w-8 h-8 rounded-lg bg-emerald-100 text-[#047857] flex items-center justify-center shrink-0 mt-0.5">
+<span class="material-symbols-outlined text-lg">credit_score</span>
+</div>
+<div class="flex-1">
+<div class="flex items-center justify-between">
+<h3 class="font-label-md text-label-md font-bold text-on-surface">Zero High-Interest Debt</h3>
+<span class="text-[11px] font-semibold uppercase tracking-wider text-[#047857] bg-white px-2 py-0.5 rounded-full border border-emerald-200">Optimal</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-1">
+                All consumer credit card balances paid in full monthly. Zero exposure to predatory APR compounding.
+              </p>
+</div>
+</div>
+<!-- Finding 2: Positive Green -->
+<div class="p-4 rounded-xl border border-emerald-200 bg-emerald-50/40 flex items-start gap-3.5">
+<div class="w-8 h-8 rounded-lg bg-emerald-100 text-[#047857] flex items-center justify-center shrink-0 mt-0.5">
+<span class="material-symbols-outlined text-lg">published_with_changes</span>
+</div>
+<div class="flex-1">
+<div class="flex items-center justify-between">
+<h3 class="font-label-md text-label-md font-bold text-on-surface">Automated Compounding Setup</h3>
+<span class="text-[11px] font-semibold uppercase tracking-wider text-[#047857] bg-white px-2 py-0.5 rounded-full border border-emerald-200">Active</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-1">
+                $2,100/mo systematically deployed via disciplined SIPs directly into broad-market index vehicles.
+              </p>
+</div>
+</div>
+<!-- Finding 3: Amber Optimization -->
+<div class="p-4 rounded-xl border border-amber-200 bg-amber-50/40 flex items-start gap-3.5">
+<div class="w-8 h-8 rounded-lg bg-amber-100 text-amber-800 flex items-center justify-center shrink-0 mt-0.5">
+<span class="material-symbols-outlined text-lg">hourglass_empty</span>
+</div>
+<div class="flex-1">
+<div class="flex items-center justify-between">
+<h3 class="font-label-md text-label-md font-bold text-on-surface">Cash Drag in Low-Yield Checking</h3>
+<span class="text-[11px] font-semibold uppercase tracking-wider text-amber-800 bg-white px-2 py-0.5 rounded-full border border-amber-200">Optimization</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-1">
+                $1,580 in operating checking account earning 0.02% APY. Sweeping float to high-yield reserve captures yield.
+              </p>
+</div>
+</div>
+<!-- Finding 4: Amber Attention -->
+<div class="p-4 rounded-xl border border-amber-200 bg-amber-50/40 flex items-start gap-3.5">
+<div class="w-8 h-8 rounded-lg bg-amber-100 text-amber-800 flex items-center justify-center shrink-0 mt-0.5">
+<span class="material-symbols-outlined text-lg">policy</span>
+</div>
+<div class="flex-1">
+<div class="flex items-center justify-between">
+<h3 class="font-label-md text-label-md font-bold text-on-surface">Umbrella Insurance Liability Gap</h3>
+<span class="text-[11px] font-semibold uppercase tracking-wider text-amber-800 bg-white px-2 py-0.5 rounded-full border border-amber-200">Attention</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-1">
+                Liquid net worth exceeds standard auto &amp; homeowners policy limits. Exposure can be mitigated with $1M coverage.
+              </p>
+</div>
+</div>
+</div>
+</div>
+<!-- ==================== BOTTOM AI RECOMMENDATION BANNER ==================== -->
+<div class="rounded-xl border border-secondary/20 bg-gradient-to-r from-surface-container-lowest via-surface-container-low to-secondary-fixed/30 p-6 shadow-sm flex flex-col md:flex-row items-start md:items-center justify-between gap-5 relative overflow-hidden">
+<div class="flex items-start gap-4">
+<div class="w-10 h-10 rounded-xl bg-secondary text-white flex items-center justify-center shrink-0 shadow-sm">
+<span class="material-symbols-outlined text-2xl">auto_awesome</span>
+</div>
+<div class="max-w-3xl">
+<div class="flex items-center gap-2">
+<h3 class="font-headline-sm text-headline-sm font-bold text-on-surface">
+                Audit Recommendation: Close the $1M Umbrella Shield &amp; Sweep Float
+              </h3>
+<span class="hidden sm:inline-block px-2 py-0.5 rounded bg-secondary text-white text-[10px] font-bold uppercase tracking-wider">
+                High Impact
+              </span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-1 leading-relaxed">
+              Your asset base now warrants a dedicated personal umbrella liability policy (~$350/yr), and sweeping $1,580 checking surplus to your 4.85% HYSA will add risk-free yield with instant liquidity.
+            </p>
+</div>
+</div>
+<!-- Action Buttons -->
+<div class="flex items-center gap-3 shrink-0 self-end md:self-center w-full md:w-auto justify-end">
+<button class="h-9 px-4 rounded-lg bg-surface-container-lowest text-on-surface border border-surface-container-high hover:bg-surface-container-low font-label-md text-label-md font-semibold transition-all">
+            Dismiss
+          </button>
+<button class="h-9 px-4 rounded-lg bg-secondary text-white hover:bg-secondary-container font-label-md text-label-md font-semibold flex items-center gap-1.5 transition-all shadow-sm">
+<span class="">Implement Recommendations</span>
+<span class="material-symbols-outlined text-base">arrow_forward</span>
+</button>
+</div>
+</div>
+</main>
+</div>
+
+
+<script>
+  (function() {
+    const sidebar = document.getElementById('collapsibleSidebar');
+    const backdrop = document.getElementById('sidebarBackdrop');
+    const openBtn = document.getElementById('openSidebarBtn');
+    const closeBtn = document.getElementById('closeSidebarBtn');
+
+    function openSidebar() {
+      if (!sidebar || !backdrop) return;
+      sidebar.classList.remove('-translate-x-full');
+      sidebar.classList.add('translate-x-0');
+      backdrop.classList.remove('opacity-0', 'pointer-events-none');
+      backdrop.classList.add('opacity-100', 'pointer-events-auto');
+      document.body.classList.add('overflow-hidden');
+    }
+
+    function closeSidebar() {
+      if (!sidebar || !backdrop) return;
+      sidebar.classList.remove('translate-x-0');
+      sidebar.classList.add('-translate-x-full');
+      backdrop.classList.remove('opacity-100', 'pointer-events-auto');
+      backdrop.classList.add('opacity-0', 'pointer-events-none');
+      document.body.classList.remove('overflow-hidden');
+    }
+
+    if (openBtn) {
+      openBtn.addEventListener('click', function(e) {
+        e.stopPropagation();
+        if (sidebar.classList.contains('-translate-x-full')) {
+          openSidebar();
+        } else {
+          closeSidebar();
+        }
+      });
+    }
+
+    if (closeBtn) {
+      closeBtn.addEventListener('click', closeSidebar);
+    }
+
+    if (backdrop) {
+      backdrop.addEventListener('click', closeSidebar);
+    }
+
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape' && sidebar && !sidebar.classList.contains('-translate-x-full')) {
+        closeSidebar();
+      }
+    });
+  })();
+</script>
+
+<script>
+(function() {
+  function syncUser() {
+    if (!window.IntelliFinance) return;
+    const p = window.IntelliFinance.loadProfile();
+    const name = (p.displayName || p.fullName || '').trim() || (p.isNewUser ? 'New User' : 'User');
+    const init = p.initials || (p.isNewUser ? 'NU' : 'U');
+    document.querySelectorAll('.if-display-name').forEach(el => el.textContent = name);
+    document.querySelectorAll('.if-initials').forEach(el => el.textContent = init);
+
+    const score = p.isNewUser ? (p.healthScore || 0) : (p.healthScore || 80);
+    const scoreValEl = document.getElementById('ha-score-val');
+    if (scoreValEl) scoreValEl.textContent = score > 0 ? score : '—';
+
+    const circle = document.getElementById('ha-gauge-circle');
+    if (circle) {
+      // circumference = 2 * PI * 50 = 314.159
+      const pct = Math.min(100, Math.max(0, score)) / 100;
+      const offset = 314.159 * (1 - pct);
+      circle.style.strokeDashoffset = offset;
+    }
+
+    const badge = document.getElementById('ha-score-tier-badge');
+    if (badge) {
+      if (score >= 80) badge.textContent = 'Tier A • Optimal Health';
+      else if (score >= 70) badge.textContent = 'Tier B • Good Health';
+      else if (score >= 50) badge.textContent = 'Tier C • Fair Resilience';
+      else badge.textContent = 'Setup Baseline Needed';
+    }
+
+    const dtiEl = document.getElementById('ha-dti-val');
+    if (dtiEl) dtiEl.textContent = (p.dtiRatio || 0) + '%';
+
+    const runwayEl = document.getElementById('ha-runway-val');
+    if (runwayEl) {
+      const exp = (p.essentialExpenses || 0);
+      const runway = exp > 0 ? (p.emergencyFunded / exp).toFixed(1) + ' Mos' : (p.isNewUser ? '0.0 Mos' : '6.0 Mos');
+      runwayEl.textContent = runway;
+    }
+
+    const nwEl = document.getElementById('ha-networth-val');
+    if (nwEl) {
+      nwEl.textContent = '$' + Number(p.netWorth || 0).toLocaleString('en-US', { minimumFractionDigits: 0, maximumFractionDigits: 0 });
+    }
+
+    const simMonths = window.IntelliFinance.getSimulatedMonths ? window.IntelliFinance.getSimulatedMonths() : 0;
+    const simEl = document.getElementById('sim-month-counter');
+    if (simEl) {
+      simEl.textContent = 'Time: +' + simMonths + 'm';
+      simEl.className = 'px-2 font-mono font-semibold ' + (simMonths > 0 ? 'text-secondary bg-indigo-50 rounded' : 'text-outline');
+    }
+  }
+  document.addEventListener('DOMContentLoaded', syncUser);
+  if (document.readyState !== 'loading') syncUser();
+  window.addEventListener('IF_PROFILE_UPDATED', syncUser);
+})();
+</script>
+</body></html>
