@@ -1,0 +1,803 @@
+<!DOCTYPE html>
+
+<html class="h-full bg-surface" lang="en"><head>
+<script src="../shared/data.js"></script>
+<script>if (window.IntelliFinance && !window.IntelliFinance.requireAuth('../login.html')) {}</script>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Savings &amp; Emergency Reserves | IntelliFinance</title>
+<!-- Google Fonts & Material Symbols -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Plus+Jakarta+Sans:wght@500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS CDN -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Verbatim Tailwind Configuration -->
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "on-surface": "#0b1c30",
+            "primary": "#000000",
+            "surface-container": "#e5eeff",
+            "on-secondary-fixed": "#0f0069",
+            "on-surface-variant": "#45464d",
+            "inverse-primary": "#bec6e0",
+            "error-container": "#ffdad6",
+            "on-background": "#0b1c30",
+            "surface-variant": "#d3e4fe",
+            "tertiary": "#000000",
+            "primary-container": "#131b2e",
+            "inverse-surface": "#213145",
+            "on-primary": "#ffffff",
+            "outline": "#76777d",
+            "surface": "#f8f9ff",
+            "surface-container-low": "#eff4ff",
+            "primary-fixed-dim": "#bec6e0",
+            "primary-fixed": "#dae2fd",
+            "inverse-on-surface": "#eaf1ff",
+            "tertiary-container": "#002113",
+            "on-secondary": "#ffffff",
+            "secondary-fixed": "#e2dfff",
+            "background": "#f8f9ff",
+            "surface-container-high": "#dce9ff",
+            "on-tertiary-container": "#009668",
+            "on-error": "#ffffff",
+            "on-secondary-fixed-variant": "#3323cc",
+            "on-primary-container": "#7c839b",
+            "secondary-fixed-dim": "#c3c0ff",
+            "secondary": "#4b41e1",
+            "outline-variant": "#c6c6cd",
+            "on-tertiary-fixed-variant": "#005236",
+            "on-error-container": "#93000a",
+            "surface-container-lowest": "#ffffff",
+            "tertiary-fixed-dim": "#4edea3",
+            "on-primary-fixed": "#131b2e",
+            "error": "#ba1a1a",
+            "secondary-container": "#645efb",
+            "tertiary-fixed": "#6ffbbe",
+            "surface-tint": "#565e74",
+            "on-tertiary-fixed": "#002113",
+            "surface-bright": "#f8f9ff",
+            "on-tertiary": "#ffffff",
+            "surface-dim": "#cbdbf5",
+            "on-secondary-container": "#fffbff",
+            "on-primary-fixed-variant": "#3f465c",
+            "surface-container-highest": "#d3e4fe"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "full": "9999px"
+          },
+          "spacing": {
+            "space-sm": "0.5rem",
+            "margin": "2rem",
+            "space-xs": "0.25rem",
+            "space-md": "1rem",
+            "space-xl": "2.5rem",
+            "space-lg": "1.5rem",
+            "gutter": "1.5rem"
+          },
+          "fontFamily": {
+            "data-metric-md": ["Inter"],
+            "headline-md": ["Plus Jakarta Sans"],
+            "label-sm": ["Inter"],
+            "headline-sm": ["Plus Jakarta Sans"],
+            "label-md": ["Inter"],
+            "body-md": ["Inter"],
+            "headline-lg-mobile": ["Plus Jakarta Sans"],
+            "headline-xl": ["Plus Jakarta Sans"],
+            "body-sm": ["Inter"],
+            "body-lg": ["Inter"],
+            "headline-lg": ["Plus Jakarta Sans"],
+            "data-metric-lg": ["Plus Jakarta Sans"],
+            "headline-xl-mobile": ["Plus Jakarta Sans"]
+          },
+          "fontSize": {
+            "data-metric-md": [
+              "1.125rem",
+              { "lineHeight": "1.5rem", "letterSpacing": "-0.01em", "fontWeight": "600" }
+            ],
+            "headline-md": [
+              "1.5rem",
+              { "lineHeight": "2rem", "letterSpacing": "-0.015em", "fontWeight": "600" }
+            ],
+            "label-sm": [
+              "0.75rem",
+              { "lineHeight": "1rem", "letterSpacing": "0.04em", "fontWeight": "600" }
+            ],
+            "headline-sm": [
+              "1.125rem",
+              { "lineHeight": "1.5rem", "letterSpacing": "-0.01em", "fontWeight": "600" }
+            ],
+            "label-md": [
+              "0.875rem",
+              { "lineHeight": "1.25rem", "letterSpacing": "0.01em", "fontWeight": "500" }
+            ],
+            "body-md": [
+              "0.9375rem",
+              { "lineHeight": "1.5rem", "letterSpacing": "0", "fontWeight": "400" }
+            ],
+            "headline-lg-mobile": [
+              "1.625rem",
+              { "lineHeight": "2.125rem", "letterSpacing": "-0.02em", "fontWeight": "600" }
+            ],
+            "headline-xl": [
+              "3rem",
+              { "lineHeight": "3.5rem", "letterSpacing": "-0.03em", "fontWeight": "700" }
+            ],
+            "body-sm": [
+              "0.8125rem",
+              { "lineHeight": "1.25rem", "letterSpacing": "0", "fontWeight": "400" }
+            ],
+            "body-lg": [
+              "1.125rem",
+              { "lineHeight": "1.75rem", "letterSpacing": "-0.01em", "fontWeight": "400" }
+            ],
+            "headline-lg": [
+              "2.25rem",
+              { "lineHeight": "2.75rem", "letterSpacing": "-0.025em", "fontWeight": "600" }
+            ],
+            "data-metric-lg": [
+              "2rem",
+              { "lineHeight": "2.25rem", "letterSpacing": "-0.02em", "fontWeight": "700" }
+            ],
+            "headline-xl-mobile": [
+              "2rem",
+              { "lineHeight": "2.5rem", "letterSpacing": "-0.02em", "fontWeight": "700" }
+            ]
+          }
+        },
+      },
+    }
+  </script>
+</head>
+<body class="h-full bg-surface text-on-surface antialiased flex">
+<!-- Sidebar Backdrop Overlay -->
+<div aria-hidden="true" class="fixed inset-0 bg-on-surface/40 backdrop-blur-sm z-50 transition-opacity duration-300 opacity-0 pointer-events-none" id="sidebarBackdrop"></div>
+<!-- Collapsible Navigation Sidebar -->
+<aside aria-label="Main Sidebar Navigation" class="fixed top-0 left-0 bottom-0 w-72 max-w-[85vw] bg-surface-container-lowest border-r border-surface-container-high z-50 flex flex-col justify-between shadow-2xl transition-transform duration-300 ease-in-out -translate-x-full" id="collapsibleSidebar">
+<!-- Top Branding & Close Header -->
+<div>
+<div class="h-16 px-5 border-b border-surface-container-high flex items-center justify-between">
+<a href="../homepage/homepage.html" class="flex items-center gap-2.5 hover:opacity-90 transition-opacity">
+<div class="w-8 h-8 rounded-lg bg-primary flex items-center justify-center text-on-secondary shadow-sm">
+<span class="material-symbols-outlined text-[19px]" data-icon="insights" style="font-variation-settings: 'FILL' 1;">insights</span>
+</div>
+<div class="flex flex-col">
+<div class="flex items-center gap-1.5 leading-none">
+<span class="font-headline-sm text-sm font-bold text-on-surface tracking-tight">IntelliFinance</span>
+<span class="px-1 py-0.5 rounded text-[9px] font-bold bg-surface-container-low text-secondary border border-surface-container-high">OS v4.2</span>
+</div>
+<span class="text-[10px] text-outline mt-0.5">Wealth Intelligence OS</span>
+</div>
+</a>
+<button aria-label="Close sidebar" class="w-8 h-8 rounded-md flex items-center justify-center text-on-surface-variant hover:text-on-surface hover:bg-surface-container-low transition-colors" id="closeSidebarBtn">
+<span class="material-symbols-outlined text-[20px]" data-icon="chevron_left">chevron_left</span>
+</button>
+</div>
+<!-- Navigation Menu Items -->
+<nav aria-label="Primary Navigation" class="p-3 space-y-1 overflow-y-auto">
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg text-on-surface-variant hover:text-on-surface hover:bg-surface-container-low transition-colors text-xs font-medium" href="../homepage/homepage.html">
+<span class="material-symbols-outlined text-[18px]" data-icon="dashboard">dashboard</span>
+<span class="flex-1">Dashboard</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg text-on-surface-variant hover:text-on-surface hover:bg-surface-container-low transition-colors text-xs font-medium" href="../profile/code.html">
+<span class="material-symbols-outlined text-[18px]" data-icon="person">person</span>
+<span class="flex-1">User Profile &amp; Baseline</span>
+<span class="px-1.5 py-0.5 rounded text-[10px] font-semibold bg-secondary-fixed text-on-secondary-fixed">Edit</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg text-on-surface-variant hover:text-on-surface hover:bg-surface-container-low transition-colors text-xs font-medium" href="../cashflow/cashflow.html">
+<span class="material-symbols-outlined text-[18px]" data-icon="account_balance_wallet">account_balance_wallet</span>
+<span class="">Cash Flow &amp; Budget</span>
+</a>
+<!-- ACTIVE ITEM -->
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg bg-surface-container text-secondary font-semibold text-xs transition-colors group" href="#">
+<span class="material-symbols-outlined text-[18px] text-secondary" data-icon="shield_with_heart" style="font-variation-settings: 'FILL' 1;">shield_with_heart</span>
+<span class="flex-1">Savings &amp; Emergency</span>
+<span class="w-1.5 h-1.5 rounded-full bg-secondary"></span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg text-on-surface-variant hover:text-on-surface hover:bg-surface-container-low transition-colors text-xs font-medium" href="../investmwnt and portfolio/investment and portfolio.html">
+<span class="material-symbols-outlined text-[18px]" data-icon="trending_up">trending_up</span>
+<span class="flex-1">Investments &amp; SIP</span>
+<span class="px-1.5 py-0.5 rounded text-[10px] font-semibold bg-surface-container-low text-on-tertiary-container border border-surface-container-high">+12.4%</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg text-on-surface-variant hover:text-on-surface hover:bg-surface-container-low transition-colors text-xs font-medium" href="../health audit/healthaudit.html">
+<span class="material-symbols-outlined text-[18px]" data-icon="verified_user">verified_user</span>
+<span class="">Financial Health Audit</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg text-on-surface-variant hover:text-on-surface hover:bg-surface-container-low transition-colors text-xs font-medium" href="../homepage/homepage.html#reports">
+<span class="material-symbols-outlined text-[18px]" data-icon="receipt_long">receipt_long</span>
+<span class="">Reports &amp; Export</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg text-on-surface-variant hover:text-on-surface hover:bg-surface-container-low transition-colors text-xs font-medium" href="../profile/code.html">
+<span class="material-symbols-outlined text-[18px]" data-icon="settings">settings</span>
+<span class="">Settings</span>
+</a>
+</nav>
+</div>
+<!-- Sidebar Middle/Bottom Action Card & Footer Utility Links -->
+<div class="p-3 border-t border-surface-container-high space-y-2.5">
+<!-- Quick Allocate Action Card -->
+<div class="p-2.5 rounded-lg bg-surface-container-low border border-surface-container-high space-y-1.5">
+<div class="flex items-center gap-1.5 text-secondary font-semibold text-xs">
+<span class="material-symbols-outlined text-[15px]" data-icon="bolt">bolt</span>
+<span class="">Quick Allocate</span>
+</div>
+<p class="text-[11px] text-on-surface-variant leading-relaxed">
+Monthly net surplus float ready for deployment across verified liquidity &amp; index targets.
+</p>
+<a href="../profile/code.html#linked-portfolios" class="w-full h-6 rounded bg-secondary text-on-secondary text-[11px] font-semibold hover:bg-secondary-container transition-colors flex items-center justify-center gap-1">
+<span class="material-symbols-outlined text-[13px]" data-icon="tune">tune</span>
+<span class="">Deploy Surplus</span>
+</a>
+</div>
+<!-- Secondary Links -->
+<div class="pt-0.5 space-y-0.5">
+<a class="flex items-center gap-2 px-2.5 py-1.5 rounded-md text-on-surface-variant hover:text-on-surface hover:bg-surface-container-low text-xs transition-colors" href="../profile/code.html">
+<span class="material-symbols-outlined text-[16px]" data-icon="badge">badge</span>
+<span class="">Executive Profile</span>
+</a>
+<a class="flex items-center gap-2 px-2.5 py-1.5 rounded-md text-error hover:bg-error-container/30 text-xs transition-colors" href="#logout" onclick="window.IntelliFinance.logout('../login.html'); return false;">
+<span class="material-symbols-outlined text-[16px]" data-icon="logout">logout</span>
+<span class="">Log Out</span>
+</a>
+</div>
+</div>
+</aside>
+<!-- ================= MAIN CONTENT CANVAS ================= -->
+<div class="w-full flex-1 flex flex-col min-h-screen bg-surface">
+<!-- Top Header Bar -->
+<header class="w-full h-16 sticky top-0 z-40 bg-surface-container-lowest px-6 md:px-margin flex items-center justify-between border-b border-surface-container-high">
+<!-- Breadcrumbs & Hamburger -->
+<div class="flex items-center gap-3 sm:gap-4">
+<button aria-label="Open sidebar menu" class="w-9 h-9 flex items-center justify-center rounded-lg border border-surface-container-high bg-surface-container-lowest text-on-surface hover:bg-surface-container-low transition-colors shadow-xs" id="openSidebarBtn">
+<span class="material-symbols-outlined text-[21px]" data-icon="menu">menu</span>
+</button>
+<nav class="flex items-center gap-2 text-on-surface-variant font-label-md text-label-md">
+<a href="../homepage/homepage.html" class="hover:text-on-surface cursor-pointer">IntelliFinance</a>
+<span class="material-symbols-outlined text-[16px] text-outline-variant" data-icon="chevron_right">chevron_right</span>
+<span class="font-semibold text-on-surface">Savings &amp; Emergency</span>
+</nav>
+</div>
+<!-- Right Header Elements -->
+<div class="flex items-center gap-space-md">
+<!-- Notification Bell -->
+<button aria-label="Notifications" class="relative w-9 h-9 rounded-lg flex items-center justify-center text-on-surface-variant hover:bg-surface-container-low hover:text-on-surface transition-colors">
+<span class="material-symbols-outlined text-[20px]" data-icon="notifications">notifications</span>
+<span class="absolute top-2 right-2 w-2 h-2 rounded-full bg-secondary"></span>
+</button>
+<div class="h-5 w-px bg-surface-container-high"></div>
+<!-- Alex Morgan Profile Pill -->
+<div class="flex items-center gap-3 pl-1 pr-3 py-1 bg-surface-container-low rounded-full border border-surface-container-high">
+<div class="w-7 h-7 rounded-full bg-primary text-on-primary flex items-center justify-center font-headline-sm text-[11px] font-bold if-initials">
+            AM
+          </div>
+<div class="flex flex-col text-left">
+<span class="font-label-sm text-label-sm font-semibold text-on-surface leading-tight if-display-name">Alex Morgan</span>
+<span class="text-[10px] text-secondary font-medium tracking-tight leading-tight">Pro Tier Member</span>
+</div>
+</div>
+</div>
+</header>
+<!-- Page Body Container -->
+<main class="flex-1 px-margin py-space-lg max-w-[1520px] w-full mx-auto space-y-space-lg">
+<!-- ================= 1. PAGE HEADER SECTION ================= -->
+<div class="flex flex-col md:flex-row md:items-center justify-between gap-4">
+<div>
+<h1 class="font-headline-md text-headline-md font-bold text-on-surface tracking-tight">Savings &amp; Emergency Reserves</h1>
+<p class="font-body-md text-body-md text-on-surface-variant mt-1">
+            Track your liquid safety buffers, high-yield reserves, and targeted milestone savings.
+          </p>
+</div>
+<div class="flex items-center gap-3 flex-wrap">
+<!-- Simulation Timeline Stepper -->
+<div class="flex items-center bg-surface-container-low border border-surface-container-high rounded-md p-0.5 text-xs">
+<span class="px-2 font-mono text-outline font-semibold" id="sim-month-counter">Time: +0m</span>
+<button onclick="window.IntelliFinance.advanceMonths(1)" class="px-2 py-1 rounded bg-surface-container-lowest hover:bg-surface-container-high text-on-surface font-medium transition-colors" title="Advance 1 Month">+1 Mo</button>
+<button onclick="window.IntelliFinance.advanceMonths(3)" class="px-2 py-1 rounded bg-surface-container-lowest hover:bg-surface-container-high text-on-surface font-medium transition-colors" title="Advance 3 Months">+3 Mo</button>
+<button onclick="window.IntelliFinance.resetSimulation()" class="px-2 py-1 rounded hover:bg-error/10 text-error font-medium transition-colors" title="Reset timeline">Reset</button>
+</div>
+<a href="../profile/code.html#financial-core" class="h-10 px-4 rounded-lg bg-surface-container-lowest border border-surface-container-high text-on-surface font-label-md text-label-md hover:bg-surface-container-low hover:border-outline-variant transition-colors flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px]" data-icon="tune">tune</span>
+<span>Adjust Buffer</span>
+</a>
+<a href="../profile/code.html" class="h-10 px-4 rounded-lg bg-primary text-on-primary font-label-md text-label-md hover:bg-primary-container transition-colors flex items-center gap-2 shadow-sm">
+<span class="material-symbols-outlined text-[18px]" data-icon="add">add</span>
+<span>New Savings Goal</span>
+</a>
+</div>
+</div>
+<!-- ================= 2. CORE KPI METRICS ROW ================= -->
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-space-md">
+<!-- KPI 1 -->
+<div class="bg-surface-container-lowest p-space-lg rounded-xl border border-surface-container-high shadow-sm hover:shadow-md transition-shadow">
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-on-surface-variant">Total Liquid Reserves</span>
+<div class="w-7 h-7 rounded-lg bg-surface-container-low text-secondary flex items-center justify-center">
+<span class="material-symbols-outlined text-[18px]" data-icon="account_balance">account_balance</span>
+</div>
+</div>
+<div class="mt-3 font-data-metric-lg text-data-metric-lg text-on-surface tabular-nums font-bold" id="sav-liquid-reserves">
+            $35,800.00
+          </div>
+<div class="mt-2 flex items-center gap-1.5 text-on-tertiary-container font-label-sm text-label-sm" id="sav-liquid-desc">
+<span class="material-symbols-outlined text-[15px]" data-icon="trending_up">trending_up</span>
+<span>+$780.00 this month • +4.85% APY Avg</span>
+</div>
+</div>
+<!-- KPI 2 -->
+<div class="bg-surface-container-lowest p-space-lg rounded-xl border border-surface-container-high shadow-sm hover:shadow-md transition-shadow">
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-on-surface-variant">Emergency Runway</span>
+<span class="inline-flex items-center px-2 py-0.5 rounded-full text-[11px] font-semibold bg-tertiary-fixed text-on-tertiary-fixed-variant" id="sav-runway-badge">
+              Fully Funded
+            </span>
+</div>
+<div class="mt-3 font-data-metric-lg text-data-metric-lg text-on-surface tabular-nums font-bold" id="sav-runway-months">
+            6.5 Months
+          </div>
+<div class="mt-2 text-on-surface-variant font-body-sm text-body-sm" id="sav-runway-target">
+            Target: 3–6 mos essential ($2,420/mo)
+          </div>
+</div>
+<!-- KPI 3 -->
+<div class="bg-surface-container-lowest p-space-lg rounded-xl border border-surface-container-high shadow-sm hover:shadow-md transition-shadow">
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-on-surface-variant">Monthly Savings Velocity</span>
+<div class="w-7 h-7 rounded-lg bg-surface-container-low text-secondary flex items-center justify-center">
+<span class="material-symbols-outlined text-[18px]" data-icon="bolt">bolt</span>
+</div>
+</div>
+<div class="mt-3 font-data-metric-lg text-data-metric-lg text-on-surface tabular-nums font-bold" id="sav-monthly-savings">
+            $2,400.00 <span class="font-body-md text-body-md text-on-surface-variant font-normal">/ mo</span>
+</div>
+<div class="mt-2 text-on-surface-variant font-body-sm text-body-sm" id="sav-savings-rate-desc">
+            24.9% of net salary • Standard target ≥20%
+          </div>
+</div>
+<!-- KPI 4 -->
+<div class="bg-surface-container-lowest p-space-lg rounded-xl border border-surface-container-high shadow-sm hover:shadow-md transition-shadow">
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-on-surface-variant">Net Goal Allocation</span>
+<div class="w-7 h-7 rounded-lg bg-surface-container-low text-secondary flex items-center justify-center">
+<span class="material-symbols-outlined text-[18px]" data-icon="flag">flag</span>
+</div>
+</div>
+<div class="mt-3 font-data-metric-lg text-data-metric-lg text-on-surface tabular-nums font-bold" id="sav-goal-allocation">
+            $64,000.00
+          </div>
+<div class="mt-2 text-on-surface-variant font-body-sm text-body-sm">
+            80% towards secondary property &amp; targets
+          </div>
+</div>
+</div>
+<!-- ================= 3. EMERGENCY RESERVE HEALTH & VAULT DEEP-DIVE ================= -->
+<section class="bg-surface-container-lowest rounded-xl border border-surface-container-high shadow-sm overflow-hidden">
+<div class="px-space-lg py-4 border-b border-surface-container-low flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-lg bg-secondary-fixed text-secondary flex items-center justify-center">
+<span class="material-symbols-outlined text-[20px]" data-icon="shield">shield</span>
+</div>
+<div>
+<h2 class="font-headline-sm text-headline-sm font-bold text-on-surface">Emergency Fund Deep-Dive &amp; Capital Vault</h2>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Primary high-liquidity capital buffer partitioned for volatility protection</p>
+</div>
+</div>
+<div class="flex items-center gap-2">
+<span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-tertiary-fixed text-on-tertiary-fixed-variant">
+<span class="w-1.5 h-1.5 rounded-full bg-on-tertiary-container animate-pulse"></span>
+              Status: Optimal &amp; Locked
+            </span>
+</div>
+</div>
+<div class="p-space-lg grid grid-cols-1 lg:grid-cols-12 gap-space-lg items-center">
+<!-- Overview Stats Block -->
+<div class="lg:col-span-5 flex flex-col justify-between h-full space-y-5 border-b lg:border-b-0 lg:border-r border-surface-container-low lg:pr-space-lg pb-space-lg lg:pb-0">
+<div>
+<div class="flex items-baseline justify-between mb-2">
+<span class="font-body-md text-body-md text-on-surface-variant">Current Vault Balance</span>
+<span class="font-headline-sm text-headline-sm font-bold text-on-surface" id="sav-vault-balance">$25,000.00</span>
+</div>
+<!-- Multi-segmented Progress Bar -->
+<div class="w-full bg-surface-container-low h-3 rounded-full overflow-hidden flex">
+<div class="bg-secondary h-full" style="width: 60%;" title="Marcus HYSA: $15,000.00"></div>
+<div class="bg-secondary-container h-full" style="width: 40%;" title="US Treasury Bills: $10,000.00"></div>
+</div>
+<div class="flex items-center justify-between mt-2 font-label-sm text-label-sm text-on-surface-variant">
+<span id="sav-vault-target-desc">Target Buffer: $25,000.00 (100% Funded)</span>
+<span class="text-secondary font-semibold" id="sav-vault-mo-desc">10.3 mo base expenses</span>
+</div>
+</div>
+<!-- Stress Test Score Meter -->
+<div class="p-space-md rounded-lg bg-surface-container-low border border-surface-container-high flex items-center justify-between">
+<div>
+<div class="font-label-sm text-label-sm uppercase text-on-surface-variant font-semibold">Runway Stress Test Resilience</div>
+<div class="font-body-sm text-body-sm text-on-surface-variant mt-0.5">Job loss, medical event, and sudden volatility defense</div>
+</div>
+<div class="text-right">
+<div class="font-headline-sm text-headline-sm font-bold text-on-tertiary-container flex items-center gap-1 justify-end">
+<span class="material-symbols-outlined text-[20px]" data-icon="verified_user">verified_user</span>
+<span>98/100</span>
+</div>
+<span class="text-[11px] font-medium text-on-surface-variant">Institutional Grade</span>
+</div>
+</div>
+</div>
+<!-- Breakdown Distribution -->
+<div class="lg:col-span-7 space-y-3">
+<div class="font-label-sm text-label-sm uppercase tracking-wider text-on-surface-variant font-semibold mb-1">
+              Capital Distribution &amp; Yield Engine
+            </div>
+<!-- Holding 1: Marcus HYSA -->
+<div class="p-space-md rounded-lg bg-surface-container-lowest border border-surface-container-high hover:border-outline-variant transition-colors flex items-center justify-between">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-lg bg-surface-container-low flex items-center justify-center text-on-surface font-bold text-sm">
+                  GS
+                </div>
+<div>
+<div class="font-headline-sm text-body-md font-semibold text-on-surface">Marcus by Goldman Sachs HYSA</div>
+<div class="font-body-sm text-body-sm text-on-surface-variant">Instant liquidity • 24-hr ACH clearing</div>
+</div>
+</div>
+<div class="text-right">
+<div class="font-data-metric-md text-data-metric-md font-bold text-on-surface tabular-nums">$15,000.00</div>
+<div class="inline-flex items-center gap-1 font-label-sm text-label-sm text-on-tertiary-container font-semibold">
+<span class="material-symbols-outlined text-[14px]" data-icon="percent">percent</span>
+<span>4.85% APY</span>
+</div>
+</div>
+</div>
+<!-- Holding 2: US Treasury T-Bills -->
+<div class="p-space-md rounded-lg bg-surface-container-lowest border border-surface-container-high hover:border-outline-variant transition-colors flex items-center justify-between">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-lg bg-surface-container-low flex items-center justify-center text-on-surface font-bold text-sm">
+                  UST
+                </div>
+<div>
+<div class="font-headline-sm text-body-md font-semibold text-on-surface">US Treasury 4-Week T-Bills</div>
+<div class="font-body-sm text-body-sm text-on-surface-variant">Rolling ladder • State &amp; local tax exempt</div>
+</div>
+</div>
+<div class="text-right">
+<div class="font-data-metric-md text-data-metric-md font-bold text-on-surface tabular-nums">$10,000.00</div>
+<div class="inline-flex items-center gap-1 font-label-sm text-label-sm text-on-tertiary-container font-semibold">
+<span class="material-symbols-outlined text-[14px]" data-icon="percent">percent</span>
+<span>5.20% Yield</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- ================= 4. ACTIVE DEDICATED SAVINGS GOALS ================= -->
+<section class="space-y-space-md">
+<div class="flex items-center justify-between">
+<div>
+<h2 class="font-headline-sm text-headline-sm font-bold text-on-surface">Active Dedicated Savings Goals</h2>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Ring-fenced accounts targeted for scheduled capital milestones</p>
+</div>
+<span class="text-xs font-semibold text-secondary hover:underline cursor-pointer">View All Goals (3)</span>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-space-md">
+<!-- Goal 1 -->
+<div class="bg-surface-container-lowest p-space-lg rounded-xl border border-surface-container-high shadow-sm hover:shadow-md transition-all flex flex-col justify-between">
+<div>
+<div class="flex items-center justify-between mb-3">
+<div class="w-9 h-9 rounded-lg bg-surface-container-low text-secondary flex items-center justify-center">
+<span class="material-symbols-outlined text-[20px]" data-icon="real_estate_agent">real_estate_agent</span>
+</div>
+<span class="inline-flex items-center px-2 py-0.5 rounded-full text-[11px] font-semibold bg-tertiary-fixed text-on-tertiary-fixed-variant">
+                  80% Complete
+                </span>
+</div>
+<h3 class="font-headline-sm text-body-md font-bold text-on-surface">Secondary Property Downpayment</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-0.5">Target Date: Q4 2025 • Ahead of schedule</p>
+<!-- Progress bar -->
+<div class="mt-4">
+<div class="flex justify-between font-label-sm text-label-sm mb-1.5">
+<span class="font-bold text-on-surface tabular-nums">$64,000.00</span>
+<span class="text-on-surface-variant">of $80,000.00</span>
+</div>
+<div class="w-full bg-surface-container-low h-2.5 rounded-full overflow-hidden">
+<div class="bg-secondary h-full rounded-full transition-all duration-500" style="width: 80%;"></div>
+</div>
+</div>
+</div>
+<div class="mt-5 pt-3 border-t border-surface-container-low flex items-center justify-between font-body-sm text-body-sm text-on-surface-variant">
+<span>Auto-deposit</span>
+<span class="font-semibold text-on-surface">$1,200.00/mo</span>
+</div>
+</div>
+<!-- Goal 2 -->
+<div class="bg-surface-container-lowest p-space-lg rounded-xl border border-surface-container-high shadow-sm hover:shadow-md transition-all flex flex-col justify-between">
+<div>
+<div class="flex items-center justify-between mb-3">
+<div class="w-9 h-9 rounded-lg bg-surface-container-low text-secondary flex items-center justify-center">
+<span class="material-symbols-outlined text-[20px]" data-icon="flight">flight</span>
+</div>
+<span class="inline-flex items-center px-2 py-0.5 rounded-full text-[11px] font-semibold bg-secondary-fixed text-on-secondary-fixed-variant">
+                  65% Complete
+                </span>
+</div>
+<h3 class="font-headline-sm text-body-md font-bold text-on-surface">Annual Luxury Vacation &amp; Travel</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-0.5">Target Date: Jul 2025 • On Track</p>
+<!-- Progress bar -->
+<div class="mt-4">
+<div class="flex justify-between font-label-sm text-label-sm mb-1.5">
+<span class="font-bold text-on-surface tabular-nums">$5,200.00</span>
+<span class="text-on-surface-variant">of $8,000.00</span>
+</div>
+<div class="w-full bg-surface-container-low h-2.5 rounded-full overflow-hidden">
+<div class="bg-secondary h-full rounded-full transition-all duration-500" style="width: 65%;"></div>
+</div>
+</div>
+</div>
+<div class="mt-5 pt-3 border-t border-surface-container-low flex items-center justify-between font-body-sm text-body-sm text-on-surface-variant">
+<span>Auto-deposit</span>
+<span class="font-semibold text-on-surface">$400.00/mo</span>
+</div>
+</div>
+<!-- Goal 3 -->
+<div class="bg-surface-container-lowest p-space-lg rounded-xl border border-surface-container-high shadow-sm hover:shadow-md transition-all flex flex-col justify-between">
+<div>
+<div class="flex items-center justify-between mb-3">
+<div class="w-9 h-9 rounded-lg bg-surface-container-low text-secondary flex items-center justify-center">
+<span class="material-symbols-outlined text-[20px]" data-icon="directions_car">directions_car</span>
+</div>
+<span class="inline-flex items-center px-2 py-0.5 rounded-full text-[11px] font-semibold bg-tertiary-fixed text-on-tertiary-fixed-variant">
+                  80% Complete
+                </span>
+</div>
+<h3 class="font-headline-sm text-body-md font-bold text-on-surface">Vehicle Maintenance &amp; Upgrade Buffer</h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-0.5">Target Date: Sep 2025 • Fully Scheduled</p>
+<!-- Progress bar -->
+<div class="mt-4">
+<div class="flex justify-between font-label-sm text-label-sm mb-1.5">
+<span class="font-bold text-on-surface tabular-nums">$4,800.00</span>
+<span class="text-on-surface-variant">of $6,000.00</span>
+</div>
+<div class="w-full bg-surface-container-low h-2.5 rounded-full overflow-hidden">
+<div class="bg-secondary h-full rounded-full transition-all duration-500" style="width: 80%;"></div>
+</div>
+</div>
+</div>
+<div class="mt-5 pt-3 border-t border-surface-container-low flex items-center justify-between font-body-sm text-body-sm text-on-surface-variant">
+<span>Auto-deposit</span>
+<span class="font-semibold text-on-surface">$250.00/mo</span>
+</div>
+</div>
+</div>
+</section>
+<!-- ================= 5. SMART AUTOMATED RULES & SWEEPS ================= -->
+<section class="bg-surface-container-lowest p-space-lg rounded-xl border border-surface-container-high shadow-sm">
+<div class="flex items-center justify-between mb-space-md">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-lg bg-surface-container-low text-secondary flex items-center justify-center">
+<span class="material-symbols-outlined text-[20px]" data-icon="tune">tune</span>
+</div>
+<div>
+<h2 class="font-headline-sm text-headline-sm font-bold text-on-surface">Smart Automated Rules &amp; Cash Sweeps</h2>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Algorithmic routing to eliminate idle capital drag</p>
+</div>
+</div>
+<button class="text-xs font-semibold text-secondary hover:underline flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px]" data-icon="add_circle">add_circle</span>
+<span>Configure New Rule</span>
+</button>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-space-md">
+<!-- Rule 1 -->
+<div class="p-space-md rounded-lg bg-surface-container-low border border-surface-container-high flex items-start justify-between">
+<div class="flex items-start gap-3">
+<div class="w-8 h-8 rounded-full bg-surface-container-lowest border border-surface-container-high flex items-center justify-center text-on-tertiary-container mt-0.5">
+<span class="material-symbols-outlined text-[18px]" data-icon="check_circle" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+</div>
+<div>
+<div class="flex items-center gap-2">
+<span class="font-headline-sm text-body-md font-semibold text-on-surface">Checking Float Sweep</span>
+<span class="px-2 py-0.5 rounded-full text-[10px] font-semibold bg-tertiary-fixed text-on-tertiary-fixed-variant">Active</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-1">
+                  Automatically moves checking balances exceeding <strong class="text-on-surface">$3,500</strong> into High-Yield Savings on monthly salary deposit day.
+                </p>
+<div class="mt-2 text-[11px] text-on-surface-variant font-medium">Last executed: 4 days ago • Swept $620.00</div>
+</div>
+</div>
+<button class="text-on-surface-variant hover:text-on-surface p-1 rounded">
+<span class="material-symbols-outlined text-[18px]" data-icon="more_vert">more_vert</span>
+</button>
+</div>
+<!-- Rule 2 -->
+<div class="p-space-md rounded-lg bg-surface-container-low border border-surface-container-high flex items-start justify-between">
+<div class="flex items-start gap-3">
+<div class="w-8 h-8 rounded-full bg-surface-container-lowest border border-surface-container-high flex items-center justify-center text-on-tertiary-container mt-0.5">
+<span class="material-symbols-outlined text-[18px]" data-icon="check_circle" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+</div>
+<div>
+<div class="flex items-center gap-2">
+<span class="font-headline-sm text-body-md font-semibold text-on-surface">Round-Up &amp; Weekly Micro-Deposit</span>
+<span class="px-2 py-0.5 rounded-full text-[10px] font-semibold bg-tertiary-fixed text-on-tertiary-fixed-variant">Active</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-1">
+                  Transfers <strong class="text-on-surface">$50/week</strong> directly to Annual Vacation Reserve every Friday morning.
+                </p>
+<div class="mt-2 text-[11px] text-on-surface-variant font-medium">Next scheduled transfer: In 2 days ($50.00)</div>
+</div>
+</div>
+<button class="text-on-surface-variant hover:text-on-surface p-1 rounded">
+<span class="material-symbols-outlined text-[18px]" data-icon="more_vert">more_vert</span>
+</button>
+</div>
+</div>
+</section>
+<!-- ================= 6. AI LIQUIDITY INSIGHT / OPPORTUNITY BANNER ================= -->
+<section class="rounded-xl border border-secondary-fixed bg-surface-container-low p-space-md flex flex-col md:flex-row items-center justify-between gap-4 shadow-sm">
+<div class="flex items-start gap-3">
+<div class="w-9 h-9 rounded-lg bg-secondary text-on-secondary flex items-center justify-center flex-shrink-0 shadow-sm">
+<span class="material-symbols-outlined text-[20px]" data-icon="auto_awesome" style="font-variation-settings: 'FILL' 1;">auto_awesome</span>
+</div>
+<div>
+<div class="flex items-center gap-2">
+<span class="font-label-sm text-label-sm uppercase font-bold text-secondary">Yield Optimization Alert</span>
+<span class="text-xs text-on-surface-variant">• Liquidity Intelligence</span>
+</div>
+<p class="font-body-md text-body-md text-on-surface mt-0.5">
+              Sweep <strong class="font-semibold text-on-surface">$1,580</strong> idle cash from checking (earning 0.02%) into your 4.85% High-Yield Reserve to gain an extra <strong class="text-on-tertiary-container font-semibold">+$76.60 annual yield</strong> with zero liquidity lock-up.
+            </p>
+</div>
+</div>
+<div class="flex items-center gap-2 flex-shrink-0 w-full md:w-auto justify-end">
+<button class="px-3 py-1.5 rounded-lg text-on-surface-variant hover:bg-surface-container-lowest font-label-md text-label-md transition-colors">
+            Dismiss
+          </button>
+<button class="px-4 py-1.5 rounded-lg bg-secondary text-on-secondary hover:bg-secondary-container font-label-md text-label-md font-semibold transition-colors shadow-sm flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[16px]" data-icon="bolt">bolt</span>
+<span>One-Click Sweep</span>
+</button>
+</div>
+</section>
+</main>
+</div>
+<script>
+  (function() {
+    const sidebar = document.getElementById('collapsibleSidebar');
+    const backdrop = document.getElementById('sidebarBackdrop');
+    const openBtn = document.getElementById('openSidebarBtn');
+    const closeBtn = document.getElementById('closeSidebarBtn');
+
+    function openSidebar() {
+      if (!sidebar || !backdrop) return;
+      sidebar.classList.remove('-translate-x-full');
+      sidebar.classList.add('translate-x-0');
+      backdrop.classList.remove('opacity-0', 'pointer-events-none');
+      backdrop.classList.add('opacity-100', 'pointer-events-auto');
+      document.body.classList.add('overflow-hidden');
+    }
+
+    function closeSidebar() {
+      if (!sidebar || !backdrop) return;
+      sidebar.classList.remove('translate-x-0');
+      sidebar.classList.add('-translate-x-full');
+      backdrop.classList.remove('opacity-100', 'pointer-events-auto');
+      backdrop.classList.add('opacity-0', 'pointer-events-none');
+      document.body.classList.remove('overflow-hidden');
+    }
+
+    if (openBtn) {
+      openBtn.addEventListener('click', function(e) {
+        e.stopPropagation();
+        if (sidebar.classList.contains('-translate-x-full')) {
+          openSidebar();
+        } else {
+          closeSidebar();
+        }
+      });
+    }
+
+    if (closeBtn) {
+      closeBtn.addEventListener('click', closeSidebar);
+    }
+
+    if (backdrop) {
+      backdrop.addEventListener('click', closeSidebar);
+    }
+
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape' && sidebar && !sidebar.classList.contains('-translate-x-full')) {
+        closeSidebar();
+      }
+    });
+  })();
+</script>
+<script>
+(function() {
+  function fmt(v) {
+    return window.IntelliFinance ? window.IntelliFinance.formatCurrency(v) : ('$' + Number(v||0).toLocaleString('en-US', {minimumFractionDigits: 2}));
+  }
+
+  function syncUser() {
+    if (!window.IntelliFinance) return;
+    const p = window.IntelliFinance.loadProfile();
+    const name = (p.displayName || p.fullName || '').trim() || (p.isNewUser ? 'New User' : 'User');
+    const init = p.initials || (p.isNewUser ? 'NU' : 'U');
+    document.querySelectorAll('.if-display-name').forEach(el => el.textContent = name);
+    document.querySelectorAll('.if-initials').forEach(el => el.textContent = init);
+
+    const liquidVal = p.emergencyFunded || p.liquidCash || 0;
+    const exp = p.monthlyExpenses || 0;
+    const target = p.emergencyTarget || 0;
+    const runwayMonths = exp > 0 ? (liquidVal / exp).toFixed(1) : (p.isNewUser ? '0.0' : '6.5');
+
+    const liquidEl = document.getElementById('sav-liquid-reserves');
+    if (liquidEl) liquidEl.textContent = fmt(liquidVal);
+
+    const liquidDescEl = document.getElementById('sav-liquid-desc');
+    if (liquidDescEl) {
+      if (p.isNewUser && liquidVal === 0) {
+        liquidDescEl.innerHTML = '<span class="text-outline">$0.00 liquid buffer established</span>';
+      } else {
+        liquidDescEl.innerHTML = '<span class="material-symbols-outlined text-[15px]" data-icon="trending_up">trending_up</span><span>+' + fmt(p.monthlySavings || 0) + ' monthly buffer growth</span>';
+      }
+    }
+
+    const runwayEl = document.getElementById('sav-runway-months');
+    if (runwayEl) runwayEl.textContent = runwayMonths + ' Months';
+
+    const runwayBadgeEl = document.getElementById('sav-runway-badge');
+    if (runwayBadgeEl) {
+      if (p.isNewUser && liquidVal === 0) {
+        runwayBadgeEl.textContent = 'Zero Baseline';
+        runwayBadgeEl.className = 'inline-flex items-center px-2 py-0.5 rounded-full text-[11px] font-semibold bg-slate-100 text-slate-700';
+      } else if (target > 0 && liquidVal >= target) {
+        runwayBadgeEl.textContent = 'Fully Funded';
+        runwayBadgeEl.className = 'inline-flex items-center px-2 py-0.5 rounded-full text-[11px] font-semibold bg-tertiary-fixed text-on-tertiary-fixed-variant';
+      } else {
+        runwayBadgeEl.textContent = 'Building Reserve';
+        runwayBadgeEl.className = 'inline-flex items-center px-2 py-0.5 rounded-full text-[11px] font-semibold bg-amber-100 text-amber-800';
+      }
+    }
+
+    const runwayTargetEl = document.getElementById('sav-runway-target');
+    if (runwayTargetEl) {
+      runwayTargetEl.textContent = 'Target: ' + fmt(target) + ' (' + fmt(exp) + '/mo base)';
+    }
+
+    const savingsEl = document.getElementById('sav-monthly-savings');
+    if (savingsEl) savingsEl.innerHTML = fmt(p.monthlySavings || 0) + ' <span class="font-body-md text-body-md text-on-surface-variant font-normal">/ mo</span>';
+
+    const rateDesc = document.getElementById('sav-savings-rate-desc');
+    if (rateDesc) {
+      const rate = p.monthlyIncome > 0 ? Math.round(((p.monthlySavings || 0) / p.monthlyIncome) * 100) : 0;
+      rateDesc.textContent = rate + '% of net inflow • Target ≥20%';
+    }
+
+    const vaultBalEl = document.getElementById('sav-vault-balance');
+    if (vaultBalEl) vaultBalEl.textContent = fmt(liquidVal);
+
+    const vaultTargetDesc = document.getElementById('sav-vault-target-desc');
+    if (vaultTargetDesc) {
+      const pct = target > 0 ? Math.min(100, Math.round((liquidVal / target) * 100)) : (liquidVal > 0 ? 100 : 0);
+      vaultTargetDesc.textContent = 'Target Buffer: ' + fmt(target) + ' (' + pct + '% Funded)';
+    }
+
+    const simMonths = window.IntelliFinance.getSimulatedMonths ? window.IntelliFinance.getSimulatedMonths() : 0;
+    const simEl = document.getElementById('sim-month-counter');
+    if (simEl) {
+      simEl.textContent = 'Time: +' + simMonths + 'm';
+      simEl.className = 'px-2 font-mono font-semibold ' + (simMonths > 0 ? 'text-secondary bg-indigo-50 rounded' : 'text-outline');
+    }
+  }
+
+  document.addEventListener('DOMContentLoaded', syncUser);
+  if (document.readyState !== 'loading') syncUser();
+  window.addEventListener('IF_PROFILE_UPDATED', syncUser);
+})();
+</script>
+</body></html>

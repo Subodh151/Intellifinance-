@@ -1,0 +1,941 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<script src="../shared/data.js"></script>
+<script>if (window.IntelliFinance && !window.IntelliFinance.requireAuth('../login.html')) {}</script>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Investments & SIP | IntelliFinance</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@600;700;800&family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&family=Plus+Jakarta+Sans:wght@100..900&display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "surface-container": "#e5eeff",
+            "on-primary": "#ffffff",
+            "on-tertiary-fixed-variant": "#005236",
+            "on-secondary-fixed-variant": "#3323cc",
+            "on-tertiary-container": "#009668",
+            "inverse-surface": "#213145",
+            "on-background": "#0b1c30",
+            "surface-bright": "#f8f9ff",
+            "secondary-fixed-dim": "#c3c0ff",
+            "on-error": "#ffffff",
+            "tertiary-container": "#002113",
+            "tertiary": "#000000",
+            "on-surface": "#0b1c30",
+            "on-secondary-container": "#fffbff",
+            "inverse-on-surface": "#eaf1ff",
+            "surface-variant": "#d3e4fe",
+            "on-primary-container": "#7c839b",
+            "primary": "#000000",
+            "on-tertiary-fixed": "#002113",
+            "surface-container-lowest": "#ffffff",
+            "on-surface-variant": "#45464d",
+            "surface-container-low": "#eff4ff",
+            "outline": "#76777d",
+            "primary-container": "#131b2e",
+            "surface-dim": "#cbdbf5",
+            "tertiary-fixed-dim": "#4edea3",
+            "tertiary-fixed": "#6ffbbe",
+            "on-secondary": "#ffffff",
+            "secondary-container": "#645efb",
+            "outline-variant": "#c6c6cd",
+            "surface-tint": "#565e74",
+            "primary-fixed-dim": "#bec6e0",
+            "secondary": "#4b41e1",
+            "error": "#ba1a1a",
+            "on-tertiary": "#ffffff",
+            "surface-container-high": "#dce9ff",
+            "background": "#f8f9ff",
+            "primary-fixed": "#dae2fd",
+            "on-primary-fixed-variant": "#3f465c",
+            "secondary-fixed": "#e2dfff",
+            "surface-container-highest": "#d3e4fe",
+            "surface": "#f8f9ff",
+            "inverse-primary": "#bec6e0",
+            "error-container": "#ffdad6",
+            "on-primary-fixed": "#131b2e",
+            "on-error-container": "#93000a",
+            "on-secondary-fixed": "#0f0069"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "full": "9999px"
+          },
+          "spacing": {
+            "space-xl": "2.5rem",
+            "margin": "2rem",
+            "space-xs": "0.25rem",
+            "space-sm": "0.5rem",
+            "space-lg": "1.5rem",
+            "gutter": "1.5rem",
+            "space-md": "1rem"
+          },
+          "fontFamily": {
+            "headline-lg": ["Plus Jakarta Sans"],
+            "headline-xl": ["Plus Jakarta Sans"],
+            "headline-lg-mobile": ["Plus Jakarta Sans"],
+            "headline-xl-mobile": ["Plus Jakarta Sans"],
+            "body-md": ["Inter"],
+            "headline-sm": ["Plus Jakarta Sans"],
+            "headline-md": ["Plus Jakarta Sans"],
+            "data-metric-lg": ["Plus Jakarta Sans"],
+            "data-metric-md": ["Inter"],
+            "label-sm": ["Inter"],
+            "body-lg": ["Inter"],
+            "label-md": ["Inter"],
+            "body-sm": ["Inter"]
+          },
+          "fontSize": {
+            "headline-lg": ["2.25rem", { lineHeight: "2.75rem", letterSpacing: "-0.025em", fontWeight: "600" }],
+            "headline-xl": ["3rem", { lineHeight: "3.5rem", letterSpacing: "-0.03em", fontWeight: "700" }],
+            "headline-lg-mobile": ["1.625rem", { lineHeight: "2.125rem", letterSpacing: "-0.02em", fontWeight: "600" }],
+            "headline-xl-mobile": ["2rem", { lineHeight: "2.5rem", letterSpacing: "-0.02em", fontWeight: "700" }],
+            "body-md": ["0.9375rem", { lineHeight: "1.5rem", letterSpacing: "0", fontWeight: "400" }],
+            "headline-sm": ["1.125rem", { lineHeight: "1.5rem", letterSpacing: "-0.01em", fontWeight: "600" }],
+            "headline-md": ["1.5rem", { lineHeight: "2rem", letterSpacing: "-0.015em", fontWeight: "600" }],
+            "data-metric-lg": ["2rem", { lineHeight: "2.25rem", letterSpacing: "-0.02em", fontWeight: "700" }],
+            "data-metric-md": ["1.125rem", { lineHeight: "1.5rem", letterSpacing: "-0.01em", fontWeight: "600" }],
+            "label-sm": ["0.75rem", { lineHeight: "1rem", letterSpacing: "0.04em", fontWeight: "600" }],
+            "body-lg": ["1.125rem", { lineHeight: "1.75rem", letterSpacing: "-0.01em", fontWeight: "400" }],
+            "label-md": ["0.875rem", { lineHeight: "1.25rem", letterSpacing: "0.01em", fontWeight: "500" }],
+            "body-sm": ["0.8125rem", { lineHeight: "1.25rem", letterSpacing: "0", fontWeight: "400" }]
+          }
+        }
+      }
+    }
+  </script>
+<style>
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      display: inline-block;
+      vertical-align: middle;
+      line-height: 1;
+    }
+    .custom-scrollbar::-webkit-scrollbar {
+      width: 4px;
+      height: 4px;
+    }
+    .custom-scrollbar::-webkit-scrollbar-thumb {
+      background: #cbd5e1;
+      border-radius: 4px;
+    }
+  </style>
+</head>
+<body class="bg-background text-on-surface antialiased font-body-md min-h-screen flex selection:bg-surface-variant">
+<!-- Sidebar Backdrop Overlay -->
+<div aria-hidden="true" class="fixed inset-0 bg-on-surface/40 backdrop-blur-sm z-50 transition-opacity duration-300 opacity-0 pointer-events-none" id="sidebarBackdrop"></div>
+<!-- Collapsible Navigation Sidebar -->
+<aside aria-label="Main Sidebar Navigation" class="fixed top-0 left-0 bottom-0 w-72 max-w-[85vw] bg-surface-container-lowest border-r border-surface-container-high z-50 flex flex-col justify-between shadow-2xl transition-transform duration-300 ease-in-out -translate-x-full" id="collapsibleSidebar">
+<!-- Top Branding & Close Header -->
+<div>
+<div class="h-16 px-5 border-b border-surface-container-high flex items-center justify-between">
+<a href="../homepage/homepage.html" class="flex items-center gap-2.5 hover:opacity-90 transition-opacity">
+<div class="w-8 h-8 rounded-lg bg-primary flex items-center justify-center text-on-secondary shadow-sm">
+<span class="material-symbols-outlined text-[19px]" data-icon="insights" style="font-variation-settings: 'FILL' 1;">insights</span>
+</div>
+<div class="flex flex-col">
+<div class="flex items-center gap-1.5 leading-none">
+<span class="font-headline-sm text-sm font-bold text-on-surface tracking-tight">IntelliFinance</span>
+<span class="px-1 py-0.5 rounded text-[9px] font-bold bg-surface-container-low text-secondary border border-surface-container-high">OS v4.2</span>
+</div>
+<span class="text-[10px] text-outline mt-0.5">Wealth Intelligence OS</span>
+</div>
+</a>
+<button aria-label="Close sidebar" class="w-8 h-8 rounded-md flex items-center justify-center text-on-surface-variant hover:text-on-surface hover:bg-surface-container-low transition-colors" id="closeSidebarBtn">
+<span class="material-symbols-outlined text-[20px]" data-icon="chevron_left">chevron_left</span>
+</button>
+</div>
+<!-- Navigation Menu Items -->
+<nav aria-label="Primary Navigation" class="p-3 space-y-1 overflow-y-auto">
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg text-on-surface-variant hover:text-on-surface hover:bg-surface-container-low transition-colors text-xs font-medium" href="../homepage/homepage.html">
+<span class="material-symbols-outlined text-[18px]" data-icon="dashboard">dashboard</span>
+<span class="flex-1">Dashboard</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg text-on-surface-variant hover:text-on-surface hover:bg-surface-container-low transition-colors text-xs font-medium" href="../profile/code.html">
+<span class="material-symbols-outlined text-[18px]" data-icon="person">person</span>
+<span class="flex-1">User Profile &amp; Baseline</span>
+<span class="px-1.5 py-0.5 rounded text-[10px] font-semibold bg-secondary-fixed text-on-secondary-fixed">Edit</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg text-on-surface-variant hover:text-on-surface hover:bg-surface-container-low transition-colors text-xs font-medium" href="../cashflow/cashflow.html">
+<span class="material-symbols-outlined text-[18px]" data-icon="account_balance_wallet">account_balance_wallet</span>
+<span class="">Cash Flow &amp; Budget</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg text-on-surface-variant hover:text-on-surface hover:bg-surface-container-low transition-colors text-xs font-medium" href="../savings and emergency/code.html">
+<span class="material-symbols-outlined text-[18px]" data-icon="shield_with_heart">shield_with_heart</span>
+<span class="">Savings &amp; Emergency</span>
+</a>
+<!-- ACTIVE ITEM -->
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg bg-surface-container text-secondary font-semibold text-xs transition-colors group" href="#">
+<span class="material-symbols-outlined text-[18px] text-secondary" data-icon="trending_up" style="font-variation-settings: 'FILL' 1;">trending_up</span>
+<span class="flex-1">Investments &amp; SIP</span>
+<span class="px-1.5 py-0.5 rounded text-[10px] font-semibold bg-surface-container-low text-on-tertiary-container border border-surface-container-high mr-1">+12.4%</span>
+<span class="w-1.5 h-1.5 rounded-full bg-secondary"></span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg text-on-surface-variant hover:text-on-surface hover:bg-surface-container-low transition-colors text-xs font-medium" href="../health audit/healthaudit.html">
+<span class="material-symbols-outlined text-[18px]" data-icon="verified_user">verified_user</span>
+<span class="">Financial Health Audit</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg text-on-surface-variant hover:text-on-surface hover:bg-surface-container-low transition-colors text-xs font-medium" href="../homepage/homepage.html#reports">
+<span class="material-symbols-outlined text-[18px]" data-icon="receipt_long">receipt_long</span>
+<span class="">Reports &amp; Export</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg text-on-surface-variant hover:text-on-surface hover:bg-surface-container-low transition-colors text-xs font-medium" href="../profile/code.html">
+<span class="material-symbols-outlined text-[18px]" data-icon="settings">settings</span>
+<span class="">Settings</span>
+</a>
+</nav>
+</div>
+<!-- Sidebar Middle/Bottom Action Card & Footer Utility Links -->
+<div class="p-3 border-t border-surface-container-high space-y-2.5">
+<!-- Quick Allocate Action Card -->
+<div class="p-2.5 rounded-lg bg-surface-container-low border border-surface-container-high space-y-1.5">
+<div class="flex items-center gap-1.5 text-secondary font-semibold text-xs">
+<span class="material-symbols-outlined text-[15px]" data-icon="bolt">bolt</span>
+<span class="">Quick Allocate</span>
+</div>
+<p class="text-[11px] text-on-surface-variant leading-relaxed">
+Monthly net surplus float ready for deployment across verified liquidity &amp; index targets.
+</p>
+<a href="../profile/code.html#linked-portfolios" class="w-full h-6 rounded bg-secondary text-on-secondary text-[11px] font-semibold hover:bg-secondary-container transition-colors flex items-center justify-center gap-1">
+<span class="material-symbols-outlined text-[13px]" data-icon="tune">tune</span>
+<span class="">Deploy Surplus</span>
+</a>
+</div>
+<!-- Secondary Links -->
+<div class="pt-0.5 space-y-0.5">
+<a class="flex items-center gap-2 px-2.5 py-1.5 rounded-md text-on-surface-variant hover:text-on-surface hover:bg-surface-container-low text-xs transition-colors" href="../profile/code.html">
+<span class="material-symbols-outlined text-[16px]" data-icon="badge">badge</span>
+<span class="">Executive Profile</span>
+</a>
+<a class="flex items-center gap-2 px-2.5 py-1.5 rounded-md text-error hover:bg-error-container/30 text-xs transition-colors" href="#logout" onclick="window.IntelliFinance.logout('../login.html'); return false;">
+<span class="material-symbols-outlined text-[16px]" data-icon="logout">logout</span>
+<span class="">Log Out</span>
+</a>
+</div>
+</div>
+</aside>
+<!-- Main Canvas Wrapper -->
+<div class="w-full flex-1 flex flex-col min-w-0">
+<!-- Top Web Header (Conforming to TopNavBar JSON & Style System) -->
+<header class="flex justify-between items-center w-full px-6 md:px-margin h-16 sticky top-0 z-40 bg-surface-container-lowest border-b border-surface-container-high">
+<!-- Breadcrumb & Search -->
+<div class="flex items-center gap-3 sm:gap-6">
+<button aria-label="Open sidebar menu" class="w-9 h-9 flex items-center justify-center rounded-lg border border-surface-container-high bg-surface-container-lowest text-on-surface hover:bg-surface-container-low transition-colors shadow-xs" id="openSidebarBtn">
+<span class="material-symbols-outlined text-[21px]" data-icon="menu">menu</span>
+</button>
+<div class="flex items-center gap-2 text-outline font-label-md text-label-md">
+<a href="../homepage/homepage.html" class="hover:text-on-surface cursor-pointer transition-colors">IntelliFinance</a>
+<span class="material-symbols-outlined text-sm">chevron_right</span>
+<span class="text-on-surface font-semibold">Investments &amp; SIP</span>
+</div>
+<div class="relative w-72">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-outline text-lg">search</span>
+<input class="w-full h-9 pl-9 pr-3 rounded-md bg-surface border border-surface-container-high text-on-surface placeholder:text-outline text-body-sm focus:outline-none focus:border-secondary focus:ring-2 focus:ring-secondary/15 transition-all" placeholder="Search assets, tickers, SIPs..." type="text"/>
+</div>
+</div>
+<!-- Trailing Controls Cluster -->
+<div class="flex items-center gap-4">
+<!-- AI Intelligence Pill -->
+<div class="flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-surface-container-low border border-surface-variant text-secondary text-label-sm font-semibold">
+<span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">auto_awesome</span>
+<span>AI Assistant Ready</span>
+</div>
+<!-- Currency Selector -->
+<button class="h-9 px-3 rounded-md border border-surface-container-high bg-surface-container-lowest hover:bg-surface-container-low text-on-surface font-label-md text-label-md flex items-center gap-1.5 transition-colors">
+<span>USD ($)</span>
+<span class="material-symbols-outlined text-sm text-outline">expand_more</span>
+</button>
+<!-- Notification Icon -->
+<button class="w-9 h-9 rounded-md border border-surface-container-high flex items-center justify-center text-on-surface-variant hover:bg-surface-container-low hover:text-on-surface transition-colors relative">
+<span class="material-symbols-outlined text-xl">notifications</span>
+<span class="w-2 h-2 rounded-full bg-secondary absolute top-2 right-2"></span>
+</button>
+<div class="h-6 w-px bg-surface-container-high"></div>
+<!-- Alex Morgan Profile Chip -->
+<div class="flex items-center gap-3 pl-1 cursor-pointer group">
+<div class="w-9 h-9 rounded-full bg-primary-container text-on-primary flex items-center justify-center font-headline-sm text-headline-sm font-bold text-xs ring-2 ring-surface-variant">
+            AM
+          </div>
+<div class="flex flex-col text-left">
+<span class="font-label-md text-label-md font-semibold text-on-surface group-hover:text-secondary transition-colors if-display-name"></span>
+<span class="font-label-sm text-label-sm text-outline">Pro Tier Member</span>
+</div>
+</div>
+</div>
+</header>
+<!-- Main Viewport Canvas -->
+<main class="p-margin flex-1 flex flex-col gap-6 max-w-7xl mx-auto w-full">
+<!-- 1. Header Title & Quick Action Bar -->
+<div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+<div>
+<h1 class="font-headline-lg text-headline-lg text-on-surface font-bold tracking-tight">Investments & Portfolio</h1>
+<p class="font-body-md text-body-md text-outline mt-0.5">Track your holdings, automated SIPs, and asset allocation performance.</p>
+</div>
+<div class="flex items-center gap-3 flex-wrap">
+<!-- Simulation Timeline Stepper -->
+<div class="flex items-center bg-surface-container-low border border-surface-container-high rounded-md p-0.5 text-xs">
+<span class="px-2 font-mono text-outline font-semibold" id="sim-month-counter">Time: +0m</span>
+<button onclick="window.IntelliFinance.advanceMonths(1)" class="px-2 py-1 rounded bg-surface-container-lowest hover:bg-surface-container-high text-on-surface font-medium transition-colors" title="Advance 1 Month">+1 Mo</button>
+<button onclick="window.IntelliFinance.advanceMonths(3)" class="px-2 py-1 rounded bg-surface-container-lowest hover:bg-surface-container-high text-on-surface font-medium transition-colors" title="Advance 3 Months">+3 Mo</button>
+<button onclick="window.IntelliFinance.resetSimulation()" class="px-2 py-1 rounded hover:bg-error/10 text-error font-medium transition-colors" title="Reset timeline">Reset</button>
+</div>
+<button class="h-10 px-4 rounded-md border border-surface-container-high bg-surface-container-lowest text-on-surface hover:bg-surface-container-low font-label-md text-label-md font-medium transition-all shadow-sm flex items-center gap-2">
+<span class="material-symbols-outlined text-lg">tune</span>
+<span>Manage SIPs</span>
+</button>
+<a href="../profile/code.html#linked-portfolios" class="h-10 px-4 rounded-md bg-primary-container text-on-primary hover:bg-slate-800 font-label-md text-label-md font-medium transition-all shadow-sm flex items-center gap-2">
+<span class="material-symbols-outlined text-lg">add</span>
+<span>+ New Investment</span>
+</a>
+</div>
+</div>
+<!-- 2. Top Key Investment Metrics (4 Clean Analytical Cards) -->
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-gutter">
+<!-- Metric Card 1 -->
+<div class="bg-surface-container-lowest border border-surface-container-high rounded-xl p-space-lg flex flex-col justify-between shadow-sm">
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-outline">Total Portfolio Value</span>
+<span class="px-2 py-0.5 rounded-full bg-emerald-50 text-emerald-700 text-label-sm font-semibold flex items-center gap-0.5" id="inv-growth-badge">
+<span class="material-symbols-outlined text-xs">trending_up</span>
+              +12.4% ARR
+            </span>
+</div>
+<div class="mt-3">
+<div class="font-data-metric-lg text-data-metric-lg text-on-surface font-bold tracking-tight" id="inv-total-value">$95,200.00</div>
+<div class="font-body-sm text-body-sm text-emerald-600 font-medium mt-1 flex items-center gap-1" id="inv-returns-desc">
+<span>+$8,420.00 (9.7%)</span>
+<span class="text-outline font-normal">All-Time Return</span>
+</div>
+</div>
+</div>
+<!-- Metric Card 2 -->
+<div class="bg-surface-container-lowest border border-surface-container-high rounded-xl p-space-lg flex flex-col justify-between shadow-sm">
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-outline">Active Monthly SIP</span>
+<div class="w-7 h-7 rounded-md bg-surface-container-low text-secondary flex items-center justify-center">
+<span class="material-symbols-outlined text-base">repeat</span>
+</div>
+</div>
+<div class="mt-3">
+<div class="font-data-metric-lg text-data-metric-lg text-on-surface font-bold tracking-tight" id="inv-sip-value">$2,100.00 <span class="text-base font-normal text-outline">/ mo</span></div>
+<div class="font-body-sm text-body-sm text-outline mt-1" id="inv-sip-desc">
+              Automated monthly compounding
+            </div>
+</div>
+</div>
+<!-- Metric Card 3 -->
+<div class="bg-surface-container-lowest border border-surface-container-high rounded-xl p-space-lg flex flex-col justify-between shadow-sm">
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-outline">Realized & Dividend Gains</span>
+<span class="px-2 py-0.5 rounded-full bg-indigo-50 text-indigo-700 text-label-sm font-semibold">
+              YTD
+            </span>
+</div>
+<div class="mt-3">
+<div class="font-data-metric-lg text-data-metric-lg text-on-surface font-bold tracking-tight" id="inv-gains-value">+$1,450.00</div>
+<div class="font-body-sm text-body-sm text-outline mt-1">
+              Passive yield & payouts
+            </div>
+</div>
+</div>
+<!-- Metric Card 4 -->
+<div class="bg-surface-container-lowest border border-surface-container-high rounded-xl p-space-lg flex flex-col justify-between shadow-sm">
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-outline">Projected Corpus (5-Yr)</span>
+<div class="w-7 h-7 rounded-md bg-emerald-50 text-emerald-600 flex items-center justify-center">
+<span class="material-symbols-outlined text-base">query_stats</span>
+</div>
+</div>
+<div class="mt-3">
+<div class="font-data-metric-lg text-data-metric-lg text-on-surface font-bold tracking-tight" id="inv-projected-5yr">$245,000.00</div>
+<div class="font-body-sm text-body-sm text-outline mt-1">
+              At historical CAGR target
+            </div>
+</div>
+</div>
+</div>
+<!-- 3. Two-Column Middle Section -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-gutter items-stretch">
+<!-- Left: Asset Allocation & Distribution (5 Cols) -->
+<div class="lg:col-span-5 bg-surface-container-lowest border border-surface-container-high rounded-xl p-space-lg flex flex-col justify-between shadow-sm">
+<div>
+<div class="flex items-center justify-between pb-4 border-b border-surface-container-low">
+<div>
+<h2 class="font-headline-sm text-headline-sm font-bold text-on-surface">Asset Allocation</h2>
+<p class="font-body-sm text-body-sm text-outline mt-0.5">Target vs actual capital diversification</p>
+</div>
+<button class="text-secondary hover:text-slate-900 font-label-sm text-label-sm font-medium flex items-center gap-1 transition-colors">
+<span>View Model</span>
+<span class="material-symbols-outlined text-sm">open_in_new</span>
+</button>
+</div>
+<!-- Segmented Progress Bar Matrix -->
+<div class="mt-5">
+<div class="h-3 w-full rounded-full bg-surface-container-low flex overflow-hidden gap-0.5 p-0.5">
+<div class="h-full rounded-l-full bg-indigo-600" style="width: 52%;" title="US Equities: 52%"></div>
+<div class="h-full bg-blue-500" style="width: 23%;" title="Global & Tech: 23%"></div>
+<div class="h-full bg-emerald-500" style="width: 15%;" title="Fixed Income: 15%"></div>
+<div class="h-full rounded-r-full bg-amber-500" style="width: 10%;" title="Crypto & Alts: 10%"></div>
+</div>
+</div>
+<!-- Detailed Breakdown List -->
+<div class="mt-6 flex flex-col gap-3.5">
+<!-- Category 1 -->
+<div class="flex items-center justify-between text-body-sm">
+<div class="flex items-center gap-2.5">
+<span class="w-3 h-3 rounded-full bg-indigo-600 flex-shrink-0"></span>
+<div class="flex flex-col">
+<span class="font-label-md text-label-md font-semibold text-on-surface">US Equities / Index ETFs</span>
+<span class="text-label-sm text-outline">VOO, VTI, Core Indices</span>
+</div>
+</div>
+<div class="text-right">
+<div class="font-label-md text-label-md font-semibold text-on-surface">$49,504.00</div>
+<div class="text-label-sm text-outline font-medium">52% weight</div>
+</div>
+</div>
+<!-- Category 2 -->
+<div class="flex items-center justify-between text-body-sm">
+<div class="flex items-center gap-2.5">
+<span class="w-3 h-3 rounded-full bg-blue-500 flex-shrink-0"></span>
+<div class="flex flex-col">
+<span class="font-label-md text-label-md font-semibold text-on-surface">Global & Tech Stocks</span>
+<span class="text-label-sm text-outline">AAPL, MSFT, High Growth</span>
+</div>
+</div>
+<div class="text-right">
+<div class="font-label-md text-label-md font-semibold text-on-surface">$21,896.00</div>
+<div class="text-label-sm text-outline font-medium">23% weight</div>
+</div>
+</div>
+<!-- Category 3 -->
+<div class="flex items-center justify-between text-body-sm">
+<div class="flex items-center gap-2.5">
+<span class="w-3 h-3 rounded-full bg-emerald-500 flex-shrink-0"></span>
+<div class="flex flex-col">
+<span class="font-label-md text-label-md font-semibold text-on-surface">Fixed Income & Mutual Funds</span>
+<span class="text-label-sm text-outline">BND, Corporate Bonds, Cash</span>
+</div>
+</div>
+<div class="text-right">
+<div class="font-label-md text-label-md font-semibold text-on-surface">$14,280.00</div>
+<div class="text-label-sm text-outline font-medium">15% weight</div>
+</div>
+</div>
+<!-- Category 4 -->
+<div class="flex items-center justify-between text-body-sm">
+<div class="flex items-center gap-2.5">
+<span class="w-3 h-3 rounded-full bg-amber-500 flex-shrink-0"></span>
+<div class="flex flex-col">
+<span class="font-label-md text-label-md font-semibold text-on-surface">Crypto / Alternate Assets</span>
+<span class="text-label-sm text-outline">Commodities, Digital Store</span>
+</div>
+</div>
+<div class="text-right">
+<div class="font-label-md text-label-md font-semibold text-on-surface">$9,520.00</div>
+<div class="text-label-sm text-outline font-medium">10% weight</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Diversification Score Box -->
+<div class="mt-6 pt-4 border-t border-surface-container-low flex items-center justify-between bg-surface-container-low/60 p-3 rounded-lg border border-surface-container-high">
+<div class="flex items-center gap-2.5">
+<span class="material-symbols-outlined text-emerald-600 text-xl" style="font-variation-settings: 'FILL' 1;">verified</span>
+<div>
+<div class="font-label-md text-label-md font-bold text-on-surface">Diversification Score: 88/100</div>
+<div class="text-label-sm text-outline">Balanced & resilient against volatility</div>
+</div>
+</div>
+<span class="px-2 py-0.5 rounded-full bg-emerald-100 text-emerald-800 text-label-sm font-semibold">Optimal</span>
+</div>
+</div>
+<!-- Right: Active SIPs & Auto-Investments (7 Cols) -->
+<div class="lg:col-span-7 bg-surface-container-lowest border border-surface-container-high rounded-xl p-space-lg flex flex-col justify-between shadow-sm">
+<div>
+<div class="flex items-center justify-between pb-4 border-b border-surface-container-low">
+<div>
+<h2 class="font-headline-sm text-headline-sm font-bold text-on-surface">Active SIP Plans (Systematic Investments)</h2>
+<p class="font-body-sm text-body-sm text-outline mt-0.5">Recurring automated deductions fueling wealth compounding</p>
+</div>
+<span class="px-2.5 py-1 rounded-full bg-surface-container-low border border-surface-container-high text-secondary text-label-sm font-semibold flex items-center gap-1">
+<span class="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span>
+                Auto-Deduction Active
+              </span>
+</div>
+<!-- List of 4 Recurring SIPs -->
+<div class="mt-4 divide-y divide-surface-container-low">
+<!-- SIP Item 1 -->
+<div class="py-3 flex items-center justify-between hover:bg-surface-bright px-2 rounded-lg transition-colors">
+<div class="flex items-center gap-3">
+<div class="w-9 h-9 rounded-lg bg-indigo-50 border border-indigo-100 flex items-center justify-center font-bold text-indigo-700 text-xs">
+                    VOO
+                  </div>
+<div>
+<div class="font-label-md text-label-md font-semibold text-on-surface">Vanguard S&P 500 ETF</div>
+<div class="font-body-sm text-body-sm text-outline flex items-center gap-1.5">
+<span class="material-symbols-outlined text-sm">calendar_today</span>
+<span>Next debit: <strong>Nov 1</strong> • Auto-debit from Checking (*4920)</span>
+</div>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<div class="text-right">
+<div class="font-label-md text-label-md font-bold text-on-surface">$1,000.00</div>
+<div class="text-label-sm text-outline font-medium">Monthly frequency</div>
+</div>
+<button class="p-1.5 text-outline hover:text-on-surface rounded-md hover:bg-surface-container-low transition-colors" title="Edit SIP">
+<span class="material-symbols-outlined text-lg">edit</span>
+</button>
+</div>
+</div>
+<!-- SIP Item 2 -->
+<div class="py-3 flex items-center justify-between hover:bg-surface-bright px-2 rounded-lg transition-colors">
+<div class="flex items-center gap-3">
+<div class="w-9 h-9 rounded-lg bg-blue-50 border border-blue-100 flex items-center justify-center font-bold text-blue-700 text-xs">
+                    QQQ
+                  </div>
+<div>
+<div class="font-label-md text-label-md font-semibold text-on-surface">Nasdaq 100 Index Fund</div>
+<div class="font-body-sm text-body-sm text-outline flex items-center gap-1.5">
+<span class="material-symbols-outlined text-sm">calendar_today</span>
+<span>Next debit: <strong>Nov 1</strong> • Auto-debit from Checking (*4920)</span>
+</div>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<div class="text-right">
+<div class="font-label-md text-label-md font-bold text-on-surface">$500.00</div>
+<div class="text-label-sm text-outline font-medium">Monthly frequency</div>
+</div>
+<button class="p-1.5 text-outline hover:text-on-surface rounded-md hover:bg-surface-container-low transition-colors" title="Edit SIP">
+<span class="material-symbols-outlined text-lg">edit</span>
+</button>
+</div>
+</div>
+<!-- SIP Item 3 -->
+<div class="py-3 flex items-center justify-between hover:bg-surface-bright px-2 rounded-lg transition-colors">
+<div class="flex items-center gap-3">
+<div class="w-9 h-9 rounded-lg bg-emerald-50 border border-emerald-100 flex items-center justify-center font-bold text-emerald-700 text-xs">
+                    GDG
+                  </div>
+<div>
+<div class="font-label-md text-label-md font-semibold text-on-surface">Global Dividend Growth Fund</div>
+<div class="font-body-sm text-body-sm text-outline flex items-center gap-1.5">
+<span class="material-symbols-outlined text-sm">calendar_today</span>
+<span>Next debit: <strong>Nov 5</strong> • Auto-debit from Checking (*4920)</span>
+</div>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<div class="text-right">
+<div class="font-label-md text-label-md font-bold text-on-surface">$350.00</div>
+<div class="text-label-sm text-outline font-medium">Monthly frequency</div>
+</div>
+<button class="p-1.5 text-outline hover:text-on-surface rounded-md hover:bg-surface-container-low transition-colors" title="Edit SIP">
+<span class="material-symbols-outlined text-lg">edit</span>
+</button>
+</div>
+</div>
+<!-- SIP Item 4 -->
+<div class="py-3 flex items-center justify-between hover:bg-surface-bright px-2 rounded-lg transition-colors">
+<div class="flex items-center gap-3">
+<div class="w-9 h-9 rounded-lg bg-slate-100 border border-slate-200 flex items-center justify-center font-bold text-slate-800 text-xs">
+                    BCE
+                  </div>
+<div>
+<div class="font-label-md text-label-md font-semibold text-on-surface">Blue-Chip Equity Compounder</div>
+<div class="font-body-sm text-body-sm text-outline flex items-center gap-1.5">
+<span class="material-symbols-outlined text-sm">calendar_today</span>
+<span>Next debit: <strong>Nov 10</strong> • Auto-debit from Checking (*4920)</span>
+</div>
+</div>
+</div>
+<div class="flex items-center gap-4">
+<div class="text-right">
+<div class="font-label-md text-label-md font-bold text-on-surface">$250.00</div>
+<div class="text-label-sm text-outline font-medium">Monthly frequency</div>
+</div>
+<button class="p-1.5 text-outline hover:text-on-surface rounded-md hover:bg-surface-container-low transition-colors" title="Edit SIP">
+<span class="material-symbols-outlined text-lg">edit</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+<!-- Bottom SIP Summary Status Bar -->
+<div class="mt-4 pt-4 border-t border-surface-container-low flex flex-col sm:flex-row sm:items-center justify-between gap-3 bg-surface rounded-lg p-3">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-secondary text-lg">sync_saved_locally</span>
+<span class="font-label-md text-label-md text-on-surface">
+<strong>$2,100.00</strong> total auto-invested per month
+              </span>
+</div>
+<div class="flex items-center gap-2">
+<button class="h-8 px-3 rounded text-outline hover:text-on-surface hover:bg-surface-container-lowest text-label-sm font-semibold transition-colors">
+                Pause All
+              </button>
+<button class="h-8 px-3 rounded bg-surface-container-lowest border border-surface-container-high text-secondary hover:bg-surface-container-low text-label-sm font-semibold transition-colors">
+                Modify Schedule
+              </button>
+</div>
+</div>
+</div>
+</div>
+<!-- 4. Current Holdings & Performance Table -->
+<div class="bg-surface-container-lowest border border-surface-container-high rounded-xl overflow-hidden shadow-sm">
+<!-- Table Toolbar -->
+<div class="p-space-lg border-b border-surface-container-high flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+<div>
+<h2 class="font-headline-sm text-headline-sm font-bold text-on-surface">Your Holdings & Performance</h2>
+<p class="font-body-sm text-body-sm text-outline mt-0.5">Real-time valuation, cost basis, and net position yields</p>
+</div>
+<!-- Filter Pill Tabs -->
+<div class="flex items-center gap-1 bg-surface-container-low p-1 rounded-lg border border-surface-container-high">
+<button class="px-3 py-1.5 rounded-md bg-surface-container-lowest text-secondary font-semibold text-label-sm shadow-xs transition-colors">
+              All Assets (14)
+            </button>
+<button class="px-3 py-1.5 rounded-md text-on-surface-variant hover:text-on-surface text-label-sm font-medium transition-colors">
+              ETFs & Index
+            </button>
+<button class="px-3 py-1.5 rounded-md text-on-surface-variant hover:text-on-surface text-label-sm font-medium transition-colors">
+              Individual Stocks
+            </button>
+<button class="px-3 py-1.5 rounded-md text-on-surface-variant hover:text-on-surface text-label-sm font-medium transition-colors">
+              Mutual Funds
+            </button>
+</div>
+</div>
+<!-- Ledger Data Grid -->
+<div class="overflow-x-auto custom-scrollbar">
+<table class="w-full text-left border-collapse">
+<thead>
+<tr class="bg-surface border-b border-surface-container-high font-label-sm text-label-sm text-outline uppercase tracking-wider">
+<th class="py-3 px-6">Asset & Ticker</th>
+<th class="py-3 px-4">Allocation Category</th>
+<th class="py-3 px-4 text-right">Invested Amount</th>
+<th class="py-3 px-4 text-right">Current Value</th>
+<th class="py-3 px-4 text-right">Total Return (P&L)</th>
+<th class="py-3 px-6 text-right">Actions</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-surface-container-low font-body-sm text-body-sm">
+<!-- Row 1 -->
+<tr class="hover:bg-surface-bright transition-colors">
+<td class="py-3.5 px-6">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-md bg-indigo-50 border border-indigo-100 flex items-center justify-center font-bold text-indigo-700 text-xs flex-shrink-0">
+                      VOO
+                    </div>
+<div>
+<div class="font-label-md text-label-md font-semibold text-on-surface">Vanguard S&P 500 ETF</div>
+<div class="text-label-sm text-outline">VOO • NYSE Arca</div>
+</div>
+</div>
+</td>
+<td class="py-3.5 px-4">
+<span class="inline-flex items-center px-2 py-0.5 rounded-full text-xs font-medium bg-indigo-50 text-indigo-700">
+                    US Equity Index
+                  </span>
+</td>
+<td class="py-3.5 px-4 text-right font-medium text-outline">$31,200.00</td>
+<td class="py-3.5 px-4 text-right font-bold text-on-surface">$36,420.00</td>
+<td class="py-3.5 px-4 text-right">
+<div class="font-semibold text-emerald-600">+$5,220.00</div>
+<div class="text-label-sm text-emerald-600">+16.73%</div>
+</td>
+<td class="py-3.5 px-6 text-right">
+<button class="h-8 px-3 rounded bg-surface-container-low hover:bg-surface-container-high text-secondary font-label-sm text-label-sm font-semibold transition-colors">
+                    Buy More
+                  </button>
+</td>
+</tr>
+<!-- Row 2 -->
+<tr class="hover:bg-surface-bright transition-colors">
+<td class="py-3.5 px-6">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-md bg-blue-50 border border-blue-100 flex items-center justify-center font-bold text-blue-700 text-xs flex-shrink-0">
+                      AAPL
+                    </div>
+<div>
+<div class="font-label-md text-label-md font-semibold text-on-surface">Apple Inc.</div>
+<div class="text-label-sm text-outline">AAPL • NASDAQ</div>
+</div>
+</div>
+</td>
+<td class="py-3.5 px-4">
+<span class="inline-flex items-center px-2 py-0.5 rounded-full text-xs font-medium bg-blue-50 text-blue-700">
+                    Global Tech Stock
+                  </span>
+</td>
+<td class="py-3.5 px-4 text-right font-medium text-outline">$12,000.00</td>
+<td class="py-3.5 px-4 text-right font-bold text-on-surface">$14,850.00</td>
+<td class="py-3.5 px-4 text-right">
+<div class="font-semibold text-emerald-600">+$2,850.00</div>
+<div class="text-label-sm text-emerald-600">+23.75%</div>
+</td>
+<td class="py-3.5 px-6 text-right">
+<button class="h-8 px-3 rounded bg-surface-container-low hover:bg-surface-container-high text-secondary font-label-sm text-label-sm font-semibold transition-colors">
+                    Buy More
+                  </button>
+</td>
+</tr>
+<!-- Row 3 -->
+<tr class="hover:bg-surface-bright transition-colors">
+<td class="py-3.5 px-6">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-md bg-sky-50 border border-sky-100 flex items-center justify-center font-bold text-sky-700 text-xs flex-shrink-0">
+                      MSFT
+                    </div>
+<div>
+<div class="font-label-md text-label-md font-semibold text-on-surface">Microsoft Corp</div>
+<div class="text-label-sm text-outline">MSFT • NASDAQ</div>
+</div>
+</div>
+</td>
+<td class="py-3.5 px-4">
+<span class="inline-flex items-center px-2 py-0.5 rounded-full text-xs font-medium bg-blue-50 text-blue-700">
+                    Global Tech Stock
+                  </span>
+</td>
+<td class="py-3.5 px-4 text-right font-medium text-outline">$6,500.00</td>
+<td class="py-3.5 px-4 text-right font-bold text-on-surface">$7,046.00</td>
+<td class="py-3.5 px-4 text-right">
+<div class="font-semibold text-emerald-600">+$546.00</div>
+<div class="text-label-sm text-emerald-600">+8.40%</div>
+</td>
+<td class="py-3.5 px-6 text-right">
+<button class="h-8 px-3 rounded bg-surface-container-low hover:bg-surface-container-high text-secondary font-label-sm text-label-sm font-semibold transition-colors">
+                    Buy More
+                  </button>
+</td>
+</tr>
+<!-- Row 4 -->
+<tr class="hover:bg-surface-bright transition-colors">
+<td class="py-3.5 px-6">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-md bg-emerald-50 border border-emerald-100 flex items-center justify-center font-bold text-emerald-700 text-xs flex-shrink-0">
+                      SCHD
+                    </div>
+<div>
+<div class="font-label-md text-label-md font-semibold text-on-surface">Schwab US Dividend Equity ETF</div>
+<div class="text-label-sm text-outline">SCHD • NYSE Arca</div>
+</div>
+</div>
+</td>
+<td class="py-3.5 px-4">
+<span class="inline-flex items-center px-2 py-0.5 rounded-full text-xs font-medium bg-emerald-50 text-emerald-700">
+                    Dividend Yield
+                  </span>
+</td>
+<td class="py-3.5 px-4 text-right font-medium text-outline">$13,500.00</td>
+<td class="py-3.5 px-4 text-right font-bold text-on-surface">$14,280.00</td>
+<td class="py-3.5 px-4 text-right">
+<div class="font-semibold text-emerald-600">+$780.00</div>
+<div class="text-label-sm text-emerald-600">+5.77%</div>
+</td>
+<td class="py-3.5 px-6 text-right">
+<button class="h-8 px-3 rounded bg-surface-container-low hover:bg-surface-container-high text-secondary font-label-sm text-label-sm font-semibold transition-colors">
+                    Buy More
+                  </button>
+</td>
+</tr>
+<!-- Row 5 -->
+<tr class="hover:bg-surface-bright transition-colors">
+<td class="py-3.5 px-6">
+<div class="flex items-center gap-3">
+<div class="w-8 h-8 rounded-md bg-amber-50 border border-amber-100 flex items-center justify-center font-bold text-amber-700 text-xs flex-shrink-0">
+                      QQQ
+                    </div>
+<div>
+<div class="font-label-md text-label-md font-semibold text-on-surface">Invesco QQQ Trust Series 1</div>
+<div class="text-label-sm text-outline">QQQ • NASDAQ</div>
+</div>
+</div>
+</td>
+<td class="py-3.5 px-4">
+<span class="inline-flex items-center px-2 py-0.5 rounded-full text-xs font-medium bg-indigo-50 text-indigo-700">
+                    US Equity Index
+                  </span>
+</td>
+<td class="py-3.5 px-4 text-right font-medium text-outline">$12,000.00</td>
+<td class="py-3.5 px-4 text-right font-bold text-on-surface">$13,084.00</td>
+<td class="py-3.5 px-4 text-right">
+<div class="font-semibold text-emerald-600">+$1,084.00</div>
+<div class="text-label-sm text-emerald-600">+9.03%</div>
+</td>
+<td class="py-3.5 px-6 text-right">
+<button class="h-8 px-3 rounded bg-surface-container-low hover:bg-surface-container-high text-secondary font-label-sm text-label-sm font-semibold transition-colors">
+                    Buy More
+                  </button>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- Table Footer Pagination / Quick View -->
+<div class="p-4 bg-surface border-t border-surface-container-high flex items-center justify-between text-body-sm text-outline">
+<span>Showing 5 of 14 core holdings</span>
+<a class="font-label-sm text-label-sm font-semibold text-secondary hover:text-slate-900 transition-colors flex items-center gap-1" href="#">
+<span>View Full Portfolio Ledger</span>
+<span class="material-symbols-outlined text-sm">arrow_forward</span>
+</a>
+</div>
+</div>
+<!-- 5. Bottom Smart Recommendation & Insight Banner -->
+<div class="bg-surface-container-lowest border-l-4 border-l-secondary border border-surface-container-high rounded-xl p-5 shadow-sm flex flex-col md:flex-row md:items-center justify-between gap-4">
+<div class="flex items-start gap-3.5">
+<div class="w-10 h-10 rounded-lg bg-surface-container-low text-secondary flex items-center justify-center flex-shrink-0 mt-0.5">
+<span class="material-symbols-outlined text-2xl" style="font-variation-settings: 'FILL' 1;">insights</span>
+</div>
+<div>
+<div class="flex items-center gap-2">
+<h3 class="font-headline-sm text-headline-sm font-bold text-on-surface">Smart SIP Rebalancing Opportunity</h3>
+<span class="px-2 py-0.5 rounded-full bg-secondary-fixed text-on-secondary-fixed font-label-sm text-label-sm font-medium">Algorithmic Advice</span>
+</div>
+<p class="font-body-md text-body-md text-outline mt-1 max-w-3xl">
+              Your equity weight is <strong>3% higher</strong> than your target baseline due to recent tech gains. Consider shifting $200 of next month's SIP to Fixed Income or Dividend ETFs to lock in balanced risk.
+            </p>
+</div>
+</div>
+<div class="flex items-center gap-3 flex-shrink-0">
+<button class="h-10 px-4 rounded-md border border-surface-container-high bg-surface-container-lowest text-outline hover:text-on-surface hover:bg-surface-container-low font-label-md text-label-md font-medium transition-colors">
+            Dismiss
+          </button>
+<button class="h-10 px-4 rounded-md bg-secondary text-on-secondary hover:bg-secondary-container font-label-md text-label-md font-semibold transition-all shadow-sm flex items-center gap-1.5">
+<span class="material-symbols-outlined text-lg">balance</span>
+<span>Adjust Allocation</span>
+</button>
+</div>
+</div>
+</main>
+</div>
+<script>
+  (function() {
+    const sidebar = document.getElementById('collapsibleSidebar');
+    const backdrop = document.getElementById('sidebarBackdrop');
+    const openBtn = document.getElementById('openSidebarBtn');
+    const closeBtn = document.getElementById('closeSidebarBtn');
+
+    function openSidebar() {
+      if (!sidebar || !backdrop) return;
+      sidebar.classList.remove('-translate-x-full');
+      sidebar.classList.add('translate-x-0');
+      backdrop.classList.remove('opacity-0', 'pointer-events-none');
+      backdrop.classList.add('opacity-100', 'pointer-events-auto');
+      document.body.classList.add('overflow-hidden');
+    }
+
+    function closeSidebar() {
+      if (!sidebar || !backdrop) return;
+      sidebar.classList.remove('translate-x-0');
+      sidebar.classList.add('-translate-x-full');
+      backdrop.classList.remove('opacity-100', 'pointer-events-auto');
+      backdrop.classList.add('opacity-0', 'pointer-events-none');
+      document.body.classList.remove('overflow-hidden');
+    }
+
+    if (openBtn) {
+      openBtn.addEventListener('click', function(e) {
+        e.stopPropagation();
+        if (sidebar.classList.contains('-translate-x-full')) {
+          openSidebar();
+        } else {
+          closeSidebar();
+        }
+      });
+    }
+
+    if (closeBtn) {
+      closeBtn.addEventListener('click', closeSidebar);
+    }
+
+    if (backdrop) {
+      backdrop.addEventListener('click', closeSidebar);
+    }
+
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape' && sidebar && !sidebar.classList.contains('-translate-x-full')) {
+        closeSidebar();
+      }
+    });
+  })();
+</script>
+<script>
+(function() {
+  function fmt(v) {
+    return window.IntelliFinance ? window.IntelliFinance.formatCurrency(v) : ('$' + Number(v||0).toLocaleString('en-US', {minimumFractionDigits: 2}));
+  }
+
+  function syncUser() {
+    if (!window.IntelliFinance) return;
+    const p = window.IntelliFinance.loadProfile();
+    const name = (p.displayName || p.fullName || '').trim() || (p.isNewUser ? 'New User' : 'User');
+    const init = p.initials || (p.isNewUser ? 'NU' : 'U');
+    document.querySelectorAll('.if-display-name').forEach(el => el.textContent = name);
+    document.querySelectorAll('.if-initials').forEach(el => el.textContent = init);
+
+    const totalValEl = document.getElementById('inv-total-value');
+    if (totalValEl) totalValEl.textContent = fmt(p.totalInvestments || 0);
+
+    const sipEl = document.getElementById('inv-sip-value');
+    if (sipEl) sipEl.innerHTML = fmt(p.sipMonthly || 0) + ' <span class="text-base font-normal text-outline">/ mo</span>';
+
+    const returnsDesc = document.getElementById('inv-returns-desc');
+    const growthBadge = document.getElementById('inv-growth-badge');
+    if (returnsDesc && growthBadge) {
+      if (p.isNewUser && (!p.totalInvestments || p.totalInvestments === 0)) {
+        growthBadge.innerHTML = '<span class="material-symbols-outlined text-xs">remove</span> 0.0%';
+        growthBadge.className = 'px-2 py-0.5 rounded-full bg-slate-100 text-slate-600 text-label-sm font-semibold flex items-center gap-0.5';
+        returnsDesc.innerHTML = '<span>$0.00 (0%)</span> <span class="text-outline font-normal">All-Time Return</span>';
+      } else {
+        const gains = Math.round((p.totalInvestments || 0) * 0.097);
+        returnsDesc.innerHTML = '<span>+' + fmt(gains) + ' (9.7%)</span> <span class="text-outline font-normal">All-Time Return</span>';
+      }
+    }
+
+    const gainsEl = document.getElementById('inv-gains-value');
+    if (gainsEl) {
+      if (p.isNewUser && (!p.totalInvestments || p.totalInvestments === 0)) {
+        gainsEl.textContent = '$0.00';
+      } else {
+        const gains = Math.round((p.totalInvestments || 0) * 0.045);
+        gainsEl.textContent = '+' + fmt(gains);
+      }
+    }
+
+    const projEl = document.getElementById('inv-projected-5yr');
+    if (projEl) {
+      if (p.isNewUser && (!p.totalInvestments || p.totalInvestments === 0) && (!p.sipMonthly || p.sipMonthly === 0)) {
+        projEl.textContent = '$0.00';
+      } else {
+        const projected = Math.round((p.totalInvestments || 0) + ((p.sipMonthly || 0) * 60 * 1.25));
+        projEl.textContent = fmt(projected);
+      }
+    }
+
+    const simMonths = window.IntelliFinance.getSimulatedMonths ? window.IntelliFinance.getSimulatedMonths() : 0;
+    const simEl = document.getElementById('sim-month-counter');
+    if (simEl) {
+      simEl.textContent = 'Time: +' + simMonths + 'm';
+      simEl.className = 'px-2 font-mono font-semibold ' + (simMonths > 0 ? 'text-secondary bg-indigo-50 rounded' : 'text-outline');
+    }
+  }
+
+  document.addEventListener('DOMContentLoaded', syncUser);
+  if (document.readyState !== 'loading') syncUser();
+  window.addEventListener('IF_PROFILE_UPDATED', syncUser);
+})();
+</script>
+</body></html>
