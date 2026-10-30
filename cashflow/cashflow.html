@@ -1,0 +1,1521 @@
+<!DOCTYPE html>
+<html class="h-full bg-surface" lang="en">
+<head>
+<script src="../shared/data.js"></script>
+<script>if (window.IntelliFinance && !window.IntelliFinance.requireAuth('../login.html')) {}</script>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Cash Flow &amp; Budget | IntelliFinance</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "on-surface": "#0b1c30",
+            "primary": "#000000",
+            "surface-container": "#e5eeff",
+            "on-secondary-fixed": "#0f0069",
+            "on-surface-variant": "#45464d",
+            "inverse-primary": "#bec6e0",
+            "error-container": "#ffdad6",
+            "on-background": "#0b1c30",
+            "surface-variant": "#d3e4fe",
+            "tertiary": "#000000",
+            "primary-container": "#131b2e",
+            "inverse-surface": "#213145",
+            "on-primary": "#ffffff",
+            "outline": "#76777d",
+            "surface": "#f8f9ff",
+            "surface-container-low": "#eff4ff",
+            "primary-fixed-dim": "#bec6e0",
+            "primary-fixed": "#dae2fd",
+            "inverse-on-surface": "#eaf1ff",
+            "tertiary-container": "#002113",
+            "on-secondary": "#ffffff",
+            "secondary-fixed": "#e2dfff",
+            "background": "#f8f9ff",
+            "surface-container-high": "#dce9ff",
+            "on-tertiary-container": "#009668",
+            "on-error": "#ffffff",
+            "on-secondary-fixed-variant": "#3323cc",
+            "on-primary-container": "#7c839b",
+            "secondary-fixed-dim": "#c3c0ff",
+            "secondary": "#4b41e1",
+            "outline-variant": "#c6c6cd",
+            "on-tertiary-fixed-variant": "#005236",
+            "on-error-container": "#93000a",
+            "surface-container-lowest": "#ffffff",
+            "tertiary-fixed-dim": "#4edea3",
+            "on-primary-fixed": "#131b2e",
+            "error": "#ba1a1a",
+            "secondary-container": "#645efb",
+            "tertiary-fixed": "#6ffbbe",
+            "surface-tint": "#565e74",
+            "on-tertiary-fixed": "#002113",
+            "surface-bright": "#f8f9ff",
+            "on-tertiary": "#ffffff",
+            "surface-dim": "#cbdbf5",
+            "on-secondary-container": "#fffbff",
+            "on-primary-fixed-variant": "#3f465c",
+            "surface-container-highest": "#d3e4fe"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "full": "9999px"
+          },
+          "spacing": {
+            "space-sm": "0.5rem",
+            "margin": "2rem",
+            "space-xs": "0.25rem",
+            "space-md": "1rem",
+            "space-xl": "2.5rem",
+            "space-lg": "1.5rem",
+            "gutter": "1.5rem"
+          },
+          "fontFamily": {
+            "data-metric-md": ["Inter"],
+            "headline-md": ["Plus Jakarta Sans"],
+            "label-sm": ["Inter"],
+            "headline-sm": ["Plus Jakarta Sans"],
+            "label-md": ["Inter"],
+            "body-md": ["Inter"],
+            "headline-lg-mobile": ["Plus Jakarta Sans"],
+            "headline-xl": ["Plus Jakarta Sans"],
+            "body-sm": ["Inter"],
+            "body-lg": ["Inter"],
+            "headline-lg": ["Plus Jakarta Sans"],
+            "data-metric-lg": ["Plus Jakarta Sans"],
+            "headline-xl-mobile": ["Plus Jakarta Sans"]
+          },
+          "fontSize": {
+            "data-metric-md": [
+              "1.125rem",
+              { "lineHeight": "1.5rem", "letterSpacing": "-0.01em", "fontWeight": "600" }
+            ],
+            "headline-md": [
+              "1.5rem",
+              { "lineHeight": "2rem", "letterSpacing": "-0.015em", "fontWeight": "600" }
+            ],
+            "label-sm": [
+              "0.75rem",
+              { "lineHeight": "1rem", "letterSpacing": "0.04em", "fontWeight": "600" }
+            ],
+            "headline-sm": [
+              "1.125rem",
+              { "lineHeight": "1.5rem", "letterSpacing": "-0.01em", "fontWeight": "600" }
+            ],
+            "label-md": [
+              "0.875rem",
+              { "lineHeight": "1.25rem", "letterSpacing": "0.01em", "fontWeight": "500" }
+            ],
+            "body-md": [
+              "0.9375rem",
+              { "lineHeight": "1.5rem", "letterSpacing": "0", "fontWeight": "400" }
+            ],
+            "headline-lg-mobile": [
+              "1.625rem",
+              { "lineHeight": "2.125rem", "letterSpacing": "-0.02em", "fontWeight": "600" }
+            ],
+            "headline-xl": [
+              "3rem",
+              { "lineHeight": "3.5rem", "letterSpacing": "-0.03em", "fontWeight": "700" }
+            ],
+            "body-sm": [
+              "0.8125rem",
+              { "lineHeight": "1.25rem", "letterSpacing": "0", "fontWeight": "400" }
+            ],
+            "body-lg": [
+              "1.125rem",
+              { "lineHeight": "1.75rem", "letterSpacing": "-0.01em", "fontWeight": "400" }
+            ],
+            "headline-lg": [
+              "2.25rem",
+              { "lineHeight": "2.75rem", "letterSpacing": "-0.025em", "fontWeight": "600" }
+            ],
+            "data-metric-lg": [
+              "2rem",
+              { "lineHeight": "2.25rem", "letterSpacing": "-0.02em", "fontWeight": "700" }
+            ],
+            "headline-xl-mobile": [
+              "2rem",
+              { "lineHeight": "2.5rem", "letterSpacing": "-0.02em", "fontWeight": "700" }
+            ]
+          }
+        },
+      },
+    }
+</script>
+<style>
+  /* Custom scrollbar */
+  ::-webkit-scrollbar { width: 6px; height: 6px; }
+  ::-webkit-scrollbar-track { background: transparent; }
+  ::-webkit-scrollbar-thumb { background: #c6c6cd; border-radius: 999px; }
+  ::-webkit-scrollbar-thumb:hover { background: #76777d; }
+
+  /* Modal animation */
+  .modal-overlay { transition: opacity 0.2s ease; }
+  .modal-content { transition: transform 0.2s ease, opacity 0.2s ease; }
+  .modal-overlay.hidden { opacity: 0; pointer-events: none; }
+  .modal-overlay.hidden .modal-content { transform: scale(0.95) translateY(8px); opacity: 0; }
+
+  /* Smooth progress bar animation */
+  .progress-animate { transition: width 0.8s cubic-bezier(0.4, 0, 0.2, 1); }
+
+  /* Chart bar animation */
+  .chart-bar { transition: height 0.6s cubic-bezier(0.4, 0, 0.2, 1); }
+
+  /* Toast notification */
+  .toast-notification {
+    position: fixed; bottom: 24px; left: 50%; transform: translateX(-50%) translateY(100px);
+    z-index: 9999; opacity: 0; transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  .toast-notification.show { transform: translateX(-50%) translateY(0); opacity: 1; }
+</style>
+</head>
+<body class="h-full bg-surface text-on-surface antialiased flex">
+
+<!-- Toast Notification -->
+<div id="toast" class="toast-notification px-5 py-3 rounded-xl bg-primary-container text-on-primary shadow-xl border border-surface-container-high flex items-center gap-2">
+  <span class="material-symbols-outlined text-[18px] text-secondary" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+  <span id="toast-msg" class="text-sm font-medium"></span>
+</div>
+
+<!-- Sidebar Backdrop Overlay -->
+<div aria-hidden="true" class="fixed inset-0 bg-on-surface/40 backdrop-blur-sm z-50 transition-opacity duration-300 opacity-0 pointer-events-none" id="sidebarBackdrop"></div>
+
+<!-- Collapsible Navigation Sidebar -->
+<aside aria-label="Main Sidebar Navigation" class="fixed top-0 left-0 bottom-0 w-72 max-w-[85vw] bg-surface-container-lowest border-r border-surface-container-high z-50 flex flex-col justify-between shadow-2xl transition-transform duration-300 ease-in-out -translate-x-full" id="collapsibleSidebar">
+<div>
+<div class="h-16 px-5 border-b border-surface-container-high flex items-center justify-between">
+<a href="../homepage/homepage.html" class="flex items-center gap-2.5 hover:opacity-90 transition-opacity">
+<div class="w-8 h-8 rounded-lg bg-primary flex items-center justify-center text-on-secondary shadow-sm">
+<span class="material-symbols-outlined text-[19px]" data-icon="insights" style="font-variation-settings: 'FILL' 1;">insights</span>
+</div>
+<div class="flex flex-col">
+<div class="flex items-center gap-1.5 leading-none">
+<span class="font-headline-sm text-sm font-bold text-on-surface tracking-tight">IntelliFinance</span>
+</div>
+<span class="text-[10px] text-outline mt-0.5">Wealth Intelligence OS</span>
+</div>
+</a>
+<button aria-label="Close sidebar" class="w-8 h-8 rounded-md flex items-center justify-center text-on-surface-variant hover:text-on-surface hover:bg-surface-container-low transition-colors" id="closeSidebarBtn">
+<span class="material-symbols-outlined text-[20px]" data-icon="chevron_left">chevron_left</span>
+</button>
+</div>
+<nav aria-label="Primary Navigation" class="p-3 space-y-1 overflow-y-auto">
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg text-on-surface-variant hover:text-on-surface hover:bg-surface-container-low transition-colors text-xs font-medium" href="../homepage/homepage.html">
+<span class="material-symbols-outlined text-[18px]" data-icon="dashboard">dashboard</span>
+<span class="flex-1">Dashboard</span>
+</a>
+<!-- ACTIVE ITEM: Cash Flow & Budget -->
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg bg-surface-container text-secondary font-semibold text-xs transition-colors group" href="#">
+<span class="material-symbols-outlined text-[18px] text-secondary" data-icon="account_balance_wallet" style="font-variation-settings: 'FILL' 1;">account_balance_wallet</span>
+<span class="flex-1">Cash Flow &amp; Budget</span>
+<span class="w-1.5 h-1.5 rounded-full bg-secondary"></span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg text-on-surface-variant hover:text-on-surface hover:bg-surface-container-low transition-colors text-xs font-medium" href="../savings and emergency/code.html">
+<span class="material-symbols-outlined text-[18px]" data-icon="shield_with_heart">shield_with_heart</span>
+<span class="">Savings &amp; Emergency</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg text-on-surface-variant hover:text-on-surface hover:bg-surface-container-low transition-colors text-xs font-medium" href="../investmwnt and portfolio/investment and portfolio.html">
+<span class="material-symbols-outlined text-[18px]" data-icon="trending_up">trending_up</span>
+<span class="flex-1">Investments &amp; SIP</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg text-on-surface-variant hover:text-on-surface hover:bg-surface-container-low transition-colors text-xs font-medium" href="../health audit/healthaudit.html">
+<span class="material-symbols-outlined text-[18px]" data-icon="verified_user">verified_user</span>
+<span class="">Financial Health Audit</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg text-on-surface-variant hover:text-on-surface hover:bg-surface-container-low transition-colors text-xs font-medium" href="../homepage/homepage.html#reports">
+<span class="material-symbols-outlined text-[18px]" data-icon="receipt_long">receipt_long</span>
+<span class="">Reports &amp; Export</span>
+</a>
+<a class="flex items-center gap-3 px-3 py-2 rounded-lg text-on-surface-variant hover:text-on-surface hover:bg-surface-container-low transition-colors text-xs font-medium" href="../profile/code.html">
+<span class="material-symbols-outlined text-[18px]" data-icon="settings">settings</span>
+<span class="">Settings</span>
+</a>
+</nav>
+</div>
+<!-- Sidebar Bottom -->
+<div class="p-3 border-t border-surface-container-high space-y-2.5">
+<button id="quickAllocateBtn" class="w-full h-9 rounded-lg bg-secondary text-on-secondary text-xs font-semibold hover:bg-secondary-container transition-colors flex items-center justify-center gap-1.5 shadow-sm">
+<span class="material-symbols-outlined text-[15px]">bolt</span>
+<span>Quick Allocate</span>
+</button>
+<div class="pt-0.5 space-y-0.5">
+<a class="flex items-center gap-2 px-2.5 py-1.5 rounded-md text-on-surface-variant hover:text-on-surface hover:bg-surface-container-low text-xs transition-colors" href="#">
+<span class="material-symbols-outlined text-[16px]" data-icon="help">help</span>
+<span>Help &amp; Support</span>
+</a>
+<a class="flex items-center gap-2 px-2.5 py-1.5 rounded-md text-error hover:bg-error-container/30 text-xs transition-colors" href="#logout" onclick="window.IntelliFinance.logout('../login.html'); return false;">
+<span class="material-symbols-outlined text-[16px]" data-icon="logout">logout</span>
+<span>Log Out</span>
+</a>
+</div>
+</div>
+</aside>
+
+<!-- ================= MAIN CONTENT CANVAS ================= -->
+<div class="w-full flex-1 flex flex-col min-h-screen bg-surface">
+
+<!-- Top Header Bar -->
+<header class="w-full h-14 sticky top-0 z-40 bg-surface-container-lowest px-6 md:px-margin flex items-center justify-between border-b border-surface-container-high">
+<div class="flex items-center gap-3 sm:gap-4">
+<button aria-label="Open sidebar menu" class="w-9 h-9 flex items-center justify-center rounded-lg border border-surface-container-high bg-surface-container-lowest text-on-surface hover:bg-surface-container-low transition-colors shadow-xs" id="openSidebarBtn">
+<span class="material-symbols-outlined text-[21px]" data-icon="menu">menu</span>
+</button>
+<nav class="flex items-center gap-2 text-on-surface-variant font-label-md text-label-md">
+<a href="../homepage/homepage.html" class="hover:text-on-surface cursor-pointer">IntelliFinance</a>
+<span class="material-symbols-outlined text-[16px] text-outline-variant" data-icon="chevron_right">chevron_right</span>
+<span class="font-semibold text-on-surface">Cash Flow &amp; Budget</span>
+</nav>
+</div>
+<div class="flex items-center gap-3">
+<!-- Search Bar -->
+<div class="hidden md:flex items-center gap-2 h-8 px-3 rounded-lg bg-surface-container-low border border-surface-container-high text-on-surface-variant text-xs w-56">
+<span class="material-symbols-outlined text-[16px]">search</span>
+<span class="opacity-60">Search rules, ledger accounts...</span>
+</div>
+<!-- Notification Bell -->
+<button aria-label="Notifications" class="relative w-8 h-8 rounded-lg flex items-center justify-center text-on-surface-variant hover:bg-surface-container-low hover:text-on-surface transition-colors">
+<span class="material-symbols-outlined text-[20px]" data-icon="notifications">notifications</span>
+</button>
+<div class="h-5 w-px bg-surface-container-high"></div>
+<!-- Currency Badge -->
+<div class="px-2.5 py-1 rounded-lg bg-surface-container-low border border-surface-container-high text-xs font-semibold text-on-surface">USD ($)</div>
+<!-- User Profile Pill -->
+<div class="flex items-center gap-2.5 pl-1 pr-3 py-1 bg-surface-container-low rounded-full border border-surface-container-high">
+<div class="w-7 h-7 rounded-full bg-primary text-on-primary flex items-center justify-center font-headline-sm text-[11px] font-bold if-initials">AM</div>
+<div class="flex flex-col text-left">
+<span class="font-label-sm text-label-sm font-semibold text-on-surface leading-tight if-display-name">Alex Morgan</span>
+<span class="text-[10px] text-secondary font-medium tracking-tight leading-tight">Pro Tier</span>
+</div>
+</div>
+</div>
+</header>
+
+<!-- Page Body Container -->
+<main class="flex-1 px-6 md:px-margin py-space-lg max-w-[1520px] w-full mx-auto space-y-space-lg overflow-y-auto">
+
+<!-- ================= 1. PAGE HEADER ================= -->
+<div class="flex flex-col md:flex-row md:items-start justify-between gap-4">
+<div>
+<div class="flex items-center gap-3">
+<h1 class="font-headline-lg text-headline-lg-mobile md:text-headline-md font-bold text-on-surface tracking-tight">Cash Flow &amp; Budget Analyzer</h1>
+<span class="px-2.5 py-0.5 rounded-full text-[11px] font-semibold bg-surface-container-low text-on-surface-variant border border-surface-container-high" id="cf-active-rules">0 Active Rules</span>
+</div>
+<p class="font-body-md text-body-sm text-on-surface-variant mt-1 max-w-2xl">
+Monitor net cash flow velocity, plan category budget ceilings, track daily burn rate, and manage automated capital allocations.
+</p>
+</div>
+<div class="flex items-center gap-3 flex-shrink-0">
+<button id="headerQuickAllocateBtn" class="h-10 px-4 rounded-lg bg-secondary text-on-secondary font-label-md text-label-md font-semibold hover:bg-secondary-container transition-colors flex items-center gap-2 shadow-sm">
+<span class="material-symbols-outlined text-[18px]">bolt</span>
+<span>⚡ Auto-Distribute Salary</span>
+</button>
+<button id="setupBudgetBtn" class="h-10 px-4 rounded-lg bg-surface-container-lowest border border-surface-container-high text-on-surface font-label-md text-label-md hover:bg-surface-container-low hover:border-outline-variant transition-colors flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px]">tune</span>
+<span>Setup Budget Rules</span>
+</button>
+<button id="addIncomeExpenseBtn" class="h-10 px-4 rounded-lg bg-primary text-on-primary font-label-md text-label-md hover:bg-primary-container transition-colors flex items-center gap-2 shadow-sm">
+<span class="material-symbols-outlined text-[18px]">add</span>
+<span>+ Add Income / Expense</span>
+</button>
+</div>
+</div>
+
+<!-- ================= SALARY AUTO-DISTRIBUTOR BAR ================= -->
+<div class="p-5 rounded-2xl bg-gradient-to-r from-surface-container-low via-surface-container-lowest to-surface-container-low border border-secondary/30 shadow-md">
+  <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-4">
+    <div class="flex items-center gap-3.5">
+      <div class="w-12 h-12 rounded-xl bg-secondary text-on-secondary flex items-center justify-center shadow-md flex-shrink-0">
+        <span class="material-symbols-outlined text-[26px]">account_balance_wallet</span>
+      </div>
+      <div>
+        <div class="flex items-center gap-2">
+          <h2 class="font-headline-sm text-base font-bold text-on-surface">Smart Salary Allocation Engine</h2>
+          <span class="px-2 py-0.5 rounded-full text-[10px] font-bold uppercase tracking-wider bg-secondary-fixed text-on-secondary-fixed">100% Zero-Sum</span>
+        </div>
+        <p class="font-body-sm text-xs text-on-surface-variant mt-0.5">
+          Enter your monthly salary to partition 100% of your earnings across Household, Groceries, Personal, Transport, SIP, EMI, and Emergency.
+        </p>
+      </div>
+    </div>
+    
+    <div class="flex flex-wrap items-center gap-2.5 sm:flex-nowrap">
+      <div class="relative flex-1 sm:w-64 min-w-[200px]">
+        <span class="absolute left-3 top-1/2 -translate-y-1/2 text-sm font-bold text-on-surface-variant">$</span>
+        <input type="number" id="quickSalaryInput" min="0" step="500" placeholder="e.g. 5000"
+          class="w-full h-11 pl-7 pr-3 rounded-xl bg-surface-container-lowest border-2 border-surface-container-high text-on-surface text-base font-bold placeholder:text-outline-variant focus:outline-none focus:ring-2 focus:ring-secondary focus:border-secondary shadow-sm transition-all tabular-nums">
+      </div>
+      <button id="quickDistributeSalaryBtn" class="h-11 px-5 rounded-xl bg-secondary text-on-secondary font-headline-sm text-xs font-bold hover:bg-secondary-container transition-all flex items-center justify-center gap-2 shadow-md hover:shadow-lg flex-shrink-0 cursor-pointer">
+        <span class="material-symbols-outlined text-[18px]">bolt</span>
+        <span>Auto-Distribute</span>
+      </button>
+      <button id="quickClearSalaryBtn" title="Reset Baseline" class="h-11 w-11 rounded-xl bg-surface-container-lowest border border-surface-container-high text-on-surface-variant hover:text-error hover:border-error hover:bg-error-container/20 transition-colors flex items-center justify-center flex-shrink-0 cursor-pointer">
+        <span class="material-symbols-outlined text-[18px]">restart_alt</span>
+      </button>
+    </div>
+  </div>
+  
+  <!-- Breakdown preview pills -->
+  <div class="mt-4 pt-3.5 border-t border-surface-container-high/60 grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-7 gap-2 text-xs">
+    <div class="p-2 rounded-lg bg-surface-container-lowest border border-surface-container-high flex flex-col">
+      <span class="text-[10px] uppercase font-bold text-on-surface-variant flex items-center gap-1">
+        <span class="w-2 h-2 rounded-full bg-secondary"></span> Household (25%)
+      </span>
+      <span class="font-bold text-on-surface text-xs mt-1 tabular-nums" id="pill-salary-household">$0.00</span>
+    </div>
+    <div class="p-2 rounded-lg bg-surface-container-lowest border border-surface-container-high flex flex-col">
+      <span class="text-[10px] uppercase font-bold text-on-surface-variant flex items-center gap-1">
+        <span class="w-2 h-2 rounded-full bg-secondary-container"></span> Groceries (15%)
+      </span>
+      <span class="font-bold text-on-surface text-xs mt-1 tabular-nums" id="pill-salary-groceries">$0.00</span>
+    </div>
+    <div class="p-2 rounded-lg bg-surface-container-lowest border border-surface-container-high flex flex-col">
+      <span class="text-[10px] uppercase font-bold text-on-surface-variant flex items-center gap-1">
+        <span class="w-2 h-2 rounded-full bg-secondary-fixed-variant"></span> Personal (15%)
+      </span>
+      <span class="font-bold text-on-surface text-xs mt-1 tabular-nums" id="pill-salary-personal">$0.00</span>
+    </div>
+    <div class="p-2 rounded-lg bg-surface-container-lowest border border-surface-container-high flex flex-col">
+      <span class="text-[10px] uppercase font-bold text-on-surface-variant flex items-center gap-1">
+        <span class="w-2 h-2 rounded-full bg-outline"></span> Transport (10%)
+      </span>
+      <span class="font-bold text-on-surface text-xs mt-1 tabular-nums" id="pill-salary-transport">$0.00</span>
+    </div>
+    <div class="p-2 rounded-lg bg-surface-container-lowest border border-surface-container-high flex flex-col">
+      <span class="text-[10px] uppercase font-bold text-on-surface-variant flex items-center gap-1">
+        <span class="w-2 h-2 rounded-full bg-on-tertiary-container"></span> SIP Inv (15%)
+      </span>
+      <span class="font-bold text-on-surface text-xs mt-1 tabular-nums" id="pill-salary-sip">$0.00</span>
+    </div>
+    <div class="p-2 rounded-lg bg-surface-container-lowest border border-surface-container-high flex flex-col">
+      <span class="text-[10px] uppercase font-bold text-on-surface-variant flex items-center gap-1">
+        <span class="w-2 h-2 rounded-full bg-primary-container"></span> EMI / Debt (10%)
+      </span>
+      <span class="font-bold text-on-surface text-xs mt-1 tabular-nums" id="pill-salary-emi">$0.00</span>
+    </div>
+    <div class="p-2 rounded-lg bg-surface-container-lowest border border-surface-container-high flex flex-col">
+      <span class="text-[10px] uppercase font-bold text-on-surface-variant flex items-center gap-1">
+        <span class="w-2 h-2 rounded-full bg-on-tertiary-fixed-variant"></span> Emergency (10%)
+      </span>
+      <span class="font-bold text-on-surface text-xs mt-1 tabular-nums" id="pill-salary-emergency">$0.00</span>
+    </div>
+  </div>
+</div>
+
+<!-- ================= 2. KPI METRICS ROW ================= -->
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-space-md">
+<!-- Total Inflow -->
+<div class="bg-surface-container-lowest p-space-lg rounded-xl border border-surface-container-high shadow-sm hover:shadow-md transition-shadow">
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-on-surface-variant">Total Inflow</span>
+<span class="material-symbols-outlined text-[18px] text-on-tertiary-container">south_west</span>
+</div>
+<div class="mt-2">
+<span class="font-data-metric-lg text-data-metric-lg text-on-surface tabular-nums font-bold" id="cf-kpi-inflow">$0.00</span>
+<span class="text-on-surface-variant text-sm font-normal"> / mo</span>
+</div>
+<div class="mt-1.5 text-on-surface-variant font-body-sm text-body-sm" id="cf-kpi-inflow-sub">
+<span id="cf-kpi-inflow-pct">0%</span> vs prev month • <span id="cf-kpi-inflow-note">No data</span>
+</div>
+</div>
+<!-- Total Outflow -->
+<div class="bg-surface-container-lowest p-space-lg rounded-xl border border-surface-container-high shadow-sm hover:shadow-md transition-shadow">
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-on-surface-variant">Total Outflow</span>
+<span class="material-symbols-outlined text-[18px] text-on-surface-variant">north_east</span>
+</div>
+<div class="mt-2">
+<span class="font-data-metric-lg text-data-metric-lg text-on-surface tabular-nums font-bold" id="cf-kpi-outflow">$0.00</span>
+<span class="text-on-surface-variant text-sm font-normal"> / mo</span>
+</div>
+<div class="mt-1.5 text-on-surface-variant font-body-sm text-body-sm" id="cf-kpi-outflow-sub">
+<span id="cf-kpi-outflow-pct">0.0%</span> of total income depl...
+</div>
+</div>
+<!-- Net Surplus -->
+<div class="bg-surface-container-lowest p-space-lg rounded-xl border border-surface-container-high shadow-sm hover:shadow-md transition-shadow">
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-secondary">Net Surplus</span>
+<span class="material-symbols-outlined text-[18px] text-secondary">savings</span>
+</div>
+<div class="mt-2">
+<span class="font-data-metric-lg text-data-metric-lg text-on-surface tabular-nums font-bold" id="cf-kpi-surplus">$0.00</span>
+<span class="text-on-surface-variant text-sm font-normal"> / mo</span>
+</div>
+<div class="mt-1.5 text-on-surface-variant font-body-sm text-body-sm">
+<span id="cf-kpi-surplus-val">$0.00</span> Unallocated liquid s...
+</div>
+</div>
+<!-- Savings Velocity -->
+<div class="bg-surface-container-lowest p-space-lg rounded-xl border border-surface-container-high shadow-sm hover:shadow-md transition-shadow">
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-on-surface-variant">Savings Velocity</span>
+<span class="material-symbols-outlined text-[18px] text-on-surface-variant">edit_note</span>
+</div>
+<div class="mt-2">
+<span class="font-data-metric-lg text-data-metric-lg text-on-surface tabular-nums font-bold" id="cf-kpi-velocity">0.0%</span>
+<span class="text-on-surface-variant text-sm font-normal"> rate</span>
+</div>
+<div class="mt-1.5 text-on-surface-variant font-body-sm text-body-sm" id="cf-kpi-velocity-sub">
+50/30/20 Target ratio • $0...
+</div>
+</div>
+</div>
+
+<!-- ================= 3. MONTHLY CASH FLOW STRUCTURE & ALLOCATION ENGINE ================= -->
+<section class="bg-surface-container-lowest rounded-xl border border-surface-container-high shadow-sm overflow-hidden">
+<div class="px-space-lg py-4 border-b border-surface-container-low flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+<div>
+<h2 class="font-headline-sm text-headline-sm font-bold text-on-surface">Monthly Cash Flow Structure &amp; Allocation Engine</h2>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-0.5">Institutional-grade capital partitioning: Needs, Discretionary, Debt Amortization, and Compounding Engines.</p>
+</div>
+<div class="text-right">
+<span class="text-sm font-semibold text-on-surface-variant">Planned Total: </span>
+<span class="font-headline-sm text-headline-sm font-bold text-on-surface" id="cf-planned-total">$0.00 / $0.00 (0%)</span>
+</div>
+</div>
+<!-- Allocation Progress Track -->
+<div class="px-space-lg py-3">
+<div class="flex items-center justify-between mb-2">
+<span class="font-label-sm text-label-sm text-on-surface-variant font-semibold">Allocation Progress Track</span>
+<span class="text-xs text-on-surface-variant" id="cf-alloc-pct">0.0% of Total Budget Assigned</span>
+</div>
+<div class="w-full h-3 rounded-full bg-surface-container-low overflow-hidden border border-surface-container-high">
+<div class="h-full bg-secondary rounded-full progress-animate" id="cf-alloc-bar" style="width: 0%"></div>
+</div>
+<div class="mt-1.5 text-center text-[11px] text-on-surface-variant uppercase tracking-wider" id="cf-alloc-label">
+NO CAPITAL STREAMS PARTITIONED (0.0% ACTIVE)
+</div>
+</div>
+<!-- Category Cards -->
+<div class="px-space-lg pb-space-lg grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-space-md" id="cf-category-cards">
+<!-- Rendered by JS -->
+</div>
+</section>
+
+<!-- ================= 4. BUDGET CATEGORIES & SPENDING LIMITS ================= -->
+<section class="bg-surface-container-lowest rounded-xl border border-surface-container-high shadow-sm overflow-hidden">
+<div class="px-space-lg py-4 border-b border-surface-container-low flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+<div class="flex items-center gap-3">
+<h2 class="font-headline-sm text-headline-sm font-bold text-on-surface">Budget Categories &amp; Spending Limits</h2>
+<span class="px-2.5 py-0.5 rounded-full text-[11px] font-semibold bg-surface-container-low text-on-surface-variant border border-surface-container-high" id="cf-active-budgets">0 Active Budgets</span>
+</div>
+<button id="addCategoryBtn" class="h-9 px-4 rounded-lg bg-surface-container-lowest border border-surface-container-high text-on-surface font-label-md text-label-md hover:bg-surface-container-low transition-colors flex items-center gap-2">
+<span class="material-symbols-outlined text-[16px] text-secondary">add_circle</span>
+<span>+ Define Custom Category</span>
+</button>
+</div>
+<!-- Budget Table -->
+<div class="overflow-x-auto">
+<table class="w-full text-sm">
+<thead>
+<tr class="border-b border-surface-container-low bg-surface-container-low/30">
+<th class="text-left px-space-lg py-3 font-label-sm text-label-sm uppercase tracking-wider text-on-surface-variant font-semibold">Category Name</th>
+<th class="text-left px-4 py-3 font-label-sm text-label-sm uppercase tracking-wider text-on-surface-variant font-semibold">Status / Tier</th>
+<th class="text-right px-4 py-3 font-label-sm text-label-sm uppercase tracking-wider text-on-surface-variant font-semibold">Spent to Date</th>
+<th class="text-right px-4 py-3 font-label-sm text-label-sm uppercase tracking-wider text-on-surface-variant font-semibold">Budget Ceiling</th>
+<th class="text-right px-4 py-3 font-label-sm text-label-sm uppercase tracking-wider text-on-surface-variant font-semibold">Remaining Capacity</th>
+<th class="text-right px-space-lg py-3 font-label-sm text-label-sm uppercase tracking-wider text-on-surface-variant font-semibold w-48">Utilization Meter</th>
+</tr>
+</thead>
+<tbody id="cf-budget-table-body">
+<!-- Rendered by JS -->
+</tbody>
+</table>
+</div>
+</section>
+
+<!-- ================= 5. BOTTOM SECTION: CHART + SWEEPS ================= -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-space-md">
+
+<!-- Cash Flow Inflow vs Outflow Trend -->
+<section class="lg:col-span-7 bg-surface-container-lowest rounded-xl border border-surface-container-high shadow-sm overflow-hidden">
+<div class="px-space-lg py-4 border-b border-surface-container-low">
+<div class="flex items-center justify-between">
+<div>
+<h2 class="font-headline-sm text-headline-sm font-bold text-on-surface">Cash Flow Inflow vs. Outflow Trend</h2>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-0.5">Billing cycle: Current Calendar Month</p>
+</div>
+<div class="flex items-center gap-4 text-xs">
+<span class="flex items-center gap-1.5">
+<span class="w-2.5 h-2.5 rounded-full bg-secondary"></span>
+Inflow: <strong id="cf-chart-inflow">$0.00</strong>
+</span>
+<span class="flex items-center gap-1.5">
+<span class="w-2.5 h-2.5 rounded-full bg-on-surface"></span>
+Outflow: <strong id="cf-chart-outflow">$0.00</strong>
+</span>
+</div>
+</div>
+</div>
+<!-- Chart Area -->
+<div class="px-space-lg py-6">
+<div class="relative h-56" id="cf-chart-area">
+<!-- Y-axis labels -->
+<div class="absolute left-0 top-0 bottom-8 w-12 flex flex-col justify-between text-right pr-2 text-[10px] text-on-surface-variant">
+<span id="cf-chart-y3">$1,000</span>
+<span id="cf-chart-y2">$500</span>
+<span id="cf-chart-y1">$0</span>
+</div>
+<!-- Chart body -->
+<div class="ml-14 h-full flex flex-col justify-center items-center" id="cf-chart-body">
+<div id="cf-chart-bars" class="w-full h-full flex items-end justify-center gap-3 hidden">
+  <!-- Bars rendered by JS -->
+</div>
+<div id="cf-chart-empty" class="flex flex-col items-center justify-center text-center py-6">
+<span class="material-symbols-outlined text-[40px] text-outline-variant mb-3">account_balance</span>
+<p class="font-headline-sm text-body-md font-semibold text-on-surface">No transaction data available for this billing cycle</p>
+<p class="font-body-sm text-body-sm text-on-surface-variant mt-1 max-w-sm">Connect an account or add income streams to plot inflow velocity against category burn rate.</p>
+<button id="fetchFeedsBtn" class="mt-4 h-9 px-4 rounded-lg bg-primary text-on-primary text-xs font-semibold hover:bg-primary-container transition-colors flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[15px]">download</span>
+<span>Fetch Financial Feeds</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Bottom metrics -->
+<div class="ml-14 mt-3 flex items-center justify-between text-[11px] text-on-surface-variant border-t border-surface-container-low pt-3">
+<span>Velocity: <strong id="cf-velocity-daily">0.00 USD/day</strong></span>
+<span>Projected Month End: <strong id="cf-projected-end">$0.00</strong></span>
+</div>
+</div>
+</section>
+
+<!-- Automated Cash Sweeps -->
+<section class="lg:col-span-5 bg-surface-container-lowest rounded-xl border border-surface-container-high shadow-sm overflow-hidden">
+<div class="px-space-lg py-4 border-b border-surface-container-low flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px] text-secondary">auto_fix_high</span>
+<h2 class="font-headline-sm text-headline-sm font-bold text-on-surface">Automated Cash Sweeps</h2>
+</div>
+<span class="px-2 py-0.5 rounded text-[11px] font-semibold bg-surface-container-low text-on-surface-variant" id="cf-sweep-status">Standby</span>
+</div>
+<div class="p-space-lg space-y-3">
+<!-- Zero-Sum Budget Status -->
+<div class="p-3 rounded-lg bg-surface-container-low border border-surface-container-high flex items-center justify-between">
+<div class="flex items-center gap-3">
+<div class="w-9 h-9 rounded-lg bg-surface-container-lowest border border-surface-container-high flex items-center justify-center text-secondary">
+<span class="material-symbols-outlined text-[18px]">balance</span>
+</div>
+<div>
+<div class="flex items-center gap-2">
+<span class="font-body-md text-body-md font-semibold text-on-surface">Zero-Sum Budget Status</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant">All incoming dollars allocated</p>
+</div>
+</div>
+<div class="text-right">
+<span class="text-sm font-semibold text-on-tertiary-container" id="cf-zerosum-status">Active</span>
+<p class="text-[11px] text-on-surface-variant" id="cf-zerosum-unassigned">$0.00 unassigned</p>
+</div>
+</div>
+<!-- Checking Account Buffer Target -->
+<div class="p-3 rounded-lg bg-surface-container-low border border-surface-container-high flex items-center justify-between">
+<div class="flex items-center gap-3">
+<div class="w-9 h-9 rounded-lg bg-surface-container-lowest border border-surface-container-high flex items-center justify-center text-secondary">
+<span class="material-symbols-outlined text-[18px]">account_balance</span>
+</div>
+<div>
+<span class="font-body-md text-body-md font-semibold text-on-surface">Checking Account Buffer Target</span>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Retain liquidity threshold</p>
+</div>
+</div>
+<div class="text-right">
+<span class="text-sm font-semibold text-on-surface" id="cf-buffer-val">$0.00 <span class="text-[11px] text-on-surface-variant font-normal">set</span></span>
+<p class="text-[11px] text-on-surface-variant" id="cf-buffer-days">0 days reserve</p>
+</div>
+</div>
+<!-- Automated Sweep to SIP -->
+<div class="p-3 rounded-lg bg-surface-container-low border border-surface-container-high flex items-center justify-between">
+<div class="flex items-center gap-3">
+<div class="w-9 h-9 rounded-lg bg-surface-container-lowest border border-surface-container-high flex items-center justify-center text-secondary">
+<span class="material-symbols-outlined text-[18px]">trending_up</span>
+</div>
+<div>
+<span class="font-body-md text-body-md font-semibold text-on-surface">Automated Sweep to SIP</span>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Surplus transferred automatically</p>
+</div>
+</div>
+<div class="text-right">
+<span class="text-sm font-semibold text-on-surface" id="cf-sweep-sip">$0.00 <span class="text-[11px] text-on-surface-variant font-normal">/ mo</span></span>
+<p class="text-[11px] text-on-surface-variant">scheduled</p>
+</div>
+</div>
+<!-- Configure Button -->
+<button id="configAutoAllocBtn" class="w-full h-10 rounded-lg bg-secondary text-on-secondary font-label-md text-label-md font-semibold hover:bg-secondary-container transition-colors flex items-center justify-center gap-2 shadow-sm">
+<span class="material-symbols-outlined text-[16px]">auto_fix_high</span>
+<span>Configure Auto-Allocation Rules</span>
+</button>
+</div>
+</section>
+</div>
+
+<!-- ================= FOOTER ================= -->
+<footer class="py-3 border-t border-surface-container-low flex flex-col sm:flex-row items-center justify-between gap-2 text-[11px] text-on-surface-variant">
+<div class="flex items-center gap-2">
+<span class="w-1.5 h-1.5 rounded-full bg-on-tertiary-container animate-pulse"></span>
+<span>IntelliFinance Engine: <span id="cf-engine-status">Zero State Initialized</span></span>
+<span>•</span>
+<span>Latency: 0 ms</span>
+</div>
+<div class="flex items-center gap-4">
+<span class="hover:text-on-surface cursor-pointer">Audit Ledger Documentation</span>
+<span class="hover:text-on-surface cursor-pointer">Bank-Level Encryption Protocol</span>
+<span class="text-outline">v2.4.0</span>
+</div>
+</footer>
+
+</main>
+</div>
+
+<!-- ================= ADD INCOME / EXPENSE MODAL ================= -->
+<div id="incomeExpenseModal" class="modal-overlay fixed inset-0 z-[60] bg-on-surface/40 backdrop-blur-sm flex items-center justify-center hidden">
+<div class="modal-content bg-surface-container-lowest rounded-2xl shadow-2xl border border-surface-container-high w-full max-w-lg mx-4 overflow-hidden">
+<div class="px-6 py-4 border-b border-surface-container-high flex items-center justify-between">
+<h3 class="font-headline-sm text-headline-sm font-bold text-on-surface">Add Income / Expense</h3>
+<button id="closeIncomeExpenseModal" class="w-8 h-8 rounded-lg flex items-center justify-center text-on-surface-variant hover:text-on-surface hover:bg-surface-container-low transition-colors">
+<span class="material-symbols-outlined text-[20px]">close</span>
+</button>
+</div>
+<div class="p-6 space-y-4">
+<!-- Type Selector -->
+<div class="flex gap-2">
+<button class="modal-type-btn flex-1 h-10 rounded-lg border-2 border-secondary bg-secondary-fixed text-on-secondary-fixed font-semibold text-sm transition-all" data-type="income">
+<span class="material-symbols-outlined text-[16px] align-middle mr-1">south_west</span> Income
+</button>
+<button class="modal-type-btn flex-1 h-10 rounded-lg border-2 border-surface-container-high bg-surface-container-low text-on-surface-variant font-medium text-sm transition-all" data-type="expense">
+<span class="material-symbols-outlined text-[16px] align-middle mr-1">north_east</span> Expense
+</button>
+</div>
+<input type="hidden" id="modal-entry-type" value="income">
+<!-- Amount -->
+<div>
+<label class="block text-xs font-semibold text-on-surface-variant mb-1.5">Amount ($)</label>
+<input type="number" id="modal-amount" placeholder="0.00" min="0" step="0.01" class="w-full h-10 px-3 rounded-lg bg-surface-container-low border border-surface-container-high text-on-surface text-sm focus:outline-none focus:ring-2 focus:ring-secondary focus:border-secondary transition-all">
+</div>
+<!-- Category -->
+<div>
+<label class="block text-xs font-semibold text-on-surface-variant mb-1.5">Category</label>
+<select id="modal-category" class="w-full h-10 px-3 rounded-lg bg-surface-container-low border border-surface-container-high text-on-surface text-sm focus:outline-none focus:ring-2 focus:ring-secondary focus:border-secondary transition-all">
+<option value="salary">Salary / Primary Income</option>
+<option value="freelance">Freelance / Side Income</option>
+<option value="housing">Housing & Rent</option>
+<option value="groceries">Groceries & Household</option>
+<option value="dining">Dining & Entertainment</option>
+<option value="utilities">Utilities & Connectivity</option>
+<option value="transport">Transport & Fuel</option>
+<option value="emi">EMI / Loan Payment</option>
+<option value="insurance">Insurance Premium</option>
+<option value="investments">Investment / SIP</option>
+<option value="emergency">Emergency Reserve</option>
+<option value="other">Other</option>
+</select>
+</div>
+<!-- Description -->
+<div>
+<label class="block text-xs font-semibold text-on-surface-variant mb-1.5">Description (optional)</label>
+<input type="text" id="modal-description" placeholder="Monthly salary, rent payment, etc." class="w-full h-10 px-3 rounded-lg bg-surface-container-low border border-surface-container-high text-on-surface text-sm focus:outline-none focus:ring-2 focus:ring-secondary focus:border-secondary transition-all">
+</div>
+</div>
+<div class="px-6 py-4 border-t border-surface-container-low flex items-center justify-end gap-3">
+<button id="cancelIncomeExpense" class="h-9 px-4 rounded-lg text-on-surface-variant font-label-md text-label-md hover:bg-surface-container-low transition-colors">Cancel</button>
+<button id="saveIncomeExpense" class="h-9 px-5 rounded-lg bg-secondary text-on-secondary font-label-md text-label-md font-semibold hover:bg-secondary-container transition-colors shadow-sm flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[15px]">check</span>
+<span>Save Entry</span>
+</button>
+</div>
+</div>
+</div>
+
+<!-- ================= SETUP BUDGET RULES MODAL ================= -->
+<div id="budgetRulesModal" class="modal-overlay fixed inset-0 z-[60] bg-on-surface/40 backdrop-blur-sm flex items-center justify-center hidden">
+<div class="modal-content bg-surface-container-lowest rounded-2xl shadow-2xl border border-surface-container-high w-full max-w-lg mx-4 overflow-hidden">
+<div class="px-6 py-4 border-b border-surface-container-high flex items-center justify-between">
+<h3 class="font-headline-sm text-headline-sm font-bold text-on-surface">Setup Budget Rules</h3>
+<button id="closeBudgetRulesModal" class="w-8 h-8 rounded-lg flex items-center justify-center text-on-surface-variant hover:text-on-surface hover:bg-surface-container-low transition-colors">
+<span class="material-symbols-outlined text-[20px]">close</span>
+</button>
+</div>
+<div class="p-6 space-y-4 max-h-[60vh] overflow-y-auto">
+<p class="text-xs text-on-surface-variant">Set monthly budget ceilings for each category. Leave at 0 to skip.</p>
+<div id="budget-rules-fields" class="space-y-3">
+<!-- Rendered by JS -->
+</div>
+</div>
+<div class="px-6 py-4 border-t border-surface-container-low flex items-center justify-end gap-3">
+<button id="cancelBudgetRules" class="h-9 px-4 rounded-lg text-on-surface-variant font-label-md text-label-md hover:bg-surface-container-low transition-colors">Cancel</button>
+<button id="saveBudgetRules" class="h-9 px-5 rounded-lg bg-secondary text-on-secondary font-label-md text-label-md font-semibold hover:bg-secondary-container transition-colors shadow-sm flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[15px]">check</span>
+<span>Save Rules</span>
+</button>
+</div>
+</div>
+</div>
+
+<!-- ================= QUICK ALLOCATE MODAL ================= -->
+<div id="quickAllocateModal" class="modal-overlay fixed inset-0 z-[60] bg-on-surface/40 backdrop-blur-sm flex items-center justify-center hidden">
+<div class="modal-content bg-surface-container-lowest rounded-2xl shadow-2xl border border-surface-container-high w-full max-w-md mx-4 overflow-hidden">
+<div class="px-6 py-4 border-b border-surface-container-high flex items-center justify-between">
+<h3 class="font-headline-sm text-headline-sm font-bold text-on-surface">Quick Allocate Income</h3>
+<button id="closeQuickAllocateModal" class="w-8 h-8 rounded-lg flex items-center justify-center text-on-surface-variant hover:text-on-surface hover:bg-surface-container-low transition-colors">
+<span class="material-symbols-outlined text-[20px]">close</span>
+</button>
+</div>
+<div class="p-6 space-y-4">
+<div>
+<label class="block text-xs font-semibold text-on-surface-variant mb-1.5">Monthly Income ($)</label>
+<input type="number" id="qa-income" placeholder="0.00" min="0" step="100" class="w-full h-10 px-3 rounded-lg bg-surface-container-low border border-surface-container-high text-on-surface text-sm focus:outline-none focus:ring-2 focus:ring-secondary focus:border-secondary transition-all">
+</div>
+<p class="text-xs text-on-surface-variant">This will auto-distribute across your configured budget categories using the 50/30/20 rule.</p>
+</div>
+<div class="px-6 py-4 border-t border-surface-container-low flex items-center justify-end gap-3">
+<button id="cancelQuickAllocate" class="h-9 px-4 rounded-lg text-on-surface-variant font-label-md text-label-md hover:bg-surface-container-low transition-colors">Cancel</button>
+<button id="saveQuickAllocate" class="h-9 px-5 rounded-lg bg-secondary text-on-secondary font-label-md text-label-md font-semibold hover:bg-secondary-container transition-colors shadow-sm flex items-center gap-1.5">
+<span class="material-symbols-outlined text-[15px]">bolt</span>
+<span>Allocate Now</span>
+</button>
+</div>
+</div>
+</div>
+
+<!-- ================= JAVASCRIPT ENGINE ================= -->
+<script>
+(function() {
+  'use strict';
+
+  // ─── LOCAL STORAGE KEYS ──────────────────────────────────────────────────────
+  const CF_DATA_KEY = 'IF_CASHFLOW_DATA';
+  const CF_BUDGET_KEY = 'IF_CASHFLOW_BUDGETS';
+  const CF_ENTRIES_KEY = 'IF_CASHFLOW_ENTRIES';
+
+  // ─── DEFAULT BUDGET CATEGORIES ────────────────────────────────────────────────
+  const DEFAULT_CATEGORIES = [
+    { id: 'living', name: 'Living Expenses & Housing', icon: 'home', color: 'secondary' },
+    { id: 'discretionary', name: 'Discretionary & Lifestyle', icon: 'shopping_bag', color: 'secondary-container' },
+    { id: 'emi', name: 'EMI / Loan Commitments', icon: 'credit_card', color: 'primary-container' },
+    { id: 'emergency', name: 'Emergency Reserve Allocation', icon: 'shield', color: 'on-tertiary-container' },
+    { id: 'investments', name: 'Investments & SIP Compounding', icon: 'trending_up', color: 'secondary' },
+    { id: 'insurance', name: 'Insurance & Protection', icon: 'verified_user', color: 'on-tertiary-container' },
+  ];
+
+  const DEFAULT_BUDGET_TABLE = [
+    { id: 'household', name: 'Household & Living', icon: 'home', ceiling: 0, spent: 0, ratio: 0.25 },
+    { id: 'groceries', name: 'Groceries & Household Essentials', icon: 'shopping_cart', ceiling: 0, spent: 0, ratio: 0.15 },
+    { id: 'personal', name: 'Personal & Lifestyle', icon: 'person', ceiling: 0, spent: 0, ratio: 0.15 },
+    { id: 'transport', name: 'Transport & Fuel', icon: 'directions_car', ceiling: 0, spent: 0, ratio: 0.10 },
+    { id: 'sip', name: 'SIP & Wealth Compounding', icon: 'trending_up', ceiling: 0, spent: 0, ratio: 0.15 },
+    { id: 'emi', name: 'EMI & Debt Obligations', icon: 'credit_card', ceiling: 0, spent: 0, ratio: 0.10 },
+    { id: 'emergency', name: 'Emergency Reserve Fund', icon: 'shield', ceiling: 0, spent: 0, ratio: 0.10 },
+  ];
+
+  // ─── DATA STORE ──────────────────────────────────────────────────────────────
+  function loadCFData() {
+    try {
+      const raw = localStorage.getItem(CF_DATA_KEY);
+      if (raw) return JSON.parse(raw);
+    } catch(e) {}
+    return { totalCustomInflow: 0, totalCustomOutflow: 0, allocations: {} };
+  }
+
+  function saveCFData(data) {
+    try { localStorage.setItem(CF_DATA_KEY, JSON.stringify(data)); } catch(e) {}
+  }
+
+  function loadBudgets() {
+    try {
+      const raw = localStorage.getItem(CF_BUDGET_KEY);
+      if (raw) return JSON.parse(raw);
+    } catch(e) {}
+    return JSON.parse(JSON.stringify(DEFAULT_BUDGET_TABLE));
+  }
+
+  function saveBudgets(budgets) {
+    try { localStorage.setItem(CF_BUDGET_KEY, JSON.stringify(budgets)); } catch(e) {}
+  }
+
+  function loadEntries() {
+    try {
+      const raw = localStorage.getItem(CF_ENTRIES_KEY);
+      if (raw) return JSON.parse(raw);
+    } catch(e) {}
+    return [];
+  }
+
+  function saveEntries(entries) {
+    try { localStorage.setItem(CF_ENTRIES_KEY, JSON.stringify(entries)); } catch(e) {}
+  }
+
+  // ─── TOAST ──────────────────────────────────────────────────────────────────
+  function showToast(msg) {
+    const toast = document.getElementById('toast');
+    const tmsg = document.getElementById('toast-msg');
+    tmsg.textContent = msg;
+    toast.classList.add('show');
+    setTimeout(() => toast.classList.remove('show'), 3000);
+  }
+  window.showToast = showToast;
+
+  // ─── FORMAT HELPERS ──────────────────────────────────────────────────────────
+  const fmt = (v) => {
+    if (v == null || isNaN(v)) return '$0.00';
+    return '$' + Number(v).toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+  };
+  const fmtShort = (v) => {
+    if (v == null || isNaN(v)) return '$0.00';
+    return '$' + Number(v).toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
+  };
+  const pct = (a, b) => b > 0 ? ((a / b) * 100).toFixed(1) : '0.0';
+
+  // ─── MAIN RENDER ENGINE ──────────────────────────────────────────────────────
+  function renderDashboard() {
+    const profile = window.IntelliFinance ? window.IntelliFinance.loadProfile() : {};
+    const cfData = loadCFData();
+    const budgets = loadBudgets();
+    const entries = loadEntries();
+
+    // Compute totals from profile + custom entries
+    const profileInflow = Number(profile.totalInflow) || 0;
+    const profileOutflow = Number(profile.totalOutflow) || 0;
+    const customInflow = Number(cfData.totalCustomInflow) || 0;
+    const customOutflow = Number(cfData.totalCustomOutflow) || 0;
+
+    const totalInflow = profileInflow + customInflow;
+    const totalOutflow = profileOutflow + customOutflow;
+    const netSurplus = totalInflow - totalOutflow;
+    const savingsRate = totalInflow > 0 ? (netSurplus / totalInflow * 100) : 0;
+
+    // Derive allocation from profile fields
+    const essentials = Number(profile.essentialExpenses) || 0;
+    const discretionary = Number(profile.discretionary) || 0;
+    const emi = Number(profile.emiTotal) || 0;
+    const insurance = Number(profile.insurancePremium) || 0;
+    const sip = Number(profile.sipMonthly) || 0;
+    const emergencyMonthly = totalInflow > 0 ? totalInflow * 0.05 : 0; // 5% target for emergency
+
+    // Total allocated 
+    const totalAllocated = essentials + discretionary + emi + insurance + sip;
+    const allocPct = totalInflow > 0 ? (totalAllocated / totalInflow * 100) : 0;
+
+    // ─── KPIs ─────────────────────────────────────────────────────────────
+    document.getElementById('cf-kpi-inflow').textContent = fmt(totalInflow);
+    document.getElementById('cf-kpi-inflow-pct').textContent = totalInflow > 0 ? '+' + pct(totalInflow, totalInflow) + '%' : '0%';
+    document.getElementById('cf-kpi-inflow-note').textContent = totalInflow > 0 ? 'Deposits confirmed' : 'No data';
+
+    document.getElementById('cf-kpi-outflow').textContent = fmt(totalOutflow);
+    document.getElementById('cf-kpi-outflow-pct').textContent = pct(totalOutflow, totalInflow) + '%';
+
+    document.getElementById('cf-kpi-surplus').textContent = fmt(netSurplus);
+    document.getElementById('cf-kpi-surplus-val').textContent = fmt(netSurplus);
+
+    document.getElementById('cf-kpi-velocity').textContent = savingsRate.toFixed(1) + '%';
+    document.getElementById('cf-kpi-velocity-sub').textContent = '50/30/20 Target ratio • ' + fmt(netSurplus);
+
+    // ─── Allocation Engine ────────────────────────────────────────────────
+    document.getElementById('cf-planned-total').textContent = fmt(totalAllocated) + ' / ' + fmt(totalInflow) + ' (' + pct(totalAllocated, totalInflow) + '%)';
+    document.getElementById('cf-alloc-pct').textContent = pct(totalAllocated, totalInflow) + '% of Total Budget Assigned';
+    document.getElementById('cf-alloc-bar').style.width = Math.min(100, allocPct).toFixed(1) + '%';
+    document.getElementById('cf-alloc-label').textContent = allocPct > 0 ? 
+      'CAPITAL STREAMS PARTITIONED (' + allocPct.toFixed(1) + '% ACTIVE)' :
+      'NO CAPITAL STREAMS PARTITIONED (0.0% ACTIVE)';
+
+    // Category cards data partitioned according to salary distribution
+    const sal = cfData.salaryAllocations;
+    const categories = [
+      { id: 'household', name: 'Household & Living (25%)', icon: 'home', color: 'secondary', 
+        current: sal ? sal.household : essentials * 0.6, 
+        ceiling: totalInflow > 0 ? (sal ? sal.household : totalInflow * 0.25) : 0 },
+      { id: 'groceries', name: 'Groceries & Essentials (15%)', icon: 'shopping_cart', color: 'secondary-container', 
+        current: sal ? sal.groceries : essentials * 0.4, 
+        ceiling: totalInflow > 0 ? (sal ? sal.groceries : totalInflow * 0.15) : 0 },
+      { id: 'personal', name: 'Personal & Lifestyle (15%)', icon: 'person', color: 'secondary-fixed-variant', 
+        current: sal ? sal.personal : discretionary, 
+        ceiling: totalInflow > 0 ? (sal ? sal.personal : totalInflow * 0.15) : 0 },
+      { id: 'transport', name: 'Transport & Fuel (10%)', icon: 'directions_car', color: 'outline', 
+        current: sal ? sal.transport : totalInflow * 0.10, 
+        ceiling: totalInflow > 0 ? (sal ? sal.transport : totalInflow * 0.10) : 0 },
+      { id: 'sip', name: 'SIP & Compounding (15%)', icon: 'trending_up', color: 'secondary', 
+        current: sal ? sal.sip : sip, 
+        ceiling: totalInflow > 0 ? (sal ? sal.sip : totalInflow * 0.15) : 0 },
+      { id: 'emi', name: 'EMI & Debt (10%)', icon: 'credit_card', color: 'primary-container', 
+        current: sal ? sal.emi : emi, 
+        ceiling: totalInflow > 0 ? (sal ? sal.emi : totalInflow * 0.10) : 0 },
+      { id: 'emergency', name: 'Emergency Fund (10%)', icon: 'shield', color: 'on-tertiary-container', 
+        current: sal ? sal.emergency : emergencyMonthly, 
+        ceiling: totalInflow > 0 ? (sal ? sal.emergency : totalInflow * 0.10) : 0 },
+    ];
+
+    const cardsContainer = document.getElementById('cf-category-cards');
+    cardsContainer.innerHTML = categories.map(cat => {
+      const catPct = cat.ceiling > 0 ? pct(cat.current, cat.ceiling) : '0.0';
+      return `
+        <div class="p-space-md rounded-xl bg-surface-container-low border border-surface-container-high hover:border-outline-variant transition-all hover:shadow-sm">
+          <div class="flex items-center justify-between mb-2">
+            <div class="flex items-center gap-2.5">
+              <div class="w-9 h-9 rounded-lg bg-surface-container-lowest border border-surface-container-high flex items-center justify-center text-${cat.color}">
+                <span class="material-symbols-outlined text-[18px]">${cat.icon}</span>
+              </div>
+              <div>
+                <span class="font-body-md text-body-sm font-semibold text-on-surface">${cat.name}</span>
+                <div class="text-[11px] text-on-surface-variant">Target Ceiling: ${fmt(cat.ceiling)}</div>
+              </div>
+            </div>
+            <span class="text-xs font-semibold text-on-surface-variant">${catPct}%</span>
+          </div>
+          <div class="flex items-baseline justify-between mt-3">
+            <span class="text-xs text-on-surface-variant">Current Outflow:</span>
+            <div>
+              <span class="font-data-metric-md text-data-metric-md font-bold text-on-surface tabular-nums">${fmt(cat.current)}</span>
+              <span class="text-xs text-on-surface-variant font-normal"> / mo</span>
+            </div>
+          </div>
+        </div>
+      `;
+    }).join('');
+
+    // ─── Budget Table ─────────────────────────────────────────────────────
+    const activeBudgets = budgets.filter(b => b.ceiling > 0).length;
+    document.getElementById('cf-active-budgets').textContent = activeBudgets + ' Active Budgets';
+    document.getElementById('cf-active-rules').textContent = activeBudgets + ' Active Rules';
+
+    const tbody = document.getElementById('cf-budget-table-body');
+    tbody.innerHTML = budgets.map(b => {
+      const spent = Number(b.spent) || 0;
+      const ceiling = Number(b.ceiling) || 0;
+      const remaining = ceiling - spent;
+      const utilPct = ceiling > 0 ? Math.min(100, (spent / ceiling * 100)).toFixed(0) : 0;
+      const status = ceiling > 0 ? `<span class="text-on-tertiary-container font-semibold">${utilPct}% Utilized</span>` : `<span class="text-on-surface-variant">Not Configured</span>`;
+      
+      return `
+        <tr class="border-b border-surface-container-low hover:bg-surface-container-low/20 transition-colors">
+          <td class="px-space-lg py-3">
+            <div class="flex items-center gap-2.5">
+              <div class="w-8 h-8 rounded-lg bg-surface-container-low flex items-center justify-center text-secondary">
+                <span class="material-symbols-outlined text-[16px]">${b.icon}</span>
+              </div>
+              <span class="font-body-md text-body-md font-medium text-on-surface">${b.name}</span>
+            </div>
+          </td>
+          <td class="px-4 py-3 text-xs">${status}</td>
+          <td class="px-4 py-3 text-right font-body-md text-body-md text-on-surface tabular-nums">${fmt(spent)}</td>
+          <td class="px-4 py-3 text-right font-body-md text-body-md text-on-surface tabular-nums">${fmt(ceiling)}</td>
+          <td class="px-4 py-3 text-right font-body-md text-body-md text-on-surface tabular-nums">${fmt(Math.max(0, remaining))}</td>
+          <td class="px-space-lg py-3">
+            <div class="flex items-center gap-2">
+              <div class="flex-1 h-2 bg-surface-container-low rounded-full overflow-hidden">
+                <div class="h-full bg-secondary rounded-full progress-animate" style="width: ${utilPct}%"></div>
+              </div>
+              <span class="text-xs text-on-surface-variant font-medium w-8 text-right">${utilPct}%</span>
+            </div>
+          </td>
+        </tr>
+      `;
+    }).join('');
+
+    // ─── Chart ────────────────────────────────────────────────────────────
+    document.getElementById('cf-chart-inflow').textContent = fmt(totalInflow);
+    document.getElementById('cf-chart-outflow').textContent = fmt(totalOutflow);
+
+    const chartEmpty = document.getElementById('cf-chart-empty');
+    const chartBars = document.getElementById('cf-chart-bars');
+
+    if (totalInflow > 0 || totalOutflow > 0) {
+      chartEmpty.classList.add('hidden');
+      chartBars.classList.remove('hidden');
+      
+      const maxVal = Math.max(totalInflow, totalOutflow, 1);
+      const inflowH = (totalInflow / maxVal * 100).toFixed(1);
+      const outflowH = (totalOutflow / maxVal * 100).toFixed(1);
+      
+      // Y-axis labels
+      document.getElementById('cf-chart-y3').textContent = fmt(maxVal);
+      document.getElementById('cf-chart-y2').textContent = fmt(maxVal / 2);
+      document.getElementById('cf-chart-y1').textContent = '$0';
+
+      // Generate monthly-style bars (simulate 6 months)
+      const months = ['Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+      chartBars.innerHTML = months.map((m, i) => {
+        // Simulate slight variation per month
+        const variation = 0.8 + Math.random() * 0.4;
+        const mInflow = totalInflow * (i < 5 ? variation : 1);
+        const mOutflow = totalOutflow * (i < 5 ? variation : 1);
+        const mInflowH = (mInflow / maxVal * 85).toFixed(1);
+        const mOutflowH = (mOutflow / maxVal * 85).toFixed(1);
+        return `
+          <div class="flex flex-col items-center gap-1 flex-1">
+            <div class="flex items-end gap-1 h-40 w-full justify-center">
+              <div class="w-5 bg-secondary rounded-t chart-bar" style="height: ${mInflowH}%" title="Inflow: ${fmt(mInflow)}"></div>
+              <div class="w-5 bg-on-surface/60 rounded-t chart-bar" style="height: ${mOutflowH}%" title="Outflow: ${fmt(mOutflow)}"></div>
+            </div>
+            <span class="text-[10px] text-on-surface-variant font-medium">${m}</span>
+          </div>
+        `;
+      }).join('');
+    } else {
+      chartEmpty.classList.remove('hidden');
+      chartBars.classList.add('hidden');
+    }
+
+    // Daily velocity
+    const daysInMonth = new Date(new Date().getFullYear(), new Date().getMonth() + 1, 0).getDate();
+    const currentDay = new Date().getDate();
+    const dailyVelocity = currentDay > 0 ? (totalInflow / daysInMonth) : 0;
+    document.getElementById('cf-velocity-daily').textContent = dailyVelocity.toFixed(2) + ' USD/day';
+    document.getElementById('cf-projected-end').textContent = fmt(totalInflow);
+
+    // ─── Automated Sweeps ─────────────────────────────────────────────────
+    document.getElementById('cf-sweep-status').textContent = totalInflow > 0 ? 'Active' : 'Standby';
+    document.getElementById('cf-zerosum-status').textContent = netSurplus <= 0 && totalInflow > 0 ? 'Active' : 'Active';
+    document.getElementById('cf-zerosum-unassigned').textContent = fmt(Math.max(0, netSurplus)) + ' unassigned';
+    document.getElementById('cf-buffer-val').textContent = fmt(Number(profile.emergencyFunded) || 0);
+    const dailyExpense = totalOutflow > 0 ? totalOutflow / 30 : 0;
+    const bufferDays = dailyExpense > 0 ? Math.floor((Number(profile.emergencyFunded) || 0) / dailyExpense) : 0;
+    document.getElementById('cf-buffer-days').textContent = bufferDays + ' days reserve';
+    document.getElementById('cf-sweep-sip').innerHTML = fmt(sip) + ' <span class="text-[11px] text-on-surface-variant font-normal">/ mo</span>';
+
+    // Engine status
+    document.getElementById('cf-engine-status').textContent = totalInflow > 0 ? 'Live Analytics Active' : 'Zero State Initialized';
+
+    // Info banner
+    const banner = document.getElementById('cf-info-banner');
+    if (totalInflow > 0) {
+      banner.classList.add('hidden');
+    }
+
+    // User display name sync
+    syncUser();
+  }
+
+  // ─── SYNC USER NAME ────────────────────────────────────────────────────────
+  function syncUser() {
+    if (!window.IntelliFinance) return;
+    const p = window.IntelliFinance.loadProfile();
+    const name = (p.displayName || p.fullName || '').trim() || 'Alex Morgan';
+    const init = p.initials || 'AM';
+    document.querySelectorAll('.if-display-name').forEach(el => el.textContent = name);
+    document.querySelectorAll('.if-initials').forEach(el => el.textContent = init);
+  }
+
+  // ─── SIDEBAR ──────────────────────────────────────────────────────────────
+  const sidebar = document.getElementById('collapsibleSidebar');
+  const backdrop = document.getElementById('sidebarBackdrop');
+  const openBtn = document.getElementById('openSidebarBtn');
+  const closeBtn = document.getElementById('closeSidebarBtn');
+
+  function openSidebar() {
+    sidebar.classList.remove('-translate-x-full');
+    sidebar.classList.add('translate-x-0');
+    backdrop.classList.remove('opacity-0', 'pointer-events-none');
+    backdrop.classList.add('opacity-100', 'pointer-events-auto');
+    document.body.classList.add('overflow-hidden');
+  }
+  function closeSidebar() {
+    sidebar.classList.remove('translate-x-0');
+    sidebar.classList.add('-translate-x-full');
+    backdrop.classList.remove('opacity-100', 'pointer-events-auto');
+    backdrop.classList.add('opacity-0', 'pointer-events-none');
+    document.body.classList.remove('overflow-hidden');
+  }
+
+  if (openBtn) openBtn.addEventListener('click', (e) => { e.stopPropagation(); openSidebar(); });
+  if (closeBtn) closeBtn.addEventListener('click', closeSidebar);
+  if (backdrop) backdrop.addEventListener('click', closeSidebar);
+  document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeSidebar(); });
+
+  // ─── MODALS ──────────────────────────────────────────────────────────────
+
+  // Add Income/Expense Modal
+  const ieModal = document.getElementById('incomeExpenseModal');
+  const addIEBtn = document.getElementById('addIncomeExpenseBtn');
+  const closeIEBtn = document.getElementById('closeIncomeExpenseModal');
+  const cancelIEBtn = document.getElementById('cancelIncomeExpense');
+  const saveIEBtn = document.getElementById('saveIncomeExpense');
+  const fetchFeedsBtn = document.getElementById('fetchFeedsBtn');
+
+  function openIEModal() { ieModal.classList.remove('hidden'); }
+  function closeIEModal() { 
+    ieModal.classList.add('hidden'); 
+    document.getElementById('modal-amount').value = '';
+    document.getElementById('modal-description').value = '';
+  }
+
+  addIEBtn.addEventListener('click', openIEModal);
+  if (fetchFeedsBtn) fetchFeedsBtn.addEventListener('click', openIEModal);
+  closeIEBtn.addEventListener('click', closeIEModal);
+  cancelIEBtn.addEventListener('click', closeIEModal);
+
+  // Type toggle
+  document.querySelectorAll('.modal-type-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.modal-type-btn').forEach(b => {
+        b.classList.remove('border-secondary', 'bg-secondary-fixed', 'text-on-secondary-fixed', 'font-semibold');
+        b.classList.add('border-surface-container-high', 'bg-surface-container-low', 'text-on-surface-variant', 'font-medium');
+      });
+      btn.classList.remove('border-surface-container-high', 'bg-surface-container-low', 'text-on-surface-variant', 'font-medium');
+      btn.classList.add('border-secondary', 'bg-secondary-fixed', 'text-on-secondary-fixed', 'font-semibold');
+      document.getElementById('modal-entry-type').value = btn.dataset.type;
+    });
+  });
+
+  // Save entry
+  saveIEBtn.addEventListener('click', () => {
+    const type = document.getElementById('modal-entry-type').value;
+    const amount = parseFloat(document.getElementById('modal-amount').value) || 0;
+    const category = document.getElementById('modal-category').value;
+    const desc = document.getElementById('modal-description').value;
+
+    if (amount <= 0) {
+      showToast('Please enter a valid amount.');
+      return;
+    }
+
+    const cfData = loadCFData();
+    const entries = loadEntries();
+    const budgets = loadBudgets();
+
+    // Add entry
+    entries.push({
+      id: 'e_' + Date.now(),
+      type, amount, category, desc,
+      date: new Date().toISOString()
+    });
+    saveEntries(entries);
+
+    if (type === 'income') {
+      cfData.totalCustomInflow = (cfData.totalCustomInflow || 0) + amount;
+
+      // Also update IntelliFinance profile
+      if (window.IntelliFinance) {
+        const p = window.IntelliFinance.loadProfile();
+        window.IntelliFinance.saveProfile({
+          baseSalary: (Number(p.baseSalary) || 0) + amount,
+        });
+      }
+    } else {
+      cfData.totalCustomOutflow = (cfData.totalCustomOutflow || 0) + amount;
+
+      // Map category to profile field and update
+      if (window.IntelliFinance) {
+        const p = window.IntelliFinance.loadProfile();
+        const catMap = {
+          'housing': 'essentialExpenses',
+          'groceries': 'essentialExpenses',
+          'utilities': 'essentialExpenses',
+          'transport': 'essentialExpenses',
+          'dining': 'discretionary',
+          'emi': 'emiTotal',
+          'insurance': 'insurancePremium',
+          'investments': 'sipMonthly',
+          'emergency': 'emergencyFunded',
+          'other': 'discretionary',
+          'freelance': 'discretionary',
+        };
+        const field = catMap[category] || 'discretionary';
+        const update = {};
+        update[field] = (Number(p[field]) || 0) + amount;
+        window.IntelliFinance.saveProfile(update);
+      }
+
+      // Update budget spent
+      const budgetIdx = budgets.findIndex(b => b.id === category);
+      if (budgetIdx >= 0) {
+        budgets[budgetIdx].spent = (Number(budgets[budgetIdx].spent) || 0) + amount;
+        saveBudgets(budgets);
+      }
+    }
+
+    saveCFData(cfData);
+    closeIEModal();
+    showToast(`${type === 'income' ? 'Income' : 'Expense'} of ${fmt(amount)} added successfully!`);
+    renderDashboard();
+  });
+
+  // Budget Rules Modal
+  const brModal = document.getElementById('budgetRulesModal');
+  const setupBtn = document.getElementById('setupBudgetBtn');
+  const addCatBtn = document.getElementById('addCategoryBtn');
+  const closeBRBtn = document.getElementById('closeBudgetRulesModal');
+  const cancelBRBtn = document.getElementById('cancelBudgetRules');
+  const saveBRBtn = document.getElementById('saveBudgetRules');
+  const configAutoBtn = document.getElementById('configAutoAllocBtn');
+
+  function openBRModal() {
+    const budgets = loadBudgets();
+    const container = document.getElementById('budget-rules-fields');
+    container.innerHTML = budgets.map(b => `
+      <div class="flex items-center gap-3">
+        <div class="w-8 h-8 rounded-lg bg-surface-container-low flex items-center justify-center text-secondary flex-shrink-0">
+          <span class="material-symbols-outlined text-[16px]">${b.icon}</span>
+        </div>
+        <div class="flex-1">
+          <label class="text-xs font-semibold text-on-surface">${b.name}</label>
+          <input type="number" data-budget-id="${b.id}" value="${b.ceiling || ''}" placeholder="0.00" min="0" step="50" class="w-full h-9 mt-1 px-3 rounded-lg bg-surface-container-low border border-surface-container-high text-on-surface text-sm focus:outline-none focus:ring-2 focus:ring-secondary transition-all">
+        </div>
+      </div>
+    `).join('');
+    brModal.classList.remove('hidden');
+  }
+  function closeBRModal() { brModal.classList.add('hidden'); }
+
+  setupBtn.addEventListener('click', openBRModal);
+  addCatBtn.addEventListener('click', openBRModal);
+  configAutoBtn.addEventListener('click', openBRModal);
+  closeBRBtn.addEventListener('click', closeBRModal);
+  cancelBRBtn.addEventListener('click', closeBRModal);
+
+  saveBRBtn.addEventListener('click', () => {
+    const budgets = loadBudgets();
+    document.querySelectorAll('[data-budget-id]').forEach(input => {
+      const id = input.dataset.budgetId;
+      const val = parseFloat(input.value) || 0;
+      const idx = budgets.findIndex(b => b.id === id);
+      if (idx >= 0) budgets[idx].ceiling = val;
+    });
+    saveBudgets(budgets);
+    closeBRModal();
+    showToast('Budget rules updated successfully!');
+    renderDashboard();
+  });
+
+  // Quick Allocate Modal
+  const qaModal = document.getElementById('quickAllocateModal');
+  const qaBtn = document.getElementById('quickAllocateBtn');
+  const closeQABtn = document.getElementById('closeQuickAllocateModal');
+  const cancelQABtn = document.getElementById('cancelQuickAllocate');
+  const saveQABtn = document.getElementById('saveQuickAllocate');
+
+  function openQAModal() { qaModal.classList.remove('hidden'); }
+  function closeQAModal() { qaModal.classList.add('hidden'); document.getElementById('qa-income').value = ''; }
+
+  qaBtn.addEventListener('click', openQAModal);
+  closeQABtn.addEventListener('click', closeQAModal);
+  cancelQABtn.addEventListener('click', closeQAModal);
+
+  saveQABtn.addEventListener('click', () => {
+    const income = parseFloat(document.getElementById('qa-income').value) || 0;
+    if (income <= 0) { showToast('Please enter a valid income amount.'); return; }
+
+    // 50/30/20 allocation
+    const essentials = income * 0.50;
+    const disc = income * 0.30;
+    const savingsInv = income * 0.20;
+
+    if (window.IntelliFinance) {
+      window.IntelliFinance.saveProfile({
+        baseSalary: income,
+        essentialExpenses: essentials,
+        discretionary: disc,
+        sipMonthly: savingsInv,
+      });
+    }
+
+    // Also set budget ceilings based on 50/30/20
+    const budgets = loadBudgets();
+    // Distribute essentials across housing, groceries, utilities, transport
+    const perEssentialCat = essentials / 4;
+    budgets.forEach(b => {
+      if (['housing', 'groceries', 'utilities', 'transport'].includes(b.id)) {
+        b.ceiling = Math.round(perEssentialCat);
+      }
+      if (b.id === 'dining') {
+        b.ceiling = Math.round(disc);
+      }
+    });
+    saveBudgets(budgets);
+
+    closeQAModal();
+    showToast(`Income of ${fmt(income)} allocated via 50/30/20 rule!`);
+    renderDashboard();
+  });
+
+  // ─── SALARY AUTO-DISTRIBUTOR LOGIC (100% EXPENSE PARTITIONING) ─────────────
+  function distributeSalary(salaryAmount) {
+    const salary = parseFloat(salaryAmount) || 0;
+    if (salary <= 0) {
+      showToast('Please enter a valid salary amount.');
+      return;
+    }
+
+    // Exact allocation breakdown matching user specifications:
+    // Household: 25%, Groceries: 15%, Personal: 15%, Transport: 10%, SIP: 15%, EMI: 10%, Emergency: 10%
+    const allocation = {
+      household: salary * 0.25,
+      groceries: salary * 0.15,
+      personal: salary * 0.15,
+      transport: salary * 0.10,
+      sip: salary * 0.15,
+      emi: salary * 0.10,
+      emergency: salary * 0.10,
+    };
+
+    // Update Profile in shared IntelliFinance store
+    if (window.IntelliFinance) {
+      const essentialExpenses = allocation.household + allocation.groceries + allocation.transport;
+      window.IntelliFinance.saveProfile({
+        baseSalary: salary,
+        essentialExpenses: essentialExpenses,
+        discretionary: allocation.personal,
+        emiTotal: allocation.emi,
+        sipMonthly: allocation.sip,
+        emergencyFunded: (Number(window.IntelliFinance.loadProfile().emergencyFunded) || 0) + allocation.emergency,
+      });
+    }
+
+    // Update Cash Flow Custom Inflow & Store
+    const cfData = loadCFData();
+    cfData.totalCustomInflow = 0; // baseline set to salary
+    cfData.totalCustomOutflow = 0;
+    cfData.salaryAllocations = allocation;
+    saveCFData(cfData);
+
+    // Update Budget Table Ceilings
+    const budgets = loadBudgets();
+    budgets.forEach(b => {
+      if (allocation[b.id] !== undefined) {
+        b.ceiling = Math.round(allocation[b.id]);
+      }
+    });
+    saveBudgets(budgets);
+
+    // Update input display
+    const quickInput = document.getElementById('quickSalaryInput');
+    if (quickInput) quickInput.value = salary;
+
+    // Toast and re-render
+    showToast(`Salary of ${fmt(salary)} successfully distributed across all 7 categories!`);
+    renderDashboard();
+  }
+
+  // Quick Distribute button click
+  const quickDistributeBtn = document.getElementById('quickDistributeSalaryBtn');
+  const quickSalaryInput = document.getElementById('quickSalaryInput');
+  const headerQuickBtn = document.getElementById('headerQuickAllocateBtn');
+
+  if (quickDistributeBtn && quickSalaryInput) {
+    quickDistributeBtn.addEventListener('click', () => {
+      distributeSalary(quickSalaryInput.value);
+    });
+
+    quickSalaryInput.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter') {
+        distributeSalary(quickSalaryInput.value);
+      }
+    });
+
+    // Real-time calculation on input change
+    quickSalaryInput.addEventListener('input', () => {
+      const val = parseFloat(quickSalaryInput.value) || 0;
+      updateSalaryPills(val);
+    });
+  }
+
+  // Clear / Reset salary button
+  const quickClearBtn = document.getElementById('quickClearSalaryBtn');
+  if (quickClearBtn) {
+    quickClearBtn.addEventListener('click', () => {
+      if (quickSalaryInput) quickSalaryInput.value = '';
+      updateSalaryPills(0);
+      if (window.IntelliFinance) {
+        window.IntelliFinance.saveProfile({
+          baseSalary: 0,
+          essentialExpenses: 0,
+          discretionary: 0,
+          emiTotal: 0,
+          sipMonthly: 0
+        });
+      }
+      const cfData = loadCFData();
+      cfData.totalCustomInflow = 0;
+      cfData.totalCustomOutflow = 0;
+      cfData.salaryAllocations = null;
+      saveCFData(cfData);
+
+      const budgets = loadBudgets();
+      budgets.forEach(b => { b.ceiling = 0; b.spent = 0; });
+      saveBudgets(budgets);
+
+      showToast('Salary & allocations reset to zero baseline.');
+      renderDashboard();
+    });
+  }
+
+  if (headerQuickBtn) {
+    headerQuickBtn.addEventListener('click', () => {
+      if (quickSalaryInput) {
+        quickSalaryInput.focus();
+        quickSalaryInput.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      } else {
+        openQAModal();
+      }
+    });
+  }
+
+  function updateSalaryPills(val) {
+    const s = parseFloat(val) || 0;
+    const setPill = (id, amt) => {
+      const el = document.getElementById(id);
+      if (el) el.textContent = fmt(amt);
+    };
+    setPill('pill-salary-household', s * 0.25);
+    setPill('pill-salary-groceries', s * 0.15);
+    setPill('pill-salary-personal', s * 0.15);
+    setPill('pill-salary-transport', s * 0.10);
+    setPill('pill-salary-sip', s * 0.15);
+    setPill('pill-salary-emi', s * 0.10);
+    setPill('pill-salary-emergency', s * 0.10);
+  }
+
+  // Dismiss banner
+  const dismissBtn = document.getElementById('dismissBannerBtn');
+  if (dismissBtn) {
+    dismissBtn.addEventListener('click', () => {
+      const banner = document.getElementById('cf-info-banner');
+      if (banner) banner.classList.add('hidden');
+    });
+  }
+
+  // Close modals on backdrop click
+  [ieModal, brModal, qaModal].forEach(modal => {
+    if (modal) {
+      modal.addEventListener('click', (e) => {
+        if (e.target === modal) {
+          modal.classList.add('hidden');
+        }
+      });
+    }
+  });
+
+  // ─── INIT ────────────────────────────────────────────────────────────────
+  document.addEventListener('DOMContentLoaded', () => {
+    renderDashboard();
+    const p = window.IntelliFinance ? window.IntelliFinance.loadProfile() : {};
+    if (p.baseSalary && quickSalaryInput) {
+      quickSalaryInput.value = p.baseSalary;
+      updateSalaryPills(p.baseSalary);
+    }
+  });
+  if (document.readyState !== 'loading') {
+    renderDashboard();
+    const p = window.IntelliFinance ? window.IntelliFinance.loadProfile() : {};
+    if (p.baseSalary && quickSalaryInput) {
+      quickSalaryInput.value = p.baseSalary;
+      updateSalaryPills(p.baseSalary);
+    }
+  }
+  window.addEventListener('IF_PROFILE_UPDATED', renderDashboard);
+
+})();
+</script>
+
+<script src="../shared/chatbot.js"></script>
+</body>
+</html>
